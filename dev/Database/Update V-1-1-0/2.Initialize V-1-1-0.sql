@@ -15,4 +15,20 @@ SELECT	@userId as N'@userId'
 SELECT	'Return Value' = @return_value
 
 GO
-update [dbo].[tbl_seg_usuario] set [activo] = 1
+update [dbo].[tbl_seg_usuario] set [activo] = 1 
+go
+
+INSERT INTO [dbo].[tbl_seg_parametros]
+           ([descripcion]
+           ,[duracionSegundos])
+     VALUES
+           ('duracion codigo activacion'
+           ,3600)
+GO
+
+INSERT INTO [dbo].[tbl_seg_parametros]
+           ([descripcion]
+           ,[duracionSegundos])
+     VALUES
+           ('duracion codigo recuperacion'
+           ,3600)

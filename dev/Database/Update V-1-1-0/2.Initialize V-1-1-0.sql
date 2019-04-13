@@ -15,3 +15,4 @@ SELECT	@userId as N'@userId'
 SELECT	'Return Value' = @return_value
 
 GO
+update [dbo].[tbl_seg_usuario] set [activo] = 1

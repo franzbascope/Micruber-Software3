@@ -58,7 +58,7 @@ GO
 DELETE FROM [dbo].[tbl_Version]
 GO
 
-INSERT INTO [PuntoVentaDB].[dbo].[tbl_Version]
+INSERT INTO [micruberDB].[dbo].[tbl_Version]
            ([versionMayor]
            ,[versionMenor]
            ,[patch])

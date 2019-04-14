@@ -1,0 +1,10 @@
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csprojAssemblyReference.cache
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csproj.CoreCompileInputs.cache
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\CapaAcceso.dll
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\CapaAcceso.pdb
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\DAL.dll
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\DAL.pdb
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\DAL.dll.config
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csproj.CopyComplete
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.dll
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.pdb

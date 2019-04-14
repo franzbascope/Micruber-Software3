@@ -5,6 +5,7 @@ using System.Web;
 using VentasNur.Model;
 using DAL.Seguridad;
 using DAL.Seguridad.UsuarioDSTableAdapters;
+using System.Net.Mail;
 
 /// <summary>
 /// Descripción breve de UsuarioBLL
@@ -104,6 +105,59 @@ public class UsuarioBLL
     {
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
         adapter.updateUsuario(obj.correo, obj.nombreCompleto, obj.usuarioId);
+    }
+    public static bool enviarEmail(int usuarioId)
+    {
+        //try
+        //{
+        //    //Generador de Codigos de 12 digitos
+
+        //    Guid gidCode = Guid.NewGuid();
+        //    string code = gidCode.ToString().Substring(0, 14).Replace("-", "");
+
+        //    MailMessage mail = new MailMessage();
+        //    SmtpClient smtpCli = new SmtpClient();
+
+        //    mail.From = new MailAddress("easywebsoft3@gmail.com");
+        //    mail.To.Add(new MailAddress(emailReceptor));
+
+        //    string message =
+        //        "<p>" +
+        //            "Hemos recibido tu solicitud para cambiar la contraseña de tu cuenta. Para cambiar de contraseña" +
+        //            " use el siguiente link" +
+        //        "</p>" +
+        //        "http://localhost:49640/AdminSecurity/ChangePassword.aspx?code=" + code;
+        //    mail.Body = message;
+        //    mail.IsBodyHtml = true;
+        //    mail.Subject = "Change Password";
+        //    smtpCli.Host = "smtp.gmail.com";
+        //    smtpCli.Port = 587; //Lo use gmail por defecto
+        //    smtpCli.Credentials = new NetworkCredential("easywebsoft3@gmail.com", "easyweb123");
+        //    smtpCli.EnableSsl = true;
+        //    smtpCli.Send(mail);
+
+
+        //    //Creando Recuperacion de contraseña
+        //    DateTime fechaEnvio = DateTime.Now;
+        //    Recuperacion objRecup = new Recuperacion();
+        //    {
+        //        objRecup.UsuarioId = obj.UsuarioId;
+        //        objRecup.Codigo = code;
+        //        objRecup.FechaGenerado = fechaEnvio;
+        //        objRecup.FechaActual = new DateTime(1900, 1, 1, 0, 0, 0);
+        //        objRecup.Tiempo = 2; //2 horas del link habilitado
+        //        objRecup.Estado = '1'; //Link habilitado;
+        //    };
+        //    RecuperacionBRL.insertRecuperacion(objRecup);
+
+        //    return true;
+        //}
+        //catch (Exception e)
+        //{
+        //    Console.WriteLine("Pinshe Error: " + e.Message);
+        //    return false;
+        //}
+        return false;
     }
 
 }

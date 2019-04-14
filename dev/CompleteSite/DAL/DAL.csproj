@@ -47,14 +47,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Seguridad\TEST.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TEST.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Seguridad\UsuarioDS.cs">
-      <DependentUpon>UsuarioDS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Seguridad\UsuarioDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,24 +64,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Seguridad\TEST.xsc">
-      <DependentUpon>TEST.xsd</DependentUpon>
-    </None>
-    <None Include="Seguridad\TEST.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TEST.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Seguridad\TEST.xss">
-      <DependentUpon>TEST.xsd</DependentUpon>
-    </None>
     <None Include="Seguridad\UsuarioDS.xsc">
       <DependentUpon>UsuarioDS.xsd</DependentUpon>
     </None>
     <None Include="Seguridad\UsuarioDS.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>UsuarioDS.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Seguridad\UsuarioDS.xss">
       <DependentUpon>UsuarioDS.xsd</DependentUpon>

@@ -1,0 +1,5 @@
+﻿1>------ Operación Limpiar iniciada: proyecto: WebEjtor, configuración: Debug Any CPU ------
+2>------ Operación Limpiar iniciada: proyecto: Negocio, configuración: Debug Any CPU ------
+3>------ Operación Limpiar iniciada: proyecto: Data, configuración: Debug Any CPU ------
+4>------ Operación Limpiar iniciada: proyecto: Entidades, configuración: Debug Any CPU ------
+========== Limpiar: 4 correctos, 0 incorrectos, 0 omitidos ==========

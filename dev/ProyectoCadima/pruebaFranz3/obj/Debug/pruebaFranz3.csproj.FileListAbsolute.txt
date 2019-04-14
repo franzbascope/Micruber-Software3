@@ -1,0 +1,2 @@
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\pruebaFranz3\obj\Debug\pruebaFranz3.csprojAssemblyReference.cache
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\pruebaFranz3\obj\Debug\pruebaFranz3.csproj.CoreCompileInputs.cache

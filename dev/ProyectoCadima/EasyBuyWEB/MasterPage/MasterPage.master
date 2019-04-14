@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Default/css/styleIndex.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Compras Online</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li role="presentation">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/Pedido/ListPedidos.aspx"
+                            Text="Pedidos">
+                        </asp:HyperLink>
+                    </li>
+                    <li role="presentation">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/Empresas/ListEmpresas.aspx"
+                            Text="Empresas">
+                        </asp:HyperLink>
+                    </li>
+                    <li role="presentation">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/Productos/ListProductos.aspx"
+                            Text="Productos">
+                        </asp:HyperLink>
+                    </li>
+
+                    <li role="presentation">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/Dash-Button/ListDash.aspx"
+                            Text="Dash-Button">
+                        </asp:HyperLink>
+                    </li>
+
+                    <li role="presentation">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/AdminUsers/ListUsers.aspx"
+                            Text="Colaboladores">
+                        </asp:HyperLink>
+                    </li>
+                    <li role="presentation">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/Rol/ListRol.aspx"
+                            Text="Roles">
+                        </asp:HyperLink>
+                    </li>
+                    
+                    <li role="presentation" class="pull-right">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="~/AdminSecurity/LoginUsers.aspx"
+                            Text="Cerrar Sesión">
+                        </asp:HyperLink>
+                    </li>
+                    <li role="presentation" class="pull-right">
+                        <asp:HyperLink runat="server"
+                            NavigateUrl="#"
+                            Text="Perfil">
+                        </asp:HyperLink>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form id="form1" runat="server" class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </form>
+        
+    </div>
+    <br />
+    <br />
+    <footer>
+        <div class="container">
+            <h2>Web Ejtor
+                <p class="copyright pull-right">
+                    &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>
+
+                </p>
+            </h2>
+        </div>
+    </footer>
+    
+</body>
+</html>

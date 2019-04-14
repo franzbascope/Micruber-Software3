@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaAcceso", "CapaAcceso\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{44731BA4-2245-4A40-80F1-CB255328961C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "Servicios\Servicios.csproj", "{80E33634-26B7-4F57-AE67-9EA51CFD0BF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{44731BA4-2245-4A40-80F1-CB255328961C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44731BA4-2245-4A40-80F1-CB255328961C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44731BA4-2245-4A40-80F1-CB255328961C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E33634-26B7-4F57-AE67-9EA51CFD0BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E33634-26B7-4F57-AE67-9EA51CFD0BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E33634-26B7-4F57-AE67-9EA51CFD0BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E33634-26B7-4F57-AE67-9EA51CFD0BF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

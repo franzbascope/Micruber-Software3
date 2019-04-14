@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#FF00569F</color>
+    <color name="lightblue">#FF0082EC</color>
+    <color name="lighterblue">#FF80C6FF</color>
+    <color name="dark_blue">#FF002F55</color>
+    <color name="darker_gray">#FF333333</color>
+    <color name="status_cancel">#FFb94a48</color>
+    <color name="status_pending">#FFEC7A13</color>
+    <color name="status_inprocess">#FF468847</color>
+    <color name="status_success">#FF3a87ad</color>
+    <color name="dark_gray">#FF777777</color>
+    <color name="gray">#FFCCCCCC</color>
+    <color name="red">#FFb94a48</color>
+    <color name="red33">#33b94a48</color>
+    <color name="green">#FF468847</color>
+    <color name="green33">#33468847</color>
+    <color name="orange66">#66EFB21D</color>
+    <color name="orange">#FFf9b240</color>
+    <color name="light_orange">#FFffa366</color>
+    <color name="light_green">#FF00CC99</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

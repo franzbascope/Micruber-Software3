@@ -1,0 +1,28 @@
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL PROJECT\WebEjtor\Entidades\bin\Debug\Entidades.dll
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL PROJECT\WebEjtor\Entidades\bin\Debug\Entidades.pdb
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL PROJECT\WebEjtor\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL PROJECT\WebEjtor\Entidades\obj\Debug\Entidades.dll
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL PROJECT\WebEjtor\Entidades\obj\Debug\Entidades.pdb
+C:\Software3\WebEjtor\Entidades\bin\Debug\Entidades.dll
+C:\Software3\WebEjtor\Entidades\bin\Debug\Entidades.pdb
+C:\Software3\WebEjtor\Entidades\obj\Debug\Entidades.dll
+C:\Software3\WebEjtor\Entidades\obj\Debug\Entidades.pdb
+C:\Sofware3\WebEjtor\Entidades\bin\Debug\Entidades.dll
+C:\Sofware3\WebEjtor\Entidades\bin\Debug\Entidades.pdb
+C:\Sofware3\WebEjtor\Entidades\obj\Debug\Entidades.dll
+C:\Sofware3\WebEjtor\Entidades\obj\Debug\Entidades.pdb
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL SOFTWARE 3\WebEjtor\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL SOFTWARE 3\WebEjtor\Entidades\obj\Debug\Entidades.dll
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL SOFTWARE 3\WebEjtor\Entidades\obj\Debug\Entidades.pdb
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL SOFTWARE 3\WebEjtor\Entidades\bin\Debug\Entidades.dll
+E:\Carpetas Joc 7u7\6to SEMESTRE\Software 3\FINAL SOFTWARE 3\WebEjtor\Entidades\bin\Debug\Entidades.pdb
+C:\webnurpedidosonline\WebEjtor\Entidades\bin\Debug\Entidades.dll
+C:\webnurpedidosonline\WebEjtor\Entidades\bin\Debug\Entidades.pdb
+C:\webnurpedidosonline\WebEjtor\Entidades\obj\Debug\Entidades.dll
+C:\webnurpedidosonline\WebEjtor\Entidades\obj\Debug\Entidades.pdb
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\Entidades\bin\Debug\Entidades.dll
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\Entidades\bin\Debug\Entidades.pdb
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\Entidades\obj\Debug\Entidades.dll
+E:\universidad\software3\webnurpedidosonline-master\WebEjtor\Entidades\obj\Debug\Entidades.pdb

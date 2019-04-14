@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="joquery-0.14">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/joquery-0.14.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

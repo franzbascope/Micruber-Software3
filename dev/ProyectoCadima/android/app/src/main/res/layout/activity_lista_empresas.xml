@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:elevation="3dp"
+        android:padding="7dp"
+        android:background="@color/blue">
+
+        <EditText
+            android:id="@+id/filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:hint="@string/search"
+            android:layout_gravity="center"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/edt_white_curve"
+            android:textColor="@color/dark_blue"
+            android:padding="5dp"/>
+
+        <com.beardedhen.androidbootstrap.FontAwesomeText
+            android:id="@+id/icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            fontawesometext:fa_icon="fa-sign-out"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </TableRow>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="@color/white"
+        android:dividerHeight="5dp"
+        android:padding="7dp"/>
+
+</LinearLayout>

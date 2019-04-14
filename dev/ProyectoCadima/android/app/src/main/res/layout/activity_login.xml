@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray"
+    android:minWidth="300dp">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="left"
+            android:text="@string/email"
+            android:textColor="@color/dark_blue"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+        <EditText
+            android:id="@+id/etUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:padding="7dp"
+            android:background="@drawable/edt_white_curve"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:enabled="true"
+            android:gravity="right"/>
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="left"
+            android:text="@string/password"
+            android:textColor="@color/dark_blue"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:padding="7dp"
+            android:background="@drawable/edt_white_curve"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:enabled="true"
+            android:gravity="right"/>
+    </TableRow>
+
+
+    <TableRow
+        style="android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        android:padding="0dp"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/btnRecuperar"
+            style="android:attr/buttonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_red"
+            android:layout_weight="0.5"
+            android:padding="5dp"
+            android:text="@string/recuperar_pass"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btnIngresar"
+            style="android:attr/buttonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_green"
+            android:padding="5dp"
+            android:text="@string/ingresar"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textColor="@color/white"/>
+    </TableRow>
+
+</LinearLayout>

@@ -4,3 +4,4 @@ E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\bin\Debug\DAL.d
 E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\bin\Debug\DAL.pdb
 E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.dll
 E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.pdb
+E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

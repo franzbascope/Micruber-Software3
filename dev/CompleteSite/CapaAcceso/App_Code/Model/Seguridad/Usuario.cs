@@ -11,6 +11,8 @@ namespace VentasNur.Model
         public string nombreCompleto { get; set; }
         public string correo { get; set; }
         public string password { get; set; }
+        public string codigoActivacion { get; set; }
+        public string codigoRecuperacion { get; set; }
 
 
 

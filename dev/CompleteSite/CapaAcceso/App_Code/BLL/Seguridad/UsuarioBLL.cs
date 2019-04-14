@@ -5,6 +5,8 @@ using System.Web;
 using VentasNur.Model;
 using DAL.Seguridad;
 using DAL.Seguridad.UsuarioDSTableAdapters;
+using System.Net.Mail;
+using System.Net;
 
 /// <summary>
 /// Descripción breve de UsuarioBLL
@@ -23,7 +25,8 @@ public class UsuarioBLL
         {
             correo = row.correo,
             usuarioId = row.usuarioId,
-            nombreCompleto = row.nombre
+            nombreCompleto = row.nombre,
+            codigoActivacion = row.IscodigoActivacionNull() ? "" : row.codigoActivacion 
         };
     }
 
@@ -96,7 +99,8 @@ public class UsuarioBLL
 
         if (id == null || id.Value <= 0)
             throw new Exception("La llave primaria no se generó correctamente");
-
+        else
+            enviarEmail(id.Value);
         return id.Value;
     }
 
@@ -104,6 +108,44 @@ public class UsuarioBLL
     {
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
         adapter.updateUsuario(obj.correo, obj.nombreCompleto, obj.usuarioId);
+    }
+    public static bool validateCodigoActivacion(string codigoActivacion)
+    {
+        bool? esCodigoCorrecto = null;
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        adapter.validateCodigoActivacion(codigoActivacion, ref esCodigoCorrecto);
+        return esCodigoCorrecto.Value;
+
+    }
+    public static void enviarEmail(int usuarioId)
+    {
+        try
+        {
+            Usuario user = UsuarioBLL.getUsuarioById(usuarioId);
+
+            MailMessage mail = new MailMessage();
+            SmtpClient smtpCli = new SmtpClient();
+            mail.From = new MailAddress("franz.bascope@aetest.net");
+            mail.To.Add(new MailAddress(user.correo));
+
+            string message =
+                "<p>" +
+                    "Felicidades tu cuenta en MICRUBER ha sido activada, haz click en el siguiente link para confirmarla" +
+                "</p>" +
+                "http://localhost:63191/Usuarios/ConfirmarCuenta.aspx?code=" + user.codigoActivacion;
+            mail.Body = message;
+            mail.IsBodyHtml = true;
+            mail.Subject = "Activacion de Cuenta";
+            smtpCli.Host = "mail.aetest.net";
+            smtpCli.Port = 587; //Lo use gmail por defecto
+            smtpCli.Credentials = new NetworkCredential("franz.bascope@aetest.net", "Ln4PCWZZhF4D");
+            smtpCli.EnableSsl = true;
+            smtpCli.Send(mail);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+        }
     }
 
 }

@@ -80,6 +80,20 @@
                             android:hint="Contraseña"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="¿Olvidaste tu contraseña?"
+                        android:clickable="true"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Regístrate"
+                        android:clickable="true"
+                        android:layout_gravity="center"/>
                     <View
                         android:layout_width="0dp"
                         android:layout_height="@dimen/spacing_mlarge" />

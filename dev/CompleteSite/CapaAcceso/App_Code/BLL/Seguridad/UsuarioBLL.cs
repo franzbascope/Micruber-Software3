@@ -11,7 +11,7 @@ using System.Net;
 /// <summary>
 /// Descripción breve de UsuarioBLL
 /// </summary>
-public class UsuarioBLL
+public  class UsuarioBLL
 {
     public UsuarioBLL()
     {
@@ -51,12 +51,21 @@ public class UsuarioBLL
         UsuarioDS.UsuarioDataTable table = adapter.getUsuarioById(usuarioId);
 
         List<Usuario> list = new List<Usuario>();
-        foreach (var row in table)
+        if (table.Rows.Count > 0)
         {
-            Usuario obj = GetUsuarioFromRow(row);
-            list.Add(obj);
+            foreach (var row in table)
+            {
+                Usuario obj = GetUsuarioFromRow(row);
+                list.Add(obj);
+            }
+            return list[0];
         }
-        return list[0];
+        else
+        {
+            Console.WriteLine("No se encontro el usuario con el id: "+usuarioId);
+            return null;
+        }
+       
     }
 
 

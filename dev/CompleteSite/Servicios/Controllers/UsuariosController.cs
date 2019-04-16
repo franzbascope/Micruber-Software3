@@ -48,7 +48,7 @@ namespace Servicios.Controllers
                     if (user == null)
                         return NotFound();
                     else
-                        return Ok(usuario);
+                        return Ok(user);
                 }
             }
             catch (Exception ex)
@@ -68,6 +68,36 @@ namespace Servicios.Controllers
                 Usuario user = UsuarioBLL.getUsuarioById(id);
                 return Request.CreateResponse<Usuario>(HttpStatusCode.OK, user);
             }
+        }
+
+        [HttpPost()]
+        [Route("usuarios")]
+        public IHttpActionResult PostUsuario([FromBody]Usuario usuario)
+        {
+            string json = JsonConvert.SerializeObject(usuario);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (String.IsNullOrEmpty(usuario.nombreCompleto))
+                        return BadRequest();
+                    if (String.IsNullOrEmpty(usuario.correo))
+                        return BadRequest();
+                    if (String.IsNullOrEmpty(usuario.password))
+                        return BadRequest();
+                    int id = UsuarioBLL.insertUsuario(usuario);
+                    usuario.usuarioId = id;
+                    if (id == 0)
+                        return NotFound();
+                    else
+                        return Ok(usuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return BadRequest();
         }
     }
 }

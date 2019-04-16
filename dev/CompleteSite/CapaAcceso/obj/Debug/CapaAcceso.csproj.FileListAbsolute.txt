@@ -8,3 +8,13 @@ E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debu
 E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csproj.CopyComplete
 E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.dll
 E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.pdb
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\CapaAcceso.dll
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\CapaAcceso.pdb
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\DAL.dll
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\DAL.pdb
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\bin\Debug\DAL.dll.config
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csprojAssemblyReference.cache
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csproj.CoreCompileInputs.cache
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.csproj.CopyComplete
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.dll
+D:\Documents\GitHub\Micruber\Micruber-Software3\dev\CompleteSite\CapaAcceso\obj\Debug\CapaAcceso.pdb

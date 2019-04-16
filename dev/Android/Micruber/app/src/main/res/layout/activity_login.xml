@@ -53,27 +53,27 @@
                         android:textColor="#888" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/registroTextInputLayout"
+                        android:id="@+id/correoTextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_registro"
+                            android:id="@+id/et_correo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Correo electrónico"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pinTextInputLayout"
+                        android:id="@+id/passwordTextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:passwordToggleEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_pin"
+                            android:id="@+id/et_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
@@ -85,14 +85,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="¿Olvidaste tu contraseña?"
-                        android:clickable="true"
+                        android:onClick="recuperarPassword"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Regístrate"
-                        android:clickable="true"
+                        android:onClick="registrarse"
                         android:layout_gravity="center"/>
                     <View
                         android:layout_width="0dp"
@@ -106,6 +106,7 @@
                         android:layout_marginRight="-4dp"
                         android:background="@drawable/btn_rounded_primary"
                         android:text="Ingresar"
+                        android:onClick="iniciarSesion"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />

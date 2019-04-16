@@ -12,4 +12,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_micros">MicrosActivity</string>
+
+    <!-- Url de los servicios -->
+    <string name="url_login">http://192.168.0.105:49893/api/usuarios/login</string>
+    <string name="url_registrar_usuario">http://192.168.0.105:49893/api/usuarios</string>
 </resources>

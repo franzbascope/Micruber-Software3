@@ -1,14 +1,12 @@
 package com.example.micruber;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -32,68 +30,38 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class RegistroActivity extends AppCompatActivity {
 
-
-public class LoginActivity extends AppCompatActivity {
-
-    private TextInputEditText et_correo, et_password;
+    private TextInputEditText et_nombre, et_correo, et_password;
     private ProgressDialog progreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_registro);
 
+        et_nombre = findViewById(R.id.et_nombre);
         et_correo = findViewById(R.id.et_correo);
         et_password = findViewById(R.id.et_password);
 
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
-
-    public void recuperarPassword(View view){
-        Intent intent = new Intent(LoginActivity.this, recuperarContrasenha.class);
-        startActivity(intent);
-    }
-
     public void registrarse(View view){
-        Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
-        startActivity(intent);
-    }
-
-    public void iniciarSesion(View view){
+        String nombreCompleto = et_nombre.getText().toString().trim();
         String correo = et_correo.getText().toString().trim();
         String password = et_password.getText().toString().trim();
-        if(correo.isEmpty()){
-            Toast.makeText(LoginActivity.this, "Debe ingresar su correo", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(!this.isEmailValid(correo)){
-            Toast.makeText(LoginActivity.this, "Debe ingresar un correo valido", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(password.isEmpty()){
-            Toast.makeText(LoginActivity.this, "Debe ingresar una contraseña", Toast.LENGTH_LONG).show();
-            return;
-        }
-        login(correo, password);
+
+        registrarUsuario(nombreCompleto, correo, password);
+
     }
 
-    public void login(String correo, String password) {
-        String url = getString(R.string.url_login);
+    public void registrarUsuario(String nombreCompleto, String correo, String password) {
+        String url = getString(R.string.url_registrar_usuario);
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
             JSONObject jsonBody = new JSONObject();
+            jsonBody.put("nombreCompleto", nombreCompleto);
             jsonBody.put("correo", correo);
             jsonBody.put("password", password);
 
@@ -109,17 +77,12 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     try {
-                        Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
                         JSONObject respuesta = new JSONObject(response);
-                        Usuario usuario = new Usuario();
-                        usuario.setUsuarioId(respuesta.getInt("usuarioId"));
-                        usuario.setNombreCompleto(respuesta.getString("nombreCompleto"));
-                        usuario.setCorreo(respuesta.getString("correo"));
-                        Preferences.setUsuario(LoginActivity.this, usuario);
-
                         progreso.dismiss();
 
-                        Intent intent = new Intent(LoginActivity.this, MicrosActivity.class);
+                        Toast.makeText(RegistroActivity.this, "Por favor confirme su correo", Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
 
@@ -133,11 +96,11 @@ public class LoginActivity extends AppCompatActivity {
                     progreso.dismiss();
 
                     if (error instanceof NetworkError) {
-                        Util.mostrarDialogoSinInternet(LoginActivity.this);
+                        Util.mostrarDialogoSinInternet(RegistroActivity.this);
                     } else if (error instanceof TimeoutError) {
 
                     } else if (error instanceof ServerError) {
-                        Toast.makeText(LoginActivity.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
                     }
 
                     Log.e("LOG_VOLLEY", error.toString());
@@ -164,4 +127,3 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
-

@@ -90,7 +90,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_updatePassword" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="updatePassword" Modifier="Public" Name="updatePassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="updatePassword">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_updatePassword" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="updatePassword" Modifier="Public" Name="updatePassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="updatePassword">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.usp_seg_updatePassword</CommandText>
@@ -102,7 +102,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_updateUsuario" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="updateUsuario" Modifier="Public" Name="updateUsuario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="updateUsuario">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_updateUsuario" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="updateUsuario" Modifier="Public" Name="updateUsuario" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="updateUsuario">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.usp_seg_updateUsuario</CommandText>
@@ -115,7 +115,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_validateCodigoActivacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="validateCodigoActivacion" Modifier="Public" Name="validateCodigoActivacion" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="validateCodigoActivacion">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_validateCodigoActivacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="validateCodigoActivacion" Modifier="Public" Name="validateCodigoActivacion" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="validateCodigoActivacion">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.usp_seg_validateCodigoActivacion</CommandText>
@@ -127,7 +127,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_validateCodigoRecuperacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="validateCodigoRecuperacion" Modifier="Public" Name="validateCodigoRecuperacion" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="validateCodigoRecuperacion">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_validateCodigoRecuperacion" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="validateCodigoRecuperacion" Modifier="Public" Name="validateCodigoRecuperacion" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="validateCodigoRecuperacion">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.usp_seg_validateCodigoRecuperacion</CommandText>
@@ -139,7 +139,7 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_validateEmail" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="validateEmail" Modifier="Public" Name="validateEmail" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="validateEmail">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="micruberDB.dbo.usp_seg_validateEmail" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="validateEmail" Modifier="Public" Name="validateEmail" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="validateEmail">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.usp_seg_validateEmail</CommandText>
@@ -161,7 +161,7 @@
   <xs:element name="UsuarioDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UsuarioDS" msprop:Generator_UserDSName="UsuarioDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Usuario" msprop:Generator_TableClassName="UsuarioDataTable" msprop:Generator_TableVarName="tableUsuario" msprop:Generator_TablePropName="Usuario" msprop:Generator_RowDeletingName="UsuarioRowDeleting" msprop:Generator_RowChangingName="UsuarioRowChanging" msprop:Generator_RowEvHandlerName="UsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioRowDeleted" msprop:Generator_UserTableName="Usuario" msprop:Generator_RowChangedName="UsuarioRowChanged" msprop:Generator_RowEvArgName="UsuarioRowChangeEvent" msprop:Generator_RowClassName="UsuarioRow">
+        <xs:element name="Usuario" msprop:Generator_TableClassName="UsuarioDataTable" msprop:Generator_TableVarName="tableUsuario" msprop:Generator_RowChangedName="UsuarioRowChanged" msprop:Generator_TablePropName="Usuario" msprop:Generator_RowDeletingName="UsuarioRowDeleting" msprop:Generator_RowChangingName="UsuarioRowChanging" msprop:Generator_RowEvHandlerName="UsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioRowDeleted" msprop:Generator_RowClassName="UsuarioRow" msprop:Generator_UserTableName="Usuario" msprop:Generator_RowEvArgName="UsuarioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="usuarioId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnusuarioId" msprop:Generator_ColumnPropNameInRow="usuarioId" msprop:Generator_ColumnPropNameInTable="usuarioIdColumn" msprop:Generator_UserColumnName="usuarioId" type="xs:int" />

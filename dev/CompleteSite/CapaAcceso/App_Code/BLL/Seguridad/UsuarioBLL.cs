@@ -112,7 +112,7 @@ public class UsuarioBLL
     }
     public static bool validateCodigoActivacion(string codigoActivacion)
     {
-        bool? esCodigoCorrecto = null;
+        bool? esCodigoCorrecto = false;
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
         adapter.validateCodigoActivacion(codigoActivacion, ref esCodigoCorrecto);
         return esCodigoCorrecto.Value;

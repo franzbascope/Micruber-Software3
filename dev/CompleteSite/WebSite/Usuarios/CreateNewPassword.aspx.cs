@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VentasNur.Model;
 
-public partial class Usuarios_ConfirmarCuenta : System.Web.UI.Page
+public partial class Usuarios_CreateNewPassword : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)
@@ -19,13 +19,14 @@ public partial class Usuarios_ConfirmarCuenta : System.Web.UI.Page
 
     private void ProcesarParametros()
     {
+        string code = "";
         bool esCodigoCorrecto = false;
         if (Request.QueryString["code"] != null && !string.IsNullOrEmpty(Request.QueryString["code"]))
         {
             try
             {
-                string code = Request.QueryString["code"].ToString();
-                esCodigoCorrecto = UsuarioBLL.validateCodigoActivacion(code);
+                code=Request.QueryString["code"].ToString();
+                esCodigoCorrecto = UsuarioBLL.validateCodigoRecuperacion(code);
             }
             catch (Exception ex)
             {
@@ -34,14 +35,33 @@ public partial class Usuarios_ConfirmarCuenta : System.Web.UI.Page
         }
         if (esCodigoCorrecto)
         {
-            ConfirmacionLabel.Text = "Felicidades tu cuenta esta activada";
+            panelCodigoCorrecto.Visible = true;
+            CodigoRecuperaciondHiddenField.Value = code;
         }
         else
         {
-            ConfirmacionLabel.Text = "Codigo incorrecto";
-            RediresctLinkButton.Visible = false;
+            PanelCodigoIncorrecto.Visible = true;
         }
 
     }
 
+
+    protected void BtnIngresar_Click(object sender, EventArgs e)
+    {
+        MsgError.Text = "";
+        string password = PasswordTextBox.Text;
+        string confirmPassword = ConfirmPasswordTextBox.Text;
+        if (password.Equals(confirmPassword))
+        {
+            string code = CodigoRecuperaciondHiddenField.Value.ToString();
+            UsuarioBLL.updatePassword(code, password);
+            panelSuccess.Visible = true;
+            PanelCodigoIncorrecto.Visible = false;
+            panelCodigoCorrecto.Visible = false;
+        }
+        else
+        {
+            MsgError.Text = "Las contraseñas deben ser iguales";
+        }
+    }
 }

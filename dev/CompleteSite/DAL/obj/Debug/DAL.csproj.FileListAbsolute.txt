@@ -1,7 +1,0 @@
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\bin\Debug\DAL.dll.config
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\bin\Debug\DAL.dll
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\bin\Debug\DAL.pdb
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.dll
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.pdb
-E:\universidad\software3\Micruber-Software3\dev\CompleteSite\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

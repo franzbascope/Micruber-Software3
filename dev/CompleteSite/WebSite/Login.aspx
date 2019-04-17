@@ -32,8 +32,9 @@
 
         <asp:Button type="submit" runat="server" style="background-color:#8AC53F"  CssClass="btn btn-lg  btn-success btn-block" Text="Entrar"
             ID="BtnIngresar" OnClick="BtnIngresar_Click"/>
-
-        <a href="recuperarContrasena.aspx" class="btn btn-link text-light">Olvidaste tu contraseña?</a>
+           <asp:HyperLink runat="server" NavigateUrl="~/RecuperarPassword.aspx" class="btn btn-link text-light">
+                Olvidaste tu contraseña?
+            </asp:HyperLink>
     </form>
 </body>
 </html>

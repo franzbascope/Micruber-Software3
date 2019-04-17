@@ -35,6 +35,10 @@
                         <asp:Label runat="server" AssociatedControlID="CorreoTextBox">Correo</asp:Label>
                         <asp:TextBox ID="CorreoTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                         <div class="text-danger">
+                            <asp:RegularExpressionValidator ID="regexEmailValid" runat="server"
+                                ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                ControlToValidate="CorreoTextBox"  ValidationGroup="Usuario" ErrorMessage="Ingrese un correo correcto">
+                            </asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator runat="server" Display="Dynamic"
                                 ErrorMessage="Debe ingresar el correo"
                                 ValidationGroup="Usuario"
@@ -52,6 +56,11 @@
                                 ValidationGroup="Usuario"
                                 ControlToValidate="PasswordTextBox">
                             </asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="PasswordValidor" ValidationGroup="Usuario" runat="server"
+                                ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,15}$"
+                                ControlToValidate="PasswordTextBox" ErrorMessage="La contraseña debe tener al menos una letra mayuscula, un numero
+                                y tener mas de 6 caracteres y un maximo de 15 caracteres">
+                            </asp:RegularExpressionValidator>	
                         </div>
                     </div>
 

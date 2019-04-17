@@ -11,7 +11,7 @@ using System.Net;
 /// <summary>
 /// Descripción breve de UsuarioBLL
 /// </summary>
-public  class UsuarioBLL
+public class UsuarioBLL
 {
     public UsuarioBLL()
     {
@@ -26,7 +26,8 @@ public  class UsuarioBLL
             correo = row.correo,
             usuarioId = row.usuarioId,
             nombreCompleto = row.nombre,
-            codigoActivacion = row.IscodigoActivacionNull() ? "" : row.codigoActivacion 
+            codigoActivacion = row.IscodigoActivacionNull() ? "" : row.codigoActivacion,
+            codigoRecuperacion = row.IscodigoRecuperacionNull() ? "" : row.codigoRecuperacion
         };
     }
 
@@ -51,25 +52,16 @@ public  class UsuarioBLL
         UsuarioDS.UsuarioDataTable table = adapter.getUsuarioById(usuarioId);
 
         List<Usuario> list = new List<Usuario>();
-        if (table.Rows.Count > 0)
+        foreach (var row in table)
         {
-            foreach (var row in table)
-            {
-                Usuario obj = GetUsuarioFromRow(row);
-                list.Add(obj);
-            }
-            return list[0];
+            Usuario obj = GetUsuarioFromRow(row);
+            list.Add(obj);
         }
-        else
-        {
-            Console.WriteLine("No se encontro el usuario con el id: "+usuarioId);
-            return null;
-        }
-       
+        return list[0];
     }
 
 
-    public static Usuario autenticarUsuario(string username,string password)
+    public static Usuario autenticarUsuario(string username, string password)
     {
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
         UsuarioDS.UsuarioDataTable table = adapter.autenticarUsuario(username, password);
@@ -104,7 +96,7 @@ public  class UsuarioBLL
 
         int? id = null;
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
-        adapter.insertUsuario(obj.correo,obj.password,obj.nombreCompleto, ref id);
+        adapter.insertUsuario(obj.correo, obj.password, obj.nombreCompleto, ref id);
 
         if (id == null || id.Value <= 0)
             throw new Exception("La llave primaria no se generó correctamente");
@@ -126,6 +118,54 @@ public  class UsuarioBLL
         return esCodigoCorrecto.Value;
 
     }
+    public static bool validateCodigoRecuperacion(string codigoRecuperacion)
+    {
+        bool? esCodigoCorrecto = null;
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        adapter.validateCodigoRecuperacion(codigoRecuperacion, ref esCodigoCorrecto);
+        return esCodigoCorrecto.Value;
+
+    }
+    public static bool validateEmail(string email)
+    {
+        bool? existeMail = null;
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        adapter.validateEmail(ref existeMail, email);
+        return existeMail == null ? false : true;
+
+    }
+    public static void updateCodigoRecuperacion(string email)
+    {
+        int? id = null;
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        try
+        {
+            adapter.updateCodigoRecuperacion(email, ref id);
+            enviarEmailRecuperacion(id.Value);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error al actualizar codigo recuperacion" + ex);
+            return;
+        }
+
+
+    }
+    public static void updatePassword(string codigoRecuperacion, string password)
+    {
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        try
+        {
+            adapter.updatePassword(codigoRecuperacion, password);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error al updatePassword" + ex);
+            return;
+        }
+
+
+    }
     public static void enviarEmail(int usuarioId)
     {
         try
@@ -145,6 +185,36 @@ public  class UsuarioBLL
             mail.Body = message;
             mail.IsBodyHtml = true;
             mail.Subject = "Activacion de Cuenta";
+            smtpCli.Host = "mail.aetest.net";
+            smtpCli.Port = 587; //Lo use gmail por defecto
+            smtpCli.Credentials = new NetworkCredential("franz.bascope@aetest.net", "Ln4PCWZZhF4D");
+            smtpCli.EnableSsl = true;
+            smtpCli.Send(mail);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+        }
+    }
+    public static void enviarEmailRecuperacion(int usuarioId)
+    {
+        try
+        {
+            Usuario user = UsuarioBLL.getUsuarioById(usuarioId);
+
+            MailMessage mail = new MailMessage();
+            SmtpClient smtpCli = new SmtpClient();
+            mail.From = new MailAddress("franz.bascope@aetest.net");
+            mail.To.Add(new MailAddress(user.correo));
+
+            string message =
+                "<p>" +
+                    "Hemos encontrado tu cuenta, haz click en el siguiente link para crear tu nueva contraseña" +
+                "</p>" +
+                "http://localhost:63191/Usuarios/CreateNewPassword.aspx?code=" + user.codigoRecuperacion;
+            mail.Body = message;
+            mail.IsBodyHtml = true;
+            mail.Subject = "Recupreacion de Cuenta";
             smtpCli.Host = "mail.aetest.net";
             smtpCli.Port = 587; //Lo use gmail por defecto
             smtpCli.Credentials = new NetworkCredential("franz.bascope@aetest.net", "Ln4PCWZZhF4D");

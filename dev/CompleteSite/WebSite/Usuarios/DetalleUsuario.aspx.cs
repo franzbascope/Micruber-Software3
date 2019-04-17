@@ -32,7 +32,7 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
             ProcesarParametros();
         }
     }
-  
+
     private void ProcesarParametros()
     {
         if (Request.QueryString["UsuarioId"] != null && !string.IsNullOrEmpty(Request.QueryString["UsuarioId"]))
@@ -75,6 +75,14 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
     protected void SaveButton_Click(object sender, EventArgs e)
     {
         PanelError.Visible = false;
+        string email = CorreoTextBox.Text;
+        bool existeCorreo = UsuarioBLL.validateEmail(email);
+        if (existeCorreo)
+        {
+            MsgLiteral.Text = "El correo ingresado ya existe, ingrese otro";
+            PanelError.Visible = true;
+            return;
+        }
         try
         {
             Usuario obj = new Usuario()
@@ -89,7 +97,7 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
                 UsuarioBLL.updateUsuario(obj);
             else
                 UsuarioBLL.insertUsuario(obj);
-           
+
         }
         catch (Exception ex)
         {

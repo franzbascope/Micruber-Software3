@@ -1,2 +1,12 @@
 /.vs
 /packages
+/Website/Bin
+/CapaAcceso/bin
+/CapaAcceso/obj
+/CapaAcceso/Properties
+/DAL/bin
+/DAL/obj
+/DAL/Properties
+/Servicios/bin
+/Servicios/obj
+/Servicios/Properties

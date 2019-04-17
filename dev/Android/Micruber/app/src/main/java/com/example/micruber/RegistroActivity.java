@@ -67,7 +67,7 @@ public class RegistroActivity extends AppCompatActivity {
 
             progreso = new ProgressDialog(this);
             progreso.setIndeterminate(true);
-            progreso.setTitle("Iniciando sesion...");
+            progreso.setTitle("Enviando datos...");
             progreso.setCancelable(false);
             progreso.show();
 

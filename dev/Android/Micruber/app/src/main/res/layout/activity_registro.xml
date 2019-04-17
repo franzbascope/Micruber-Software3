@@ -94,6 +94,7 @@
                     android:layout_marginRight="-4dp"
                     android:background="@drawable/btn_rounded_primary"
                     android:text="Registrarse"
+                    android:onClick="registrarse"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />

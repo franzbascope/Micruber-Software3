@@ -42,6 +42,7 @@ public partial class RecuperarPassword : System.Web.UI.Page
             {
                 UsuarioBLL.updateCodigoRecuperacion(correo);
                 panelEmailSend.Visible = true;
+                BtnIngresar.Visible = false;
             }
             else
             {

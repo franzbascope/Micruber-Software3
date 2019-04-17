@@ -91,6 +91,7 @@ namespace Servicios.Controllers
                         return NotFound();
                     else
                         return Ok(usuario);
+
                 }
             }
             catch (Exception ex)
@@ -98,6 +99,28 @@ namespace Servicios.Controllers
                 throw ex;
             }
             return BadRequest();
+        }
+        [HttpPost()]
+        [Route("usuarios/validateNewPassword")]
+        public IHttpActionResult PostEmail([FromBody]Usuario user)
+        {
+            string json = JsonConvert.SerializeObject(user);
+
+            try
+            {
+                    if (String.IsNullOrEmpty(user.correo))
+                        return BadRequest();
+
+
+                    UsuarioBLL.updateCodigoRecuperacion(user.correo);
+
+                    return Ok("Correo enviado");
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

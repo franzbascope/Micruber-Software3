@@ -36,7 +36,7 @@
                         <asp:TextBox ID="CorreoTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                         <div class="text-danger">
                             <asp:RegularExpressionValidator ID="regexEmailValid" runat="server"
-                                ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                ValidationExpression="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                                 ControlToValidate="CorreoTextBox"  ValidationGroup="Usuario" ErrorMessage="Ingrese un correo correcto">
                             </asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator runat="server" Display="Dynamic"

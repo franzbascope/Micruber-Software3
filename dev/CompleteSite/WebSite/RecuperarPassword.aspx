@@ -17,12 +17,12 @@
 <body class="signin text-center">
     <form id="form1" runat="server" class="form-signin">
         <img style="margin-bottom:30px;width:80%;" src="Assets/Imagenes/mic.png" alt="NUR" >
-
+                                                    
         <label for="inputEmail" class="sr-only">Nombre de Usuario</label>
         <asp:TextBox ID="UsernameTextBox" style="border-radius:5px !important;background-color:white" runat="server" class="form-control" required="required" type="email"
             placeholder="Ingrese su correo"/>
          <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" style="color:white"
-                                ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                ValidationExpression="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                                 ControlToValidate="UsernameTextBox" ValidationGroup="RecoverPassword" ErrorMessage="Ingrese un correo correcto">
                             </asp:RegularExpressionValidator>
         

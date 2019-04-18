@@ -15,7 +15,7 @@
     <string name="title_activity_micros">MicrosActivity</string>
 
     <!-- Url de los servicios -->
-    <string name="url_login">http://192.168.0.15/micruber/api/usuarios/login</string>
-    <string name="url_registrar_usuario">http://192.168.0.15/micruber/api/usuarios</string>
+    <string name="url_master">http://192.168.1.232/micruber/api</string>
+
     <string name="url_validar_nueva_Contrasenha">http://192.168.0.15/micruber/api/usuarios/validateNewPassword</string>
 </resources>

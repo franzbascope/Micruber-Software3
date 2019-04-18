@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(String correo, String password) {
-        String url = getString(R.string.url_login);
+        String url = getString(R.string.url_master) + "/usuarios/login";
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     try {
-                        Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
                         JSONObject respuesta = new JSONObject(response);
                         Usuario usuario = new Usuario();
                         usuario.setUsuarioId(respuesta.getInt("usuarioId"));

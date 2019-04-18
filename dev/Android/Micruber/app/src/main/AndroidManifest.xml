@@ -17,12 +17,10 @@
         <activity android:name=".RegistroActivity"></activity>
         <activity
             android:name=".MicrosActivity"
-            android:label="@string/title_activity_micros"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".recuperarContrasenha" />
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/app_name">
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

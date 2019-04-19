@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Servicios.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace Servicios.Controllers
                 throw ex;
             }
         }
+
         [HttpPost()]
         [Route("usuarios/login")]
         public IHttpActionResult PostPedido([FromBody]Usuario usuario)
@@ -57,6 +59,7 @@ namespace Servicios.Controllers
             }
             return BadRequest();
         }
+
         [HttpGet()]
         [Route("usuarios")]
         public HttpResponseMessage getUsuarioById(int id)
@@ -100,6 +103,7 @@ namespace Servicios.Controllers
             }
             return BadRequest();
         }
+
         [HttpPost()]
         [Route("usuarios/validateNewPassword")]
         public IHttpActionResult PostEmail([FromBody]Usuario user)
@@ -121,6 +125,31 @@ namespace Servicios.Controllers
             {
                 throw ex;
             }
+        }
+
+        [HttpPost()]
+        [Route("usuarios/updateSenha")]
+        public int Post([FromBody]Senha value)
+        {
+
+            if (String.IsNullOrEmpty(value.newPassword))
+            {
+                Console.WriteLine("password nuevo vacio");
+                return 0;
+            }
+            if (String.IsNullOrEmpty(value.oldPassword))
+            {
+                Console.WriteLine("password antiguo vacio");
+                return 0;
+            }
+            if (String.IsNullOrEmpty(value.userId))
+            {
+                Console.WriteLine("user id vacio");
+                return 0;
+            }
+            int respuesta = UsuarioBLL.updateSenha(int.Parse(value.userId), value.newPassword, value.oldPassword);
+
+            return respuesta;
         }
     }
 }

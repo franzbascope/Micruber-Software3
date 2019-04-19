@@ -227,4 +227,22 @@ public class UsuarioBLL
         }
     }
 
+    public static int updateSenha(int usuarioId, String newPass, String oldPass)
+    {
+        if (string.IsNullOrEmpty(newPass))
+            throw new ArgumentException("La contraseña no puede ser nulo o vacio");
+
+        if (string.IsNullOrEmpty(oldPass))
+            throw new ArgumentException("La contraseña no puede ser nulo o vacio");
+
+        int? id = null;
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        adapter.updateSenha(usuarioId, oldPass, newPass, ref id);
+
+        if (id == null || id.Value <= 0)
+            throw new Exception("La llave primaria no se generó correctamente");
+
+        return id.Value;
+    }
+
 }

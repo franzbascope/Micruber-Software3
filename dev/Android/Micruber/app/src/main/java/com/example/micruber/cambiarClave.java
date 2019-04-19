@@ -1,14 +1,12 @@
 package com.example.micruber;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -32,72 +30,70 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
-public class LoginActivity extends AppCompatActivity {
-
-    private TextInputEditText et_correo, et_password;
+public class cambiarClave extends AppCompatActivity {
+    private TextInputEditText senhaOld;
+    private TextInputEditText senhaNueva;
+    private TextInputEditText senhaNueva_r;
+    private Usuario userx;
     private ProgressDialog progreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        et_correo = findViewById(R.id.et_correo);
-        et_password = findViewById(R.id.et_password);
-
+        setContentView(R.layout.activity_cambiar_clave);
+        //Shared empty?
+        userx = Preferences.getUsuario(this);
+        if (userx == null){
+            Log.e("LOG_VOLLEY", "Object shared is null");
+            finish();
+        }
+        senhaOld = findViewById(R.id.et_pin_actual);
+        senhaNueva = findViewById(R.id.et_nuevo_pin);
+        senhaNueva_r = findViewById(R.id.et_nuevo_pin_r);
+        //url_cambSenha
     }
+    //Onclick button
+    public void cambiarSenha(View view){
+        String cSenhaOld = senhaOld.getText().toString().trim();
+        String cSenhaNew = senhaNueva.getText().toString().trim();
+        String cSenhaNewr = senhaNueva_r.getText().toString().trim();
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
-
-    public void recuperarPassword(View view){
-        Intent intent = new Intent(LoginActivity.this, recuperarContrasenha.class);
-        startActivity(intent);
-    }
-
-    public void registrarse(View view){
-        Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
-        startActivity(intent);
-    }
-
-    public void iniciarSesion(View view){
-        String correo = et_correo.getText().toString().trim();
-        String password = et_password.getText().toString().trim();
-        if(correo.isEmpty()){
-            Toast.makeText(LoginActivity.this, "Debe ingresar su correo", Toast.LENGTH_LONG).show();
+        if(cSenhaOld.isEmpty()){
+            Toast.makeText(cambiarClave.this, "Debe ingresar su contraseña", Toast.LENGTH_LONG).show();
             return;
         }
-        if(!this.isEmailValid(correo)){
-            Toast.makeText(LoginActivity.this, "Debe ingresar un correo valido", Toast.LENGTH_LONG).show();
+        if(cSenhaNew.isEmpty() && cSenhaNew.length() < 6){
+            Toast.makeText(cambiarClave.this, "Debe ingresar una contraseña, mayor que 6 caracteres", Toast.LENGTH_LONG).show();
             return;
         }
-        if(password.isEmpty()){
-            Toast.makeText(LoginActivity.this, "Debe ingresar una contraseña", Toast.LENGTH_LONG).show();
+        if(cSenhaNewr.isEmpty() && cSenhaNewr.length() < 6){
+            Toast.makeText(cambiarClave.this, "Debe ingresar una contraseña, mayor que 6 caracteres", Toast.LENGTH_LONG).show();
             return;
         }
-        login(correo, password);
+        if(cSenhaNewr != cSenhaNew){
+            Toast.makeText(cambiarClave.this, "Contraseñas diferentes", Toast.LENGTH_LONG).show();
+            return;
+        }
 
+        changeSenha(userx.getUsuarioId(),cSenhaOld,cSenhaNew);
+        //changeSenha(correo, password);
         finish();
     }
-
-    public void login(String correo, String password) {
-        String url = getString(R.string.url_login);
+    ///Volley library
+    public void changeSenha(int userId,String oldSenha, String newSenha) {
+        String url = getString(R.string.url_cambSenha); //Strings configure ip for services
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("correo", correo);
-            jsonBody.put("password", password);
+            //POSTMAN{
+            //	"userId": 3,
+            //	"oldPassword":"12345",
+            //	"newPassword" :"riverplate1"
+            //}
+            jsonBody.put("userId", userId);
+            jsonBody.put("oldPassword", oldSenha);
+            jsonBody.put("newPassword", newSenha);
 
             progreso = new ProgressDialog(this);
             progreso.setIndeterminate(true);
@@ -113,18 +109,12 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     try {
-                        Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
+
                         JSONObject respuesta = new JSONObject(response);
-                        Usuario usuario = new Usuario();
-                        usuario.setUsuarioId(respuesta.getInt("usuarioId"));
-                        usuario.setNombreCompleto(respuesta.getString("nombreCompleto"));
-                        usuario.setCorreo(respuesta.getString("correo"));
-                        Preferences.setUsuario(LoginActivity.this, usuario);
 
                         progreso.dismiss();
-
-                        Intent intent = new Intent(LoginActivity.this, MicrosActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(cambiarClave.this, "Contraseña actualizada", Toast.LENGTH_LONG).show();
+                        Log.e("LOG_VOLLEY", "Successful change pass");
                         finish();
 
                     } catch (JSONException e) {
@@ -137,11 +127,11 @@ public class LoginActivity extends AppCompatActivity {
                     progreso.dismiss();
 
                     if (error instanceof NetworkError) {
-                        Util.mostrarDialogoSinInternet(LoginActivity.this);
+                        Util.mostrarDialogoSinInternet(cambiarClave.this);
                     } else if (error instanceof TimeoutError) {
 
                     } else if (error instanceof ServerError) {
-                        Toast.makeText(LoginActivity.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(cambiarClave.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
                     }
 
                     Log.e("LOG_VOLLEY", error.toString());
@@ -158,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                         return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
                     } catch (UnsupportedEncodingException uee) {
                         VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
+                        Log.e("LOG_VOLLEY","Unsupported Encoding while trying to get the bytes of %s using %s" );
                         return null;
                     }
                 }
@@ -168,4 +159,3 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
-

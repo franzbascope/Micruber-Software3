@@ -29,12 +29,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.regex.Pattern;
 
 public class RegistroActivity extends AppCompatActivity {
 
     private TextInputEditText et_nombre, et_correo, et_password;
     private ProgressDialog progreso;
-
+    private static final Pattern emailPattern = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
+    private static final Pattern passwordPattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,15}$");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,28 +56,23 @@ public class RegistroActivity extends AppCompatActivity {
     public void registrarse(View view){
         String nombreCompleto = et_nombre.getText().toString().trim();
         String correo = et_correo.getText().toString().trim();
+        if(!emailPattern.matcher(correo).matches())
+        {
+            Toast.makeText(RegistroActivity.this, "Ingrese un formato de mail correcto", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String password = et_password.getText().toString().trim();
 
-        if(nombreCompleto.isEmpty()){
-            Toast.makeText(RegistroActivity.this, "Debe ingresar su nombre", Toast.LENGTH_LONG).show();
+        if(!passwordPattern.matcher(password).matches())
+        {
+            Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos una letra mayuscula,un numero y minimo 6 caratcters", Toast.LENGTH_LONG).show();
             return;
         }
-
-        if(correo.isEmpty()){
-            Toast.makeText(RegistroActivity.this, "Debe ingresar su correo", Toast.LENGTH_LONG).show();
+        if(nombreCompleto.isEmpty())
+        {
+            Toast.makeText(RegistroActivity.this, "El nombre no puede ser vacio", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        if(!this.isEmailValid(correo)){
-            Toast.makeText(RegistroActivity.this, "Debe ingresar un correo válido", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if(password.isEmpty()){
-            Toast.makeText(RegistroActivity.this, "Debe ingresar su contraseña", Toast.LENGTH_LONG).show();
-            return;
-        }
-
         registrarUsuario(nombreCompleto, correo, password);
 
     }

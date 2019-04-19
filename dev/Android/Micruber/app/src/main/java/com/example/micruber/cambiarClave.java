@@ -43,7 +43,7 @@ public class cambiarClave extends AppCompatActivity {
         setContentView(R.layout.activity_cambiar_clave);
         //Shared empty?
         userx = Preferences.getUsuario(this);
-        if (userx == null){
+        if (userx == null) {
             Log.e("LOG_VOLLEY", "Object shared is null");
             finish();
         }
@@ -52,36 +52,36 @@ public class cambiarClave extends AppCompatActivity {
         senhaNueva_r = findViewById(R.id.et_nuevo_pin_r);
         //url_cambSenha
     }
+
     //Onclick button
-    public void cambiarSenha(View view){
+    public void cambiarSenha(View view) {
         String cSenhaOld = senhaOld.getText().toString().trim();
         String cSenhaNew = senhaNueva.getText().toString().trim();
         String cSenhaNewr = senhaNueva_r.getText().toString().trim();
 
-        if(cSenhaOld.isEmpty()){
+        if (cSenhaOld.isEmpty()) {
             Toast.makeText(cambiarClave.this, "Debe ingresar su contraseña", Toast.LENGTH_LONG).show();
             return;
         }
-        if(cSenhaNew.isEmpty() && cSenhaNew.length() < 6){
+        if (cSenhaNew.isEmpty() && cSenhaNew.length() < 6) {
             Toast.makeText(cambiarClave.this, "Debe ingresar una contraseña, mayor que 6 caracteres", Toast.LENGTH_LONG).show();
             return;
         }
-        if(cSenhaNewr.isEmpty() && cSenhaNewr.length() < 6){
+        if (cSenhaNewr.isEmpty() && cSenhaNewr.length() < 6) {
             Toast.makeText(cambiarClave.this, "Debe ingresar una contraseña, mayor que 6 caracteres", Toast.LENGTH_LONG).show();
             return;
         }
-        if(cSenhaNewr != cSenhaNew){
+        if (!cSenhaNewr.equals(cSenhaNew)) {
             Toast.makeText(cambiarClave.this, "Contraseñas diferentes", Toast.LENGTH_LONG).show();
             return;
         }
 
-        changeSenha(userx.getUsuarioId(),cSenhaOld,cSenhaNew);
-        //changeSenha(correo, password);
-        finish();
+        changeSenha(userx.getUsuarioId(), cSenhaOld, cSenhaNew);
     }
+
     ///Volley library
-    public void changeSenha(int userId,String oldSenha, String newSenha) {
-        String url = getString(R.string.url_cambSenha); //Strings configure ip for services
+    public void changeSenha(int userId, String oldSenha, String newSenha) {
+        String url = getString(R.string.url_master) + "/usuarios/updateSenha"; //Strings configure ip for services
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -102,23 +102,19 @@ public class cambiarClave extends AppCompatActivity {
             progreso.show();
 
 
-
             final String mRequestBody = jsonBody.toString();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    try {
-
-                        JSONObject respuesta = new JSONObject(response);
-
+                    //JSONObject respuesta = new JSONObject(response);
+                    if (Integer.parseInt(response) == 1) {
                         progreso.dismiss();
                         Toast.makeText(cambiarClave.this, "Contraseña actualizada", Toast.LENGTH_LONG).show();
                         Log.e("LOG_VOLLEY", "Successful change pass");
                         finish();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    } else {
+                        Toast.makeText(cambiarClave.this, "No se pudo actualizar su contraseña", Toast.LENGTH_LONG).show();
                     }
                 }
             }, new Response.ErrorListener() {
@@ -148,7 +144,7 @@ public class cambiarClave extends AppCompatActivity {
                         return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
                     } catch (UnsupportedEncodingException uee) {
                         VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
-                        Log.e("LOG_VOLLEY","Unsupported Encoding while trying to get the bytes of %s using %s" );
+                        Log.e("LOG_VOLLEY", "Unsupported Encoding while trying to get the bytes of %s using %s");
                         return null;
                     }
                 }

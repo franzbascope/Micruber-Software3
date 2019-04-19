@@ -46,10 +46,35 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
+    }
+
     public void registrarse(View view){
         String nombreCompleto = et_nombre.getText().toString().trim();
         String correo = et_correo.getText().toString().trim();
         String password = et_password.getText().toString().trim();
+
+        if(nombreCompleto.isEmpty()){
+            Toast.makeText(RegistroActivity.this, "Debe ingresar su nombre", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(correo.isEmpty()){
+            Toast.makeText(RegistroActivity.this, "Debe ingresar su correo", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(!this.isEmailValid(correo)){
+            Toast.makeText(RegistroActivity.this, "Debe ingresar un correo válido", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(password.isEmpty()){
+            Toast.makeText(RegistroActivity.this, "Debe ingresar su contraseña", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         registrarUsuario(nombreCompleto, correo, password);
 

@@ -30,4 +30,13 @@ public class Preferences {
         }
     }
 
+    public static void deleteUsuario(Context context) {
+        SharedPreferences preferencias2 = context.getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = preferencias2.edit();
+        Gson gson = new Gson();
+
+        editor2.putString("usuario_logeado", "");
+        editor2.commit();
+    }
+
 }

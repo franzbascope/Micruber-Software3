@@ -3,6 +3,7 @@ package com.example.micruber;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.micruber.utiles.Preferences;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,11 +40,22 @@ public class MicrosActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 
+            case R.id.action_logout:
+                cerrarSesion();
+                break;
+
             default:
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cerrarSesion(){
+        Preferences.deleteUsuario(this);
+        Intent intent = new Intent(MicrosActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

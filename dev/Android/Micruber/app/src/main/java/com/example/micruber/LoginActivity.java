@@ -48,6 +48,10 @@ public class LoginActivity extends AppCompatActivity {
         et_correo = findViewById(R.id.et_correo);
         et_password = findViewById(R.id.et_password);
 
+        Usuario usr = Preferences.getUsuario(this);
+        if(usr != null){
+            goToMicros();
+        }
     }
 
     private boolean isEmailValid(String email) {
@@ -78,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         if(!this.isEmailValid(correo)){
-            Toast.makeText(LoginActivity.this, "Debe ingresar un correo valido", Toast.LENGTH_LONG).show();
+            Toast.makeText(LoginActivity.this, "Debe ingresar un correo válido", Toast.LENGTH_LONG).show();
             return;
         }
         if(password.isEmpty()){
@@ -86,8 +90,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         login(correo, password);
-
-        finish();
     }
 
     public void login(String correo, String password) {
@@ -114,18 +116,19 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     try {
                         //Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
-                        JSONObject respuesta = new JSONObject(response);
-                        Usuario usuario = new Usuario();
-                        usuario.setUsuarioId(respuesta.getInt("usuarioId"));
-                        usuario.setNombreCompleto(respuesta.getString("nombreCompleto"));
-                        usuario.setCorreo(respuesta.getString("correo"));
-                        Preferences.setUsuario(LoginActivity.this, usuario);
 
-                        progreso.dismiss();
-
-                        Intent intent = new Intent(LoginActivity.this, MicrosActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if(!response.trim().isEmpty()){
+                            JSONObject respuesta = new JSONObject(response);
+                            Usuario usuario = new Usuario();
+                            usuario.setUsuarioId(respuesta.getInt("usuarioId"));
+                            usuario.setNombreCompleto(respuesta.getString("nombreCompleto"));
+                            usuario.setCorreo(respuesta.getString("correo"));
+                            Preferences.setUsuario(LoginActivity.this, usuario);
+                            progreso.dismiss();
+                            goToMicros();
+                        }else{
+                            Toast.makeText(LoginActivity.this, "Credenciales incorrectos", Toast.LENGTH_LONG).show();
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -143,7 +146,6 @@ public class LoginActivity extends AppCompatActivity {
                     } else if (error instanceof ServerError) {
                         Toast.makeText(LoginActivity.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
                     }
-
                     Log.e("LOG_VOLLEY", error.toString());
                 }
             }) {
@@ -166,6 +168,12 @@ public class LoginActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void goToMicros(){
+        Intent intent = new Intent(LoginActivity.this, MicrosActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
 

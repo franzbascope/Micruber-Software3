@@ -15,9 +15,8 @@
     <string name="title_activity_micros">Menu principal</string>
 
     <!-- Url de los servicios -->
-    <string name="url_login">http://192.168.43.152/micruber/api/usuarios/login</string>
-    <string name="url_cambSenha">http://192.168.43.152/micruber/api/usuarios/updateSenha</string>
-    <string name="url_registrar_usuario">http://192.168.43.152/micruber/api/usuarios</string>
+    <string name="url_master">http://192.168.1.232/micruber/api</string>
+
     <string name="url_validar_nueva_Contrasenha">http://192.168.43.152/micruber/api/usuarios/validateNewPassword</string>
     <string name="title_activity_micruber">MicruberActivity</string>
     <string name="title_home">Home</string>

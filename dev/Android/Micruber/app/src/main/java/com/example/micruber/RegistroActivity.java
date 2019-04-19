@@ -56,7 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void registrarUsuario(String nombreCompleto, String correo, String password) {
-        String url = getString(R.string.url_registrar_usuario);
+        String url = getString(R.string.url_master) + "/usuarios";
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -78,13 +78,16 @@ public class RegistroActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     try {
                         JSONObject respuesta = new JSONObject(response);
-                        progreso.dismiss();
 
-                        Toast.makeText(RegistroActivity.this, "Por favor confirme su correo", Toast.LENGTH_LONG).show();
-
-                        Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if(respuesta.getInt("usuarioId") > 0){
+                            progreso.dismiss();
+                            Toast.makeText(RegistroActivity.this, "Por favor confirme su correo", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Toast.makeText(RegistroActivity.this, "Hubo un problema al crear su cuenta", Toast.LENGTH_LONG).show();
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -100,7 +103,13 @@ public class RegistroActivity extends AppCompatActivity {
                     } else if (error instanceof TimeoutError) {
 
                     } else if (error instanceof ServerError) {
-                        Toast.makeText(RegistroActivity.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
+                        //TODO Verificar el servicio de creacion de usuario, tarda mucho y da error en el servidor
+                        //Toast.makeText(RegistroActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "Por favor confirme su correo", Toast.LENGTH_LONG).show();
+                        //TODO Al corregir el servicio, borrar el cambio de pantalla y avisar que hubo error
+                        Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
 
                     Log.e("LOG_VOLLEY", error.toString());

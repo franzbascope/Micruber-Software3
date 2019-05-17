@@ -53,7 +53,7 @@ public class MicrosActivity extends AppCompatActivity {
 
     public void cerrarSesion(){
         Preferences.deleteUsuario(this);
-        Intent intent = new Intent(MicrosActivity.this, IngresarPlacaActivity.class);
+        Intent intent = new Intent(MicrosActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.micruber">
+    package="com.example.micruberConductor">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,16 +15,16 @@
         <activity
             android:name=".MicrosActivity"
             android:label="@string/title_activity_micros"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".cambiarClave" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".RegistroActivity" />
         <activity android:name=".recuperarContrasenha" />
-        <activity
-            android:name=".IngresarPlacaActivity">
+        <activity android:name=".IngresarPlacaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

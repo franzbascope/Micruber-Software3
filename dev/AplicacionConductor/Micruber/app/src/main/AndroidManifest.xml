@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.micruberConductor">
+    package="com.example.micruber">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SeleccionarLineaActivity"></activity>
         <activity
             android:name=".MicrosActivity"
             android:label="@string/title_activity_micros"

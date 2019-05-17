@@ -43,11 +43,13 @@ public class IngresarPlacaActivity extends AppCompatActivity {
         et_placa = findViewById(R.id.et_placa);
         Vehiculo objVehiculo = Preferences.getVehiculo(this);
         if(objVehiculo != null){
-            goToMicrosActivity();
+            Intent intent = new Intent(IngresarPlacaActivity.this, MicrosActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
-    public void goToMicrosActivity(){
-        Intent intent = new Intent(IngresarPlacaActivity.this, MicrosActivity.class);
+    public void goToSeleccionarLineaActivity(){
+        Intent intent = new Intent(IngresarPlacaActivity.this, SeleccionarLineaActivity.class);
         startActivity(intent);
         finish();
     }
@@ -82,7 +84,7 @@ public class IngresarPlacaActivity extends AppCompatActivity {
                             objVehiculo.setPlaca(respuesta.getString("placa"));
                             Preferences.setVehiculo(IngresarPlacaActivity.this, objVehiculo);
                             progreso.dismiss();
-                            goToMicrosActivity();
+                            goToSeleccionarLineaActivity();
                         }else{
                             Toast.makeText(IngresarPlacaActivity.this, "No existe la palca ingresada", Toast.LENGTH_LONG).show();
                         }

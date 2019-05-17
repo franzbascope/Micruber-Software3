@@ -29,7 +29,7 @@ public class LineaBLL
             numeroLinea = row.numeroLinea
         };
     }
-    public static Linea getLineaByVehiculoId(int vehiculoId)
+    public static List<Linea> getLineaByVehiculoId(int vehiculoId)
     {
         if (vehiculoId <=0)
             throw new Exception("el vehiculo id no puede ser <= 0");
@@ -43,7 +43,7 @@ public class LineaBLL
             Linea obj = getLineaFromRow(row);
             list.Add(obj);
         }
-        return list[0];
+        return list;
     }
 
 }

@@ -25,8 +25,8 @@ namespace Servicios.Controllers
             {
                 try
                 {
-                    Linea objLinea = LineaBLL.getLineaByVehiculoId(vehiculoId);
-                    return Request.CreateResponse<Linea>(HttpStatusCode.OK, objLinea);
+                    List<Linea> listaLineas = LineaBLL.getLineaByVehiculoId(vehiculoId);
+                    return Request.CreateResponse<List<Linea>>(HttpStatusCode.OK, listaLineas);
                 }
                 catch (Exception ex)
                 {

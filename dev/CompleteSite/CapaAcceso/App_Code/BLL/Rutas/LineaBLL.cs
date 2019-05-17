@@ -26,8 +26,7 @@ public class LineaBLL
         return new Linea()
         {
             lineaId = row.lineaId,
-            numeroLinea = row.numeroLinea,
-            rutaId = row.rutaId
+            numeroLinea = row.numeroLinea
         };
     }
     public static Linea getLineaByVehiculoId(int vehiculoId)

@@ -10,6 +10,5 @@ namespace VentasNur.Model
     {
         public int lineaId { get; set; }
         public string numeroLinea { get; set; }
-        public int rutaId { get; set; }
     }
 }

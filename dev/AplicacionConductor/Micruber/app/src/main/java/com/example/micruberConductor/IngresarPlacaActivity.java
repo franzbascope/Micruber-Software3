@@ -1,4 +1,4 @@
-package com.example.micruber;
+package com.example.micruberConductor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,20 +16,17 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.micruber.Objetos.Usuario;
-import com.example.micruber.Objetos.Vehiculo;
-import com.example.micruber.R;
-import com.example.micruber.utiles.Preferences;
-import com.example.micruber.utiles.Util;
+import com.example.micruberConductor.Objetos.Linea;
+import com.example.micruberConductor.Objetos.Vehiculo;
+import com.example.micruberConductor.R;
+import com.example.micruberConductor.utiles.Preferences;
+import com.example.micruberConductor.utiles.Util;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 
 public class IngresarPlacaActivity extends AppCompatActivity {
 
@@ -42,10 +38,10 @@ public class IngresarPlacaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ingresar_placa);
         et_placa = findViewById(R.id.et_placa);
         Vehiculo objVehiculo = Preferences.getVehiculo(this);
-        if(objVehiculo != null){
-            Intent intent = new Intent(IngresarPlacaActivity.this, MicrosActivity.class);
+        Linea objLinea = Preferences.getLinea(this);
+        if(objVehiculo != null && objLinea!=null ){
+            Intent intent = new Intent(IngresarPlacaActivity.this, MainActivity.class);
             startActivity(intent);
-            finish();
         }
     }
     public void goToSeleccionarLineaActivity(){

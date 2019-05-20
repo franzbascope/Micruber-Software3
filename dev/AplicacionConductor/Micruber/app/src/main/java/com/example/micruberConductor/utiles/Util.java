@@ -1,4 +1,4 @@
-package com.example.micruber.utiles;
+package com.example.micruberConductor.utiles;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
-import com.example.micruber.R;
+import com.example.micruberConductor.R;
 
 import androidx.appcompat.widget.AppCompatButton;
 

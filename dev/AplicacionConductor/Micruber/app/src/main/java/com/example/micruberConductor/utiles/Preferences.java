@@ -1,11 +1,12 @@
-package com.example.micruber.utiles;
+package com.example.micruberConductor.utiles;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.micruber.Objetos.Linea;
-import com.example.micruber.Objetos.Usuario;
-import com.example.micruber.Objetos.Vehiculo;
+import com.example.micruberConductor.Objetos.Coordenadas;
+import com.example.micruberConductor.Objetos.Linea;
+import com.example.micruberConductor.Objetos.Usuario;
+import com.example.micruberConductor.Objetos.Vehiculo;
 import com.google.gson.Gson;
 
 
@@ -96,6 +97,34 @@ public class Preferences {
         Gson gson = new Gson();
 
         editor2.putString("current_linea", "");
+        editor2.commit();
+    }
+    public static void setCoordenada(Context context, Coordenadas objCoordenada) {
+        SharedPreferences preferencias = context.getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = preferencias.edit();
+        Gson gson = new Gson();
+        editor2.putString("current_coordenada", gson.toJson(objCoordenada));
+        editor2.commit();
+    }
+
+    public static Coordenadas getCoordenada(Context context) {
+        SharedPreferences pref = context.getSharedPreferences("myPref", context.MODE_PRIVATE);
+        String objJson = pref.getString("current_coordenada", "");
+        if (objJson.length() <= 0) {
+            return null;
+        } else {
+            Gson gson = new Gson();
+            Coordenadas obj = (Coordenadas) gson.fromJson(objJson, Coordenadas.class);
+            return obj;
+        }
+    }
+
+    public static void deleteCoordenada(Context context) {
+        SharedPreferences preferencias2 = context.getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = preferencias2.edit();
+        Gson gson = new Gson();
+
+        editor2.putString("current_coordenada", "");
         editor2.commit();
     }
 

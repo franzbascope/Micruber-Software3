@@ -1,4 +1,4 @@
-package com.example.micruber;
+package com.example.micruberConductor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,21 +19,17 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.micruber.Objetos.Linea;
-import com.example.micruber.Objetos.Usuario;
-import com.example.micruber.Objetos.Vehiculo;
-import com.example.micruber.utiles.Preferences;
-import com.example.micruber.utiles.Util;
-import com.google.gson.JsonArray;
+import com.example.micruberConductor.Objetos.Linea;
+import com.example.micruberConductor.Objetos.Vehiculo;
+import com.example.micruberConductor.utiles.Preferences;
+import com.example.micruberConductor.utiles.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class SeleccionarLineaActivity extends AppCompatActivity {
 
@@ -54,7 +50,7 @@ public class SeleccionarLineaActivity extends AppCompatActivity {
     public void guardarLinea(View view) {
         Linea objLinea = (Linea) lineaSpinner.getSelectedItem();
         Preferences.setLinea(SeleccionarLineaActivity.this, objLinea);
-        Intent intent = new Intent(SeleccionarLineaActivity.this, MicrosActivity.class);
+        Intent intent = new Intent(SeleccionarLineaActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

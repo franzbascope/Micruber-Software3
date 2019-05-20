@@ -1,4 +1,4 @@
-package com.example.micruber.Objetos;
+package com.example.micruberConductor.Objetos;
 
 public class Linea {
     private int lineaId;

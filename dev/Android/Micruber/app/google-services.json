@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1043138989978",
+    "firebase_url": "https://micruber-25266.firebaseio.com",
+    "project_id": "micruber-25266",
+    "storage_bucket": "micruber-25266.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043138989978:android:8b74868933fd16d3",
+        "android_client_info": {
+          "package_name": "com.example.micruber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043138989978-5k88lmkc54fokul7kqlm8921dn22qcte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGw7or4wvduXNaleJ_Ep3d94jJq888fuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043138989978-5k88lmkc54fokul7kqlm8921dn22qcte.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

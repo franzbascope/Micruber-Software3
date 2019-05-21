@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\BLL\Rutas\LineaBLL.cs" />
+    <Compile Include="App_Code\BLL\Rutas\VehiculoBLL.cs" />
     <Compile Include="App_Code\BLL\Seguridad\UsuarioBLL.cs" />
     <Compile Include="App_Code\BLL\Version\VersionBLL.cs" />
+    <Compile Include="App_Code\Model\Rutas\Linea.cs" />
     <Compile Include="App_Code\Model\Seguridad\Usuario.cs" />
+    <Compile Include="App_Code\Model\Rutas\Vehiculo.cs" />
     <Compile Include="App_Code\Model\Utilities\Version.cs" />
     <Compile Include="App_Code\Utilities\VersionUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

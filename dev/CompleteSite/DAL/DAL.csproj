@@ -47,10 +47,23 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Rutas\LineasDS.cs">
+      <DependentUpon>LineasDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Rutas\LineasDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LineasDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Seguridad\UsuarioDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UsuarioDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Rutas\VehiculoDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VehiculoDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Version\VersionDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -64,6 +77,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Rutas\LineasDS.xsc">
+      <DependentUpon>LineasDS.xsd</DependentUpon>
+    </None>
+    <None Include="Rutas\LineasDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LineasDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Rutas\LineasDS.xss">
+      <DependentUpon>LineasDS.xsd</DependentUpon>
+    </None>
     <None Include="Seguridad\UsuarioDS.xsc">
       <DependentUpon>UsuarioDS.xsd</DependentUpon>
     </None>
@@ -74,6 +98,17 @@
     </None>
     <None Include="Seguridad\UsuarioDS.xss">
       <DependentUpon>UsuarioDS.xsd</DependentUpon>
+    </None>
+    <None Include="Rutas\VehiculoDS.xsc">
+      <DependentUpon>VehiculoDS.xsd</DependentUpon>
+    </None>
+    <None Include="Rutas\VehiculoDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VehiculoDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Rutas\VehiculoDS.xss">
+      <DependentUpon>VehiculoDS.xsd</DependentUpon>
     </None>
     <None Include="Version\VersionDS.xsc">
       <DependentUpon>VersionDS.xsd</DependentUpon>

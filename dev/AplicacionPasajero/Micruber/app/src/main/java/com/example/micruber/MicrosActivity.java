@@ -36,12 +36,16 @@ public class MicrosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_cambiar_clave:
-                Intent intent = new Intent(MicrosActivity.this,cambiarClave.class);
+                Intent intent = new Intent(MicrosActivity.this, cambiarClave.class);
                 startActivity(intent);
                 break;
 
             case R.id.action_logout:
                 cerrarSesion();
+                break;
+            case R.id.action_verRuta:
+                Intent intentRuta = new Intent(MicrosActivity.this, MapsActivityRuta.class);
+                startActivity(intentRuta);
                 break;
 
             default:
@@ -51,7 +55,7 @@ public class MicrosActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void cerrarSesion(){
+    public void cerrarSesion() {
         Preferences.deleteUsuario(this);
         Intent intent = new Intent(MicrosActivity.this, LoginActivity.class);
         startActivity(intent);

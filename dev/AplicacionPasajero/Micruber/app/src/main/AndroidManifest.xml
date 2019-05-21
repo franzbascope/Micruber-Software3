@@ -18,6 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".EscogerLinea"></activity>
+
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -30,10 +32,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
+        <activity
+            android:name=".MapsActivityRuta"
+            android:label="@string/title_activity_maps_ruta" />
         <activity
             android:name=".MapaActivity"
-            android:label="@string/title_activity_mapa"></activity>
+            android:label="@string/title_activity_mapa"/>
         <activity
             android:name=".MicrosActivity"
             android:label="@string/title_activity_micros"

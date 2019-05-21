@@ -12,5 +12,10 @@
         android:orderInCategory="100"
         android:title="Cerrar sesión"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_verRuta"
+        android:orderInCategory="100"
+        android:title="Ver ruta"
+        app:showAsAction="never" />
 
 </menu>

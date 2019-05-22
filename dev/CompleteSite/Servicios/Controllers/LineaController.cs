@@ -14,12 +14,12 @@ namespace Servicios.Controllers
     [RoutePrefix("api")]
     public class LineaController : ApiController
     {
-   
+
         [HttpGet()]
         [Route("lineasByvehiculoId")]
         public HttpResponseMessage getLineasByVehiculoId(int vehiculoId)
         {
-            if (vehiculoId <=0)
+            if (vehiculoId <= 0)
                 return Request.CreateResponse(HttpStatusCode.NotFound, vehiculoId);
             else
             {
@@ -33,8 +33,22 @@ namespace Servicios.Controllers
                     Console.WriteLine("error al obtener la linea by vehiculoId" + vehiculoId);
                     return Request.CreateResponse(HttpStatusCode.NotFound, vehiculoId);
                 }
-               
+
             }
         }
+        [HttpGet()]
+        [Route("ruta")]
+        public HttpResponseMessage getLineasByCoordenadas([FromBody]CoordenadaRuta ruta)
+        {
+            List<Linea> listaLineas = new List<Linea>();
+            Linea objLinea = new Linea();
+            objLinea.lineaId = 1;
+            objLinea.numeroLinea = "108";
+            listaLineas.Add(objLinea);
+            return Request.CreateResponse<List<Linea>>(HttpStatusCode.OK, listaLineas);
+        }
+
+
+
     }
 }

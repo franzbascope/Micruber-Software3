@@ -32,7 +32,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     private ValueEventListener mPostListener;
     private LatLng ubicacionMicro;
     //TODO obtener la llave con el web service de Beto
-    private String key = "-LfNOXUO0PERgRevrAwA";
+    private String key = "-LfS90igM96MNsNq_n-G";
 
 
     @Override
@@ -117,15 +117,20 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mMap.clear();
                 Coordenadas coordenadas = dataSnapshot.child(key).getValue(Coordenadas.class);
-                ubicacionMicro = new LatLng(coordenadas.getLatitud(), coordenadas.getLongitud());
-                //Toast.makeText(MapaActivity.this, String.valueOf(ubicacionMicro.latitude), Toast.LENGTH_SHORT).show();
-                //mMap.addMarker(new MarkerOptions().position(ubicacionMicro).title("Linea 10"));
-                //PointOfInterest pointOfInterest = new PointOfInterest(ubicacionMicro, "linea10", "Linea 10");
-                MarkerOptions marker = new MarkerOptions().position(ubicacionMicro);
-                marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
-                mMap.addMarker(marker);
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionMicro));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+                if(coordenadas != null){
+                    ubicacionMicro = new LatLng(coordenadas.getLatitud(), coordenadas.getLongitud());
+                    //Toast.makeText(MapaActivity.this, String.valueOf(ubicacionMicro.latitude), Toast.LENGTH_SHORT).show();
+                    //mMap.addMarker(new MarkerOptions().position(ubicacionMicro).title("Linea 10"));
+                    //PointOfInterest pointOfInterest = new PointOfInterest(ubicacionMicro, "linea10", "Linea 10");
+                    MarkerOptions marker = new MarkerOptions().position(ubicacionMicro);
+                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                    mMap.addMarker(marker);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionMicro));
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+                }else{
+                    mMap.clear();
+                    Toast.makeText(MapaActivity.this, "Su micro se ha desconectado", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

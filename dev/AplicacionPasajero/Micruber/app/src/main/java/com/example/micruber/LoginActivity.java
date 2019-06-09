@@ -1,4 +1,4 @@
-﻿package com.example.micruber;
+package com.example.micruber;
 
 
 import android.app.ProgressDialog;
@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    public void iniciar_map(View view){
+    public void iniciarMap(View view){
         Intent intent = new Intent(LoginActivity.this, mapLineaActivity.class);
         startActivity(intent);
         finish();

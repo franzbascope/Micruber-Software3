@@ -1,4 +1,4 @@
-﻿package com.example.micruber;
+package com.example.micruber;
 
 
 import android.app.ProgressDialog;

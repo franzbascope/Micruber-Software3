@@ -99,7 +99,7 @@ public class mapLineaActivity extends AppCompatActivity {
     }
 
     public void drawRoute(String correo, final Bundle savedInstanceState, final Context contexto) {
-        String url = getString(R.string.url_login) + "/mapa/drawRoute";
+        String url = getString(R.string.url_master) + "/mapa/drawRoute";
 
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);

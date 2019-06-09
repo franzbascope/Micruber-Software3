@@ -14,6 +14,11 @@ namespace Servicios.Controllers
     [RoutePrefix("api")]
     public class LineaController : ApiController
     {
+        public class Credentials
+        {
+            public string Username { get; set; }
+            public string Password { get; set; }
+        }
 
         [HttpGet()]
         [Route("lineasByvehiculoId")]

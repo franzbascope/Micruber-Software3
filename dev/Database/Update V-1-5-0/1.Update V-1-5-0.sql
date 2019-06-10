@@ -9,6 +9,9 @@ GO
 ALTER TABLE [dbo].[tbl_seg_usuario]
 ADD [esEstudiante] BIT DEFAULT 0
 
+update tbl_seg_usuario set esEstudiante=0
+update tbl_seg_usuario set saldoActual=0
+
 /****** Object:  StoredProcedure [dbo].[usp_seg_getUsuarioById]    Script Date: 09/06/2019 12:36:12 p. m. ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_seg_getUsuarioById]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[usp_seg_getUsuarioById]

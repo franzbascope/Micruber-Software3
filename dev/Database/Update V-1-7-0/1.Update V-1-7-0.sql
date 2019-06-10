@@ -2,6 +2,7 @@
 USE [micruberDB]
 GO
 ALTER TABLE tbl_seg_roles add desactivado bit null default 0
+go
 update tbl_seg_roles set desactivado=0
 /****** Object:  StoredProcedure [dbo].[usp_seg_updateRol]    Script Date: 10/6/2019 00:30:16 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_seg_updateRol]') AND type in (N'P', N'PC'))

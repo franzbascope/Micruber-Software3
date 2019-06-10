@@ -10,6 +10,8 @@ namespace CapaAcceso.App_Code.Model.Seguridad
     {
         public int roleId { get; set; }
         public string descripcion { get; set; }
+        public bool desactivado { get; set; }
+
 
 
     }

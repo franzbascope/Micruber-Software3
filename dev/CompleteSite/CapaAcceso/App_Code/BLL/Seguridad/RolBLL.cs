@@ -23,7 +23,8 @@ namespace CapaAcceso.App_Code.BLL.Seguridad
             return new Rol()
             {
                 roleId = row.roleId,
-                descripcion = row.descripcion
+                descripcion = row.descripcion,
+                desactivado=row.desactivado
 
             };
         }
@@ -104,6 +105,11 @@ namespace CapaAcceso.App_Code.BLL.Seguridad
             
               
             return id.Value;
+        }
+        public static void deleteRol(int roleId)
+        {
+            RolesTableAdapter adapter = new RolesTableAdapter();
+            adapter.DeleteRol(roleId);
         }
 
     }

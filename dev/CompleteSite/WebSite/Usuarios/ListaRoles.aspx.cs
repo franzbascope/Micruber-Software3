@@ -13,6 +13,14 @@ public partial class Usuarios_ListaRoles : System.Web.UI.Page
     {
         if (IsPostBack)
             return;
+        else
+        {
+            CargarRol();
+        }
+
+    }
+    protected void CargarRol()
+    {
 
         try
         {
@@ -25,7 +33,6 @@ public partial class Usuarios_ListaRoles : System.Web.UI.Page
 
         }
     }
-
 
     protected void RolGridView_RowCommand(object sender, GridViewCommandEventArgs e)
     {
@@ -46,6 +53,18 @@ public partial class Usuarios_ListaRoles : System.Web.UI.Page
         if (e.CommandName == "Editar")
         {
             Response.Redirect("CrearRol.aspx?RoleId=" + roleId);
+        }
+        if (e.CommandName == "Eliminar")
+        {
+            try
+            {
+                RolBLL.deleteRol(roleId);
+                CargarRol();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 

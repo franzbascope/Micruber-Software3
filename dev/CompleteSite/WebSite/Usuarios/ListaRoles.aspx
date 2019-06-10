@@ -31,6 +31,16 @@
                             </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Eliminar">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="DeleteBtn" runat="server" CommandName="Eliminar"
+                                OnClientClick="return confirm('¿Esta seguro que desea eliminar este usuario?')"
+                                CommandArgument='<%# Eval("roleId") %>'>
+                                <i class="fas fa-trash-alt text-danger"></i>
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                      <asp:BoundField HeaderText="Descripcion Rol" DataField="descripcion" />
                 </Columns>
             </asp:GridView>

@@ -38,10 +38,21 @@
                         <li class="active ">
                             
                             <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaUsuarios.aspx" >
-                                <i class="fas fa-user"></i> Usuarios</asp:HyperLink>
+                                <i class="fas fa-user"></i> Usuarios</asp:HyperLink> 
+                            <br />
+                            <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaRoles.aspx">
+                                <i class="fa fa-th-list"></i>Roles</asp:HyperLink>
+                            <%--<asp:LinkButton ID="RolesForm" runat="server"
+                        OnClick="RolesForm_Click" style="color:white;"
+                        CssClass="btn btn-link my-2 my-sm-0">
+                                          <i class="fa fa-th-list"></i>
+                                            Formulario
+                                        </asp:LinkButton>--%>
                         </li>
+                     
                     </ul>
                 </div>
+
             </div>
             <div class="main-panel" id="main-panel">
                 <!-- Navbar -->
@@ -64,6 +75,9 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
+                                    
+
+
                                         <asp:LinkButton ID="Logout" runat="server"
                         OnClick="Logout_Click" style="color:white;"
                         CssClass="btn btn-link my-2 my-sm-0">

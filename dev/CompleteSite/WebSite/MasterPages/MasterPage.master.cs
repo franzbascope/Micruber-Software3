@@ -74,4 +74,11 @@ public partial class MasterPages_MasterPage : System.Web.UI.MasterPage
         Session["UserId"] = null;
         Response.Redirect("~/Login.aspx");
     }
+
+
+    protected void RolesForm_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Usuarios/ListaRoles.aspx");
+
+    }
 }

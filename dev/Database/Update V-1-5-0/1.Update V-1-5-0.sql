@@ -1,5 +1,14 @@
 USE [micruberDB]
 GO
+ALTER TABLE [dbo].[tbl_seg_usuario]
+ADD [saldoActual] decimal(10,2) DEFAULT 0
+
+
+GO
+
+ALTER TABLE [dbo].[tbl_seg_usuario]
+ADD [esEstudiante] BIT DEFAULT 0
+
 /****** Object:  StoredProcedure [dbo].[usp_seg_getUsuarioById]    Script Date: 09/06/2019 12:36:12 p. m. ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_seg_getUsuarioById]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[usp_seg_getUsuarioById]
@@ -241,14 +250,6 @@ BEGIN
 
 END
 GO
-ALTER TABLE [dbo].[tbl_seg_usuario]
-ADD [saldoActual] decimal(10,2) DEFAULT 0
-
-
-GO
-
-ALTER TABLE [dbo].[tbl_seg_usuario]
-ADD [esEstudiante] BIT DEFAULT 0
 
 ----------------------------------------------------------------------->
 DELETE FROM [dbo].[tbl_Version]

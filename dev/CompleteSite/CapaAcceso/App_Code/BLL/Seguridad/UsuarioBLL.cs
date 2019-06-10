@@ -85,6 +85,20 @@ public class UsuarioBLL
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
         adapter.deleteUsuario(usuarioId);
     }
+    public static string  changePassword(int usuarioId,string oldPassword,string newPassword)
+    {
+        string error = "";
+        try
+        {
+            UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+            adapter.changePassword(usuarioId, oldPassword, newPassword);
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        return error;
+    }
     public static int insertUsuario(Usuario obj)
     {
         if (string.IsNullOrEmpty(obj.nombreCompleto))

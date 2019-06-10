@@ -81,4 +81,13 @@ public partial class MasterPages_MasterPage : System.Web.UI.MasterPage
         Response.Redirect("~/Usuarios/ListaRoles.aspx");
 
     }
+
+    protected void ChangePassword_Click(object sender, EventArgs e)
+    {
+        if (Session["UserId"] != null)
+        {
+            Response.Redirect("~/Usuarios/ChangePassword.aspx?UsuarioId=" + Session["UserId"]);
+        }
+
+    }
 }

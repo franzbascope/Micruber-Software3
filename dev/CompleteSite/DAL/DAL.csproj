@@ -41,11 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pagos\PagosDS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PagosDS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -60,8 +55,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LineasDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Seguridad\UsuarioDS.cs">
-      <DependentUpon>UsuarioDS.xsd</DependentUpon>
+    <Compile Include="Seguridad\PermisosDS.cs">
+      <DependentUpon>PermisosDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\PermisosDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PermisosDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\RolesDS.cs">
+      <DependentUpon>RolesDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\RolesDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RolesDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Seguridad\UsuarioDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -81,17 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Pagos\PagosDS.xsc">
-      <DependentUpon>PagosDS.xsd</DependentUpon>
-    </None>
-    <None Include="Pagos\PagosDS.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PagosDS.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Pagos\PagosDS.xss">
-      <DependentUpon>PagosDS.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -106,6 +103,28 @@
     </None>
     <None Include="Rutas\LineasDS.xss">
       <DependentUpon>LineasDS.xsd</DependentUpon>
+    </None>
+    <None Include="Seguridad\PermisosDS.xsc">
+      <DependentUpon>PermisosDS.xsd</DependentUpon>
+    </None>
+    <None Include="Seguridad\PermisosDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PermisosDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Seguridad\PermisosDS.xss">
+      <DependentUpon>PermisosDS.xsd</DependentUpon>
+    </None>
+    <None Include="Seguridad\RolesDS.xsc">
+      <DependentUpon>RolesDS.xsd</DependentUpon>
+    </None>
+    <None Include="Seguridad\RolesDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RolesDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Seguridad\RolesDS.xss">
+      <DependentUpon>RolesDS.xsd</DependentUpon>
     </None>
     <None Include="Seguridad\UsuarioDS.xsc">
       <DependentUpon>UsuarioDS.xsd</DependentUpon>

@@ -27,9 +27,7 @@ public class UsuarioBLL
             usuarioId = row.usuarioId,
             nombreCompleto = row.nombre,
             codigoActivacion = row.IscodigoActivacionNull() ? "" : row.codigoActivacion,
-            codigoRecuperacion = row.IscodigoRecuperacionNull() ? "" : row.codigoRecuperacion,
-            esEstudiante = row.IsesEstudianteNull() ? false : row.esEstudiante,
-            saldoActual = row.IssaldoActualNull() ? 0 : row.saldoActual
+            codigoRecuperacion = row.IscodigoRecuperacionNull() ? "" : row.codigoRecuperacion
         };
     }
 
@@ -79,8 +77,7 @@ public class UsuarioBLL
         {
             correo = row.correo,
             usuarioId = row.usuarioId,
-            nombreCompleto = row.nombre,
-            saldoActual = row.saldoActual
+            nombreCompleto = row.nombre
         };
     }
     public static void deleteUsuario(int usuarioId)

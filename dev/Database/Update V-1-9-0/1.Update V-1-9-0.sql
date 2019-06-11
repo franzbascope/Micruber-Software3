@@ -1,10 +1,58 @@
 USE [micruberDB]
 GO
-/****** Object:  Table [dbo].[tbl_rutas_coordenadas]    Script Date: 6/11/2019 12:39:23 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_updateLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_updateLinea]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_updateLinea]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_insertLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_insertLinea]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_insertLinea]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_insertCoordenada]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_insertCoordenada]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_insertCoordenada]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getRutasById]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_getRutasById]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_getRutasById]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getLineaById]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_getLineaById]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_getLineaById]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getCoordenadasByLineaId]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_getCoordenadasByLineaId]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_getCoordenadasByLineaId]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getAllLineas]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_getAllLineas]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_getAllLineas]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_deleteLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_deleteLinea]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_deleteLinea]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_rutas_deleteCoordenadasByLineaId]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_deleteCoordenadasByLineaId]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[usp_rutas_deleteCoordenadasByLineaId]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_tbl_rutas_coordenadas_tbl_rutas_lineas]') AND parent_object_id = OBJECT_ID(N'[dbo].[tbl_rutas_coordenadas]'))
+ALTER TABLE [dbo].[tbl_rutas_coordenadas] DROP CONSTRAINT [FK_tbl_rutas_coordenadas_tbl_rutas_lineas]
+GO
+/****** Object:  Table [dbo].[tbl_rutas_coordenadas]    Script Date: 6/11/2019 12:53:41 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tbl_rutas_coordenadas]') AND type in (N'U'))
+DROP TABLE [dbo].[tbl_rutas_coordenadas]
+GO
+
+/****** Object:  Table [dbo].[tbl_rutas_coordenadas]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
+ALTER TABLE [dbo].[tbl_rutas_lineas] ADD eliminado bit null default 0
+GO
+
 CREATE TABLE [dbo].[tbl_rutas_coordenadas](
 	[coodenadaId] [int] IDENTITY(1,1) NOT NULL,
 	[latitud] [decimal](20, 10) NULL,
@@ -21,14 +69,14 @@ REFERENCES [dbo].[tbl_rutas_lineas] ([lineaId])
 GO
 ALTER TABLE [dbo].[tbl_rutas_coordenadas] CHECK CONSTRAINT [FK_tbl_rutas_coordenadas_tbl_rutas_lineas]
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_deleteCoordenadasByLineaId]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_deleteCoordenadasByLineaId]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:		Denar Terrazas
--- Create date: 09/06/2019
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[usp_rutas_deleteCoordenadasByLineaId]
@@ -47,7 +95,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_deleteLinea]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_deleteLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -75,7 +123,7 @@ UPDATE [dbo].[tbl_rutas_lineas]
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_getAllLineas]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getAllLineas]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -101,7 +149,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_getCoordenadasByLineaId]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getCoordenadasByLineaId]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +178,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_getLineaById]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getLineaById]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +207,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_getRutasById]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_getRutasById]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -188,7 +236,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_insertCoordenada]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_insertCoordenada]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -223,7 +271,7 @@ BEGIN
 		SET @coordenadaId = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_insertLinea]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_insertLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -256,7 +304,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_rutas_updateLinea]    Script Date: 6/11/2019 12:39:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[usp_rutas_updateLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -283,6 +331,7 @@ UPDATE [dbo].[tbl_rutas_lineas]
 	WHERE [lineaId] = @lineaId
 END
 GO
+
 
 
 

@@ -27,7 +27,10 @@ public class UsuarioBLL
             usuarioId = row.usuarioId,
             nombreCompleto = row.nombre,
             codigoActivacion = row.IscodigoActivacionNull() ? "" : row.codigoActivacion,
-            codigoRecuperacion = row.IscodigoRecuperacionNull() ? "" : row.codigoRecuperacion
+            codigoRecuperacion = row.IscodigoRecuperacionNull() ? "" : row.codigoRecuperacion,
+            rolId = row.IsrolIdNull() ? 0 : row.rolId,
+            rolDescripcion = row.IsrolNull() ? "" : row.rol,
+            tempPassword = row.IstempPasswordNull()? "" : row.tempPassword
         };
     }
 
@@ -73,12 +76,8 @@ public class UsuarioBLL
         if (table.Rows.Count == 0)
             return null;
         UsuarioDS.UsuarioRow row = table[0];
-        return new Usuario()
-        {
-            correo = row.correo,
-            usuarioId = row.usuarioId,
-            nombreCompleto = row.nombre
-        };
+        return  GetUsuarioFromRow(row);
+  
     }
     public static void deleteUsuario(int usuarioId)
     {
@@ -110,7 +109,7 @@ public class UsuarioBLL
 
         int? id = null;
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
-        adapter.insertUsuario(obj.correo, obj.password, obj.nombreCompleto, ref id);
+        adapter.insertUsuario(obj.correo, obj.nombreCompleto, ref id);
 
         if (id == null || id.Value <= 0)
             throw new Exception("La llave primaria no se generó correctamente");
@@ -118,11 +117,30 @@ public class UsuarioBLL
             enviarEmail(id.Value);
         return id.Value;
     }
+    public static int insertUsuarioAdministracion(Usuario obj)
+    {
+        if (string.IsNullOrEmpty(obj.nombreCompleto))
+            throw new ArgumentException("El nombre no puede ser nulo o vacio");
+
+        if (string.IsNullOrEmpty(obj.correo))
+            throw new ArgumentException("El correo no puede ser nulo o vacio");
+
+
+        int? id = null;
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        adapter.insertUsuarioAdministracion(obj.correo, obj.nombreCompleto,obj.rolId, ref id);
+
+        if (id == null || id.Value <= 0)
+            throw new Exception("La llave primaria no se generó correctamente");
+        else
+            enviarEmailNuevoUsuario(id.Value);
+        return id.Value;
+    }
 
     public static void updateUsuario(Usuario obj)
     {
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
-        adapter.updateUsuario(obj.correo, obj.nombreCompleto, obj.usuarioId);
+        adapter.updateUsuario(obj.correo, obj.nombreCompleto, obj.usuarioId,obj.rolId);
     }
     public static bool validateCodigoActivacion(string codigoActivacion)
     {
@@ -179,6 +197,39 @@ public class UsuarioBLL
         }
 
 
+    }
+    public static void enviarEmailNuevoUsuario(int usuarioId)
+    {
+        try
+        {
+            Usuario user = UsuarioBLL.getUsuarioById(usuarioId);
+
+            MailMessage mail = new MailMessage();
+            SmtpClient smtpCli = new SmtpClient();
+            mail.From = new MailAddress("jose.cadima@aetest.net");
+            mail.To.Add(new MailAddress(user.correo));
+
+            string message =
+                "<p>" +
+                    "Felicidades por tu nueva cuenta en MICRUBER ,aqui tienes los credenciales para iniciar sesion" +
+                    "Correo: "+user.correo+"</br>" +
+                    "Contraseña: "+user.tempPassword+"" +
+                    "Te recomendamos cambiar de contraseña al iniciar sesion" +
+                "</p>" +
+                "http://localhost:63191/Login.aspx";
+            mail.Body = message;
+            mail.IsBodyHtml = true;
+            mail.Subject = "Activacion de Cuenta";
+            smtpCli.Host = "mail.aetest.net";
+            smtpCli.Port = 587; //Lo use gmail por defecto
+            smtpCli.Credentials = new NetworkCredential("jose.cadima@aetest.net", "ysNwm0axilRj");
+            smtpCli.EnableSsl = true;
+            smtpCli.Send(mail);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+        }
     }
     public static void enviarEmail(int usuarioId)
     {

@@ -55,6 +55,27 @@ namespace CapaAcceso.App_Code.BLL.Seguridad
             }
             return list;
         }
+        public static bool validarPermiso(int usuarioId, string memotecnico)
+        {
+            if (usuarioId <= 0)
+                throw new Exception("El usuarioId no puede ser <=0");
+            if (String.IsNullOrEmpty(memotecnico))
+            {
+                throw new Exception("el memotecnico no puede ser nulo o vacio");
+            }
+            bool? tienePermiso = false;
+            try
+            {
+                PermisosTableAdapter adapter = new PermisosTableAdapter();
+                adapter.validarPagina(usuarioId, memotecnico, ref tienePermiso);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error al validar pagina : " + ex);
+            }
+            return tienePermiso.Value;
+
+        }
 
 
 

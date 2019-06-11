@@ -35,10 +35,10 @@
                     <ul class="nav">
                         <li class="active ">
 
-                            <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaUsuarios.aspx">
+                            <asp:HyperLink ID="ListaUsuariosLinkButton" runat="server" NavigateUrl="~/Usuarios/ListaUsuarios.aspx">
                                 <i class="fas fa-user"></i> Usuarios</asp:HyperLink>
                             <br />
-                            <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaRoles.aspx">
+                            <asp:HyperLink ID="ListaRolesLinkButton" runat="server" NavigateUrl="~/Usuarios/ListaRoles.aspx">
                                 <i class="fa fa-th-list"></i>Roles</asp:HyperLink>
                             <%--<asp:LinkButton ID="RolesForm" runat="server"
                         OnClick="RolesForm_Click" style="color:white;"

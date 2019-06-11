@@ -40,6 +40,11 @@
                             <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaUsuarios.aspx" >
                                 <i class="fas fa-user"></i> Usuarios</asp:HyperLink>
                         </li>
+                        <li class="active ">
+                            
+                            <asp:HyperLink runat="server" NavigateUrl="~/Lineas/ListaLineas.aspx" >
+                                <i class="fas fa-bus-alt"></i>Registrar Lineas</asp:HyperLink>
+                        </li>
                     </ul>
                 </div>
             </div>

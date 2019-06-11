@@ -20,17 +20,17 @@ namespace DAL.Rutas {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("LineasDS")]
+    [global::System.Xml.Serialization.XmlRootAttribute("CoordenadasDS")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class LineasDS : global::System.Data.DataSet {
+    public partial class CoordenadasDS : global::System.Data.DataSet {
         
-        private LineasDataTable tableLineas;
+        private CoordenadasDataTable tableCoordenadas;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public LineasDS() {
+        public CoordenadasDS() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace DAL.Rutas {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected LineasDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected CoordenadasDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace DAL.Rutas {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Lineas"] != null)) {
-                    base.Tables.Add(new LineasDataTable(ds.Tables["Lineas"]));
+                if ((ds.Tables["Coordenadas"] != null)) {
+                    base.Tables.Add(new CoordenadasDataTable(ds.Tables["Coordenadas"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace DAL.Rutas {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public LineasDataTable Lineas {
+        public CoordenadasDataTable Coordenadas {
             get {
-                return this.tableLineas;
+                return this.tableCoordenadas;
             }
         }
         
@@ -127,7 +127,7 @@ namespace DAL.Rutas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            LineasDS cln = ((LineasDS)(base.Clone()));
+            CoordenadasDS cln = ((CoordenadasDS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace DAL.Rutas {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Lineas"] != null)) {
-                    base.Tables.Add(new LineasDataTable(ds.Tables["Lineas"]));
+                if ((ds.Tables["Coordenadas"] != null)) {
+                    base.Tables.Add(new CoordenadasDataTable(ds.Tables["Coordenadas"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace DAL.Rutas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableLineas = ((LineasDataTable)(base.Tables["Lineas"]));
+            this.tableCoordenadas = ((CoordenadasDataTable)(base.Tables["Coordenadas"]));
             if ((initTable == true)) {
-                if ((this.tableLineas != null)) {
-                    this.tableLineas.InitVars();
+                if ((this.tableCoordenadas != null)) {
+                    this.tableCoordenadas.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace DAL.Rutas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "LineasDS";
+            this.DataSetName = "CoordenadasDS";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/LineasDS.xsd";
+            this.Namespace = "http://tempuri.org/CoordenadasDS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableLineas = new LineasDataTable();
-            base.Tables.Add(this.tableLineas);
+            this.tableCoordenadas = new CoordenadasDataTable();
+            base.Tables.Add(this.tableCoordenadas);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeLineas() {
+        private bool ShouldSerializeCoordenadas() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace DAL.Rutas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            LineasDS ds = new LineasDS();
+            CoordenadasDS ds = new CoordenadasDS();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,25 +270,27 @@ namespace DAL.Rutas {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void LineasRowChangeEventHandler(object sender, LineasRowChangeEvent e);
+        public delegate void CoordenadasRowChangeEventHandler(object sender, CoordenadasRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class LineasDataTable : global::System.Data.TypedTableBase<LineasRow> {
+        public partial class CoordenadasDataTable : global::System.Data.TypedTableBase<CoordenadasRow> {
+            
+            private global::System.Data.DataColumn columncoodenadaId;
+            
+            private global::System.Data.DataColumn columnlatitud;
+            
+            private global::System.Data.DataColumn columnlongitud;
             
             private global::System.Data.DataColumn columnlineaId;
             
-            private global::System.Data.DataColumn columnnumeroLinea;
-            
-            private global::System.Data.DataColumn columnrutaId;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasDataTable() {
-                this.TableName = "Lineas";
+            public CoordenadasDataTable() {
+                this.TableName = "Coordenadas";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -296,7 +298,7 @@ namespace DAL.Rutas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal LineasDataTable(global::System.Data.DataTable table) {
+            internal CoordenadasDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -313,9 +315,33 @@ namespace DAL.Rutas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected LineasDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CoordenadasDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn coodenadaIdColumn {
+                get {
+                    return this.columncoodenadaId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn latitudColumn {
+                get {
+                    return this.columnlatitud;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn longitudColumn {
+                get {
+                    return this.columnlongitud;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -323,22 +349,6 @@ namespace DAL.Rutas {
             public global::System.Data.DataColumn lineaIdColumn {
                 get {
                     return this.columnlineaId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn numeroLineaColumn {
-                get {
-                    return this.columnnumeroLinea;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn rutaIdColumn {
-                get {
-                    return this.columnrutaId;
                 }
             }
             
@@ -353,54 +363,55 @@ namespace DAL.Rutas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasRow this[int index] {
+            public CoordenadasRow this[int index] {
                 get {
-                    return ((LineasRow)(this.Rows[index]));
+                    return ((CoordenadasRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event LineasRowChangeEventHandler LineasRowChanging;
+            public event CoordenadasRowChangeEventHandler CoordenadasRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event LineasRowChangeEventHandler LineasRowChanged;
+            public event CoordenadasRowChangeEventHandler CoordenadasRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event LineasRowChangeEventHandler LineasRowDeleting;
+            public event CoordenadasRowChangeEventHandler CoordenadasRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event LineasRowChangeEventHandler LineasRowDeleted;
+            public event CoordenadasRowChangeEventHandler CoordenadasRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddLineasRow(LineasRow row) {
+            public void AddCoordenadasRow(CoordenadasRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasRow AddLineasRow(string numeroLinea, int rutaId) {
-                LineasRow rowLineasRow = ((LineasRow)(this.NewRow()));
+            public CoordenadasRow AddCoordenadasRow(decimal latitud, decimal longitud, int lineaId) {
+                CoordenadasRow rowCoordenadasRow = ((CoordenadasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        numeroLinea,
-                        rutaId};
-                rowLineasRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowLineasRow);
-                return rowLineasRow;
+                        latitud,
+                        longitud,
+                        lineaId};
+                rowCoordenadasRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCoordenadasRow);
+                return rowCoordenadasRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasRow FindBylineaId(int lineaId) {
-                return ((LineasRow)(this.Rows.Find(new object[] {
-                            lineaId})));
+            public CoordenadasRow FindBycoodenadaId(int coodenadaId) {
+                return ((CoordenadasRow)(this.Rows.Find(new object[] {
+                            coodenadaId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                LineasDataTable cln = ((LineasDataTable)(base.Clone()));
+                CoordenadasDataTable cln = ((CoordenadasDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -408,61 +419,63 @@ namespace DAL.Rutas {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new LineasDataTable();
+                return new CoordenadasDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
+                this.columncoodenadaId = base.Columns["coodenadaId"];
+                this.columnlatitud = base.Columns["latitud"];
+                this.columnlongitud = base.Columns["longitud"];
                 this.columnlineaId = base.Columns["lineaId"];
-                this.columnnumeroLinea = base.Columns["numeroLinea"];
-                this.columnrutaId = base.Columns["rutaId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
+                this.columncoodenadaId = new global::System.Data.DataColumn("coodenadaId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncoodenadaId);
+                this.columnlatitud = new global::System.Data.DataColumn("latitud", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlatitud);
+                this.columnlongitud = new global::System.Data.DataColumn("longitud", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlongitud);
                 this.columnlineaId = new global::System.Data.DataColumn("lineaId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlineaId);
-                this.columnnumeroLinea = new global::System.Data.DataColumn("numeroLinea", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnumeroLinea);
-                this.columnrutaId = new global::System.Data.DataColumn("rutaId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrutaId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnlineaId}, true));
-                this.columnlineaId.AutoIncrement = true;
-                this.columnlineaId.AutoIncrementSeed = -1;
-                this.columnlineaId.AutoIncrementStep = -1;
-                this.columnlineaId.AllowDBNull = false;
-                this.columnlineaId.ReadOnly = true;
-                this.columnlineaId.Unique = true;
-                this.columnnumeroLinea.MaxLength = 10;
+                                this.columncoodenadaId}, true));
+                this.columncoodenadaId.AutoIncrement = true;
+                this.columncoodenadaId.AutoIncrementSeed = -1;
+                this.columncoodenadaId.AutoIncrementStep = -1;
+                this.columncoodenadaId.AllowDBNull = false;
+                this.columncoodenadaId.ReadOnly = true;
+                this.columncoodenadaId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasRow NewLineasRow() {
-                return ((LineasRow)(this.NewRow()));
+            public CoordenadasRow NewCoordenadasRow() {
+                return ((CoordenadasRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new LineasRow(builder);
+                return new CoordenadasRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(LineasRow);
+                return typeof(CoordenadasRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.LineasRowChanged != null)) {
-                    this.LineasRowChanged(this, new LineasRowChangeEvent(((LineasRow)(e.Row)), e.Action));
+                if ((this.CoordenadasRowChanged != null)) {
+                    this.CoordenadasRowChanged(this, new CoordenadasRowChangeEvent(((CoordenadasRow)(e.Row)), e.Action));
                 }
             }
             
@@ -470,8 +483,8 @@ namespace DAL.Rutas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.LineasRowChanging != null)) {
-                    this.LineasRowChanging(this, new LineasRowChangeEvent(((LineasRow)(e.Row)), e.Action));
+                if ((this.CoordenadasRowChanging != null)) {
+                    this.CoordenadasRowChanging(this, new CoordenadasRowChangeEvent(((CoordenadasRow)(e.Row)), e.Action));
                 }
             }
             
@@ -479,8 +492,8 @@ namespace DAL.Rutas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.LineasRowDeleted != null)) {
-                    this.LineasRowDeleted(this, new LineasRowChangeEvent(((LineasRow)(e.Row)), e.Action));
+                if ((this.CoordenadasRowDeleted != null)) {
+                    this.CoordenadasRowDeleted(this, new CoordenadasRowChangeEvent(((CoordenadasRow)(e.Row)), e.Action));
                 }
             }
             
@@ -488,14 +501,14 @@ namespace DAL.Rutas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.LineasRowDeleting != null)) {
-                    this.LineasRowDeleting(this, new LineasRowChangeEvent(((LineasRow)(e.Row)), e.Action));
+                if ((this.CoordenadasRowDeleting != null)) {
+                    this.CoordenadasRowDeleting(this, new CoordenadasRowChangeEvent(((CoordenadasRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveLineasRow(LineasRow row) {
+            public void RemoveCoordenadasRow(CoordenadasRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -504,7 +517,7 @@ namespace DAL.Rutas {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                LineasDS ds = new LineasDS();
+                CoordenadasDS ds = new CoordenadasDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -522,7 +535,7 @@ namespace DAL.Rutas {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "LineasDataTable";
+                attribute2.FixedValue = "CoordenadasDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -566,82 +579,110 @@ namespace DAL.Rutas {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class LineasRow : global::System.Data.DataRow {
+        public partial class CoordenadasRow : global::System.Data.DataRow {
             
-            private LineasDataTable tableLineas;
+            private CoordenadasDataTable tableCoordenadas;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal LineasRow(global::System.Data.DataRowBuilder rb) : 
+            internal CoordenadasRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableLineas = ((LineasDataTable)(this.Table));
+                this.tableCoordenadas = ((CoordenadasDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int coodenadaId {
+                get {
+                    return ((int)(this[this.tableCoordenadas.coodenadaIdColumn]));
+                }
+                set {
+                    this[this.tableCoordenadas.coodenadaIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal latitud {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCoordenadas.latitudColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'latitud\' de la tabla \'Coordenadas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCoordenadas.latitudColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal longitud {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCoordenadas.longitudColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'longitud\' de la tabla \'Coordenadas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCoordenadas.longitudColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int lineaId {
                 get {
-                    return ((int)(this[this.tableLineas.lineaIdColumn]));
-                }
-                set {
-                    this[this.tableLineas.lineaIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string numeroLinea {
-                get {
                     try {
-                        return ((string)(this[this.tableLineas.numeroLineaColumn]));
+                        return ((int)(this[this.tableCoordenadas.lineaIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'numeroLinea\' de la tabla \'Lineas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'lineaId\' de la tabla \'Coordenadas\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableLineas.numeroLineaColumn] = value;
+                    this[this.tableCoordenadas.lineaIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int rutaId {
-                get {
-                    try {
-                        return ((int)(this[this.tableLineas.rutaIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'rutaId\' de la tabla \'Lineas\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableLineas.rutaIdColumn] = value;
-                }
+            public bool IslatitudNull() {
+                return this.IsNull(this.tableCoordenadas.latitudColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsnumeroLineaNull() {
-                return this.IsNull(this.tableLineas.numeroLineaColumn);
+            public void SetlatitudNull() {
+                this[this.tableCoordenadas.latitudColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetnumeroLineaNull() {
-                this[this.tableLineas.numeroLineaColumn] = global::System.Convert.DBNull;
+            public bool IslongitudNull() {
+                return this.IsNull(this.tableCoordenadas.longitudColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsrutaIdNull() {
-                return this.IsNull(this.tableLineas.rutaIdColumn);
+            public void SetlongitudNull() {
+                this[this.tableCoordenadas.longitudColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetrutaIdNull() {
-                this[this.tableLineas.rutaIdColumn] = global::System.Convert.DBNull;
+            public bool IslineaIdNull() {
+                return this.IsNull(this.tableCoordenadas.lineaIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetlineaIdNull() {
+                this[this.tableCoordenadas.lineaIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -649,22 +690,22 @@ namespace DAL.Rutas {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class LineasRowChangeEvent : global::System.EventArgs {
+        public class CoordenadasRowChangeEvent : global::System.EventArgs {
             
-            private LineasRow eventRow;
+            private CoordenadasRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasRowChangeEvent(LineasRow row, global::System.Data.DataRowAction action) {
+            public CoordenadasRowChangeEvent(CoordenadasRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LineasRow Row {
+            public CoordenadasRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -680,7 +721,7 @@ namespace DAL.Rutas {
         }
     }
 }
-namespace DAL.Rutas.LineasDSTableAdapters {
+namespace DAL.Rutas.CoordenadasDSTableAdapters {
     
     
     /// <summary>
@@ -692,7 +733,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class LineasTableAdapter : global::System.ComponentModel.Component {
+    public partial class CoordenadasTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -706,7 +747,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public LineasTableAdapter() {
+        public CoordenadasTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -803,10 +844,11 @@ namespace DAL.Rutas.LineasDSTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Lineas";
+            tableMapping.DataSetTable = "Coordenadas";
+            tableMapping.ColumnMappings.Add("coodenadaId", "coodenadaId");
+            tableMapping.ColumnMappings.Add("latitud", "latitud");
+            tableMapping.ColumnMappings.Add("longitud", "longitud");
             tableMapping.ColumnMappings.Add("lineaId", "lineaId");
-            tableMapping.ColumnMappings.Add("numeroLinea", "numeroLinea");
-            tableMapping.ColumnMappings.Add("rutaId", "rutaId");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -820,70 +862,43 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.usp_rutas_getAllLineas";
+            this._commandCollection[0].CommandText = "dbo.usp_rutas_getCoordenadasByLineaId";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "dbo.usp_rutas_deleteLinea";
+            this._commandCollection[1].CommandText = "dbo.usp_rutas_deleteCoordenadasByLineaId";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@intLineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "dbo.usp_rutas_getLineaById";
+            this._commandCollection[2].CommandText = "dbo.usp_rutas_insertCoordenada";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "dbo.usp_rutas_getLineasByVehiculoId";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@intVehiculoId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "dbo.usp_rutas_insertLinea";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numeroLinea", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.InputOutput, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "dbo.usp_rutas_updateLinea";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numeroLinea", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@latitud", global::System.Data.SqlDbType.Decimal, 13, global::System.Data.ParameterDirection.Input, 20, 10, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@longitud", global::System.Data.SqlDbType.Decimal, 13, global::System.Data.ParameterDirection.Input, 20, 10, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@coordenadaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.InputOutput, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LineasDS.LineasDataTable getAllLineas() {
+        public virtual CoordenadasDS.CoordenadasDataTable getCoordenadasByLineaId(global::System.Nullable<int> lineaId) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            LineasDS.LineasDataTable dataTable = new LineasDS.LineasDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual LineasDS.LineasDataTable getLineaById(global::System.Nullable<int> lineaId) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((lineaId.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(lineaId.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            LineasDS.LineasDataTable dataTable = new LineasDS.LineasDataTable();
+            CoordenadasDS.CoordenadasDataTable dataTable = new CoordenadasDS.CoordenadasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -891,27 +906,10 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual LineasDS.LineasDataTable getLineasByVehiculoId(global::System.Nullable<int> intVehiculoId) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((intVehiculoId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(intVehiculoId.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            LineasDS.LineasDataTable dataTable = new LineasDS.LineasDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int deleteLinea(global::System.Nullable<int> intLineaId) {
+        public virtual int deleteCoordenadasByLineaId(global::System.Nullable<int> lineaId) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            if ((intLineaId.HasValue == true)) {
-                command.Parameters[1].Value = ((int)(intLineaId.Value));
+            if ((lineaId.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(lineaId.Value));
             }
             else {
                 command.Parameters[1].Value = global::System.DBNull.Value;
@@ -936,19 +934,31 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object insertLinea(string numeroLinea, ref global::System.Nullable<int> lineaId) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
-            if ((numeroLinea == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
+        public virtual object insertCoordenada(global::System.Nullable<int> lineaId, global::System.Nullable<decimal> latitud, global::System.Nullable<decimal> longitud, ref global::System.Nullable<int> coordenadaId) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((lineaId.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(lineaId.Value));
             }
             else {
-                command.Parameters[1].Value = ((string)(numeroLinea));
+                command.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((lineaId.HasValue == true)) {
-                command.Parameters[2].Value = ((int)(lineaId.Value));
+            if ((latitud.HasValue == true)) {
+                command.Parameters[2].Value = ((decimal)(latitud.Value));
             }
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((longitud.HasValue == true)) {
+                command.Parameters[3].Value = ((decimal)(longitud.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((coordenadaId.HasValue == true)) {
+                command.Parameters[4].Value = ((int)(coordenadaId.Value));
+            }
+            else {
+                command.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -964,12 +974,12 @@ namespace DAL.Rutas.LineasDSTableAdapters {
                     command.Connection.Close();
                 }
             }
-            if (((command.Parameters[2].Value == null) 
-                        || (command.Parameters[2].Value.GetType() == typeof(global::System.DBNull)))) {
-                lineaId = new global::System.Nullable<int>();
+            if (((command.Parameters[4].Value == null) 
+                        || (command.Parameters[4].Value.GetType() == typeof(global::System.DBNull)))) {
+                coordenadaId = new global::System.Nullable<int>();
             }
             else {
-                lineaId = new global::System.Nullable<int>(((int)(command.Parameters[2].Value)));
+                coordenadaId = new global::System.Nullable<int>(((int)(command.Parameters[4].Value)));
             }
             if (((returnValue == null) 
                         || (returnValue.GetType() == typeof(global::System.DBNull)))) {
@@ -978,40 +988,6 @@ namespace DAL.Rutas.LineasDSTableAdapters {
             else {
                 return ((object)(returnValue));
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int updateLinea(string numeroLinea, global::System.Nullable<int> lineaId) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
-            if ((numeroLinea == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[1].Value = ((string)(numeroLinea));
-            }
-            if ((lineaId.HasValue == true)) {
-                command.Parameters[2].Value = ((int)(lineaId.Value));
-            }
-            else {
-                command.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
         }
     }
     
@@ -1083,7 +1059,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(LineasDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(CoordenadasDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1093,7 +1069,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(LineasDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(CoordenadasDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1103,7 +1079,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(LineasDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(CoordenadasDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1137,7 +1113,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(LineasDS dataSet) {
+        public virtual int UpdateAll(CoordenadasDS dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

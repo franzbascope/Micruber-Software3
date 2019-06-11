@@ -52,6 +52,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Rutas\CoordenadasDS.cs">
+      <DependentUpon>CoordenadasDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Rutas\CoordenadasDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoordenadasDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Rutas\LineasDS.cs">
       <DependentUpon>LineasDS.xsd</DependentUpon>
     </Compile>
@@ -95,6 +103,17 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Rutas\CoordenadasDS.xsc">
+      <DependentUpon>CoordenadasDS.xsd</DependentUpon>
+    </None>
+    <None Include="Rutas\CoordenadasDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CoordenadasDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Rutas\CoordenadasDS.xss">
+      <DependentUpon>CoordenadasDS.xsd</DependentUpon>
     </None>
     <None Include="Rutas\LineasDS.xsc">
       <DependentUpon>LineasDS.xsd</DependentUpon>

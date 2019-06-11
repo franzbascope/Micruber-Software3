@@ -30,7 +30,11 @@
                             </asp:RequiredFieldValidator>
                         </div>
                     </div>
-
+                       <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="CorreoTextBox">Rol</asp:Label>
+                         <asp:DropDownList ID="RolDropDownLsit" class="form-control"  runat="server" >
+                          </asp:DropDownList>
+                    </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="CorreoTextBox">Correo</asp:Label>
                         <asp:TextBox ID="CorreoTextBox" runat="server" CssClass="form-control"></asp:TextBox>
@@ -46,24 +50,6 @@
                             </asp:RequiredFieldValidator>
                         </div>
                     </div>
-
-                    <div id="divPassword" runat="server" class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="PasswordTextBox">Contraseña</asp:Label>
-                        <asp:TextBox ID="PasswordTextBox" type="password" runat="server" CssClass="form-control"></asp:TextBox>
-                        <div class="text-danger">
-                            <asp:RequiredFieldValidator runat="server" Display="Dynamic"
-                                ErrorMessage="Debe ingresar su contraseña"
-                                ValidationGroup="Usuario"
-                                ControlToValidate="PasswordTextBox">
-                            </asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="PasswordValidor" ValidationGroup="Usuario" runat="server"
-                                ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,15}$"
-                                ControlToValidate="PasswordTextBox" ErrorMessage="La contraseña debe tener al menos una letra mayuscula, un numero
-                                y tener mas de 6 caracteres y un maximo de 15 caracteres">
-                            </asp:RegularExpressionValidator>	
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <asp:LinkButton ID="SaveButton" runat="server" OnClick="SaveButton_Click"
                             CssClass="btn btn-primary"

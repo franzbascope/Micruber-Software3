@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel="stylesheet" type="text/css" href="Assets/css/B.style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="Assets/css/B.style.css"/>
     <title>Inicia Sesion</title>
     <link rel="icon" href="/Assets/Imagenes/favicon.png" type="image/png">
      <style>

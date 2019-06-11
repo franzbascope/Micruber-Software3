@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaAcceso.App_Code.BLL.Seguridad;
+using CapaAcceso.App_Code.Model.Seguridad;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,8 +42,6 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
             try
             {
                 UsuarioId = Convert.ToInt32(Request.QueryString["UsuarioId"]);
-                if (UsuarioId > 0)
-                    divPassword.Visible = false;
             }
             catch (Exception ex)
             {
@@ -55,6 +55,11 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
         }
         else
             LabelTitle.Text = "Nuevo";
+        List<Rol> listaRoles = RolBLL.getAllRoles();
+        RolDropDownLsit.DataTextField = "descripcion";
+        RolDropDownLsit.DataValueField = "roleId";
+        RolDropDownLsit.DataSource = listaRoles;
+        RolDropDownLsit.DataBind();
     }
     private void CargarDatos(int usuarioId)
     {
@@ -63,6 +68,7 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
             Usuario obj = UsuarioBLL.getUsuarioById(usuarioId);
             NombreTextBox.Text = obj.nombreCompleto;
             CorreoTextBox.Text = obj.correo;
+            RolDropDownLsit.SelectedValue = obj.rolId.ToString();
 
         }
         catch (Exception ex)
@@ -74,29 +80,33 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
 
     protected void SaveButton_Click(object sender, EventArgs e)
     {
-        PanelError.Visible = false;
-        string email = CorreoTextBox.Text;
-        bool existeCorreo = UsuarioBLL.validateEmail(email);
-        if (existeCorreo)
-        {
-            MsgLiteral.Text = "El correo ingresado ya existe, ingrese otro";
-            PanelError.Visible = true;
-            return;
-        }
+
         try
         {
             Usuario obj = new Usuario()
             {
                 correo = CorreoTextBox.Text,
                 nombreCompleto = NombreTextBox.Text,
-                password = PasswordTextBox.Text,
-                usuarioId = UsuarioId
+                usuarioId = UsuarioId,
+                rolId = Convert.ToInt32(RolDropDownLsit.SelectedValue)
             };
 
             if (UsuarioId > 0)
                 UsuarioBLL.updateUsuario(obj);
             else
-                UsuarioBLL.insertUsuario(obj);
+            {
+                PanelError.Visible = false;
+                string email = CorreoTextBox.Text;
+                bool existeCorreo = UsuarioBLL.validateEmail(email);
+                if (existeCorreo)
+                {
+                    MsgLiteral.Text = "El correo ingresado ya existe, ingrese otro";
+                    PanelError.Visible = true;
+                    return;
+                }
+                UsuarioBLL.insertUsuarioAdministracion(obj);
+            }
+
 
         }
         catch (Exception ex)

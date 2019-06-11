@@ -26,7 +26,8 @@ public class LineaBLL
         return new Linea()
         {
             lineaId = row.lineaId,
-            numeroLinea = row.numeroLinea
+            numeroLinea = row.numeroLinea,
+            perteneceLinea=row.perteneceLinea
         };
     }
     public static List<Linea> getLineaByVehiculoId(int vehiculoId)
@@ -45,11 +46,10 @@ public class LineaBLL
         }
         return list;
     }
-
-    public static List<Linea> getLineas()
+    public static List<Linea> getAllLineasByVehiculoId(int id)
     {
-        LineasTableAdapter localAdapter = new LineasTableAdapter();
-        LineasDS.LineasDataTable table = localAdapter.getAllLineas();
+        LineasTableAdapter adapter = new LineasTableAdapter();
+        LineasDS.LineasDataTable table = adapter.GetLineaByVehiculoIdAsignar(id);
 
         List<Linea> list = new List<Linea>();
         foreach (var row in table)
@@ -58,48 +58,6 @@ public class LineaBLL
             list.Add(obj);
         }
         return list;
-    }
-
-    public static void deleteLinea(int lineaId)
-    {
-        LineasTableAdapter adapter = new LineasTableAdapter();
-        adapter.deleteLinea(lineaId);
-    }
-
-    public static void updateLinea(Linea obj)
-    {
-        LineasTableAdapter adapter = new LineasTableAdapter();
-        adapter.updateLinea(obj.numeroLinea, obj.lineaId);
-    }
-
-    public static int insertLinea(Linea obj)
-    {
-        if (string.IsNullOrEmpty(obj.numeroLinea))
-            throw new ArgumentException("El número de línea no puede ser nulo o vacio");
-
-
-        int? id = null;
-        LineasTableAdapter adapter = new LineasTableAdapter();
-        adapter.insertLinea(obj.numeroLinea, ref id);
-
-        if (id == null || id.Value <= 0)
-            throw new Exception("La llave primaria no se generó correctamente");
-        else
-            return id.Value;
-    }
-
-    public static Linea getLineaById(int lineaId)
-    {
-        LineasTableAdapter adapter = new LineasTableAdapter();
-        LineasDS.LineasDataTable table = adapter.getLineaById(lineaId);
-
-        List<Linea> list = new List<Linea>();
-        foreach (var row in table)
-        {
-            Linea obj = getLineaFromRow(row);
-            list.Add(obj);
         }
-        return list[0];
-    }
 
 }

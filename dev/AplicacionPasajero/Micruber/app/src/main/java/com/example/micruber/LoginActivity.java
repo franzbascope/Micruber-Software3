@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    public void iniciarMap(View view){
+    public void iniciar_map(View view){
         Intent intent = new Intent(LoginActivity.this, mapLineaActivity.class);
         startActivity(intent);
         finish();

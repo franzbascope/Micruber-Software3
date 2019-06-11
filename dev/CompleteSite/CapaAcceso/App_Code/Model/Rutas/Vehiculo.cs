@@ -8,8 +8,9 @@ namespace VentasNur.Model
 {
     public class Vehiculo
     {
-        public int vechiduloId { get; set; }
+        public int vehiculoId { get; set; }
         public int capacidad { get; set; }
         public string placa { get; set; }
+        public bool desactivado { get; set; }
     }
 }

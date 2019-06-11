@@ -1,5 +1,7 @@
 USE [micruberDB]
 GO
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /****** Object:  StoredProcedure [dbo].[usp_rutas_updateLinea]    Script Date: 6/11/2019 12:53:41 AM ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_rutas_updateLinea]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[usp_rutas_updateLinea]
@@ -45,6 +47,13 @@ DROP TABLE [dbo].[tbl_rutas_coordenadas]
 GO
 
 /****** Object:  Table [dbo].[tbl_rutas_coordenadas]    Script Date: 6/11/2019 12:53:41 AM ******/
+=======
+=======
+>>>>>>> Stashed changes
+alter table tbl_rutas_Lineas
+add eliminado bit null default 0
+/****** Object:  Table [dbo].[tbl_rutas_coordenadas]    Script Date: 6/11/2019 12:39:23 AM ******/
+>>>>>>> Stashed changes
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

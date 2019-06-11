@@ -10,5 +10,6 @@ namespace VentasNur.Model
     {
         public int lineaId { get; set; }
         public string numeroLinea { get; set; }
+        public bool perteneceLinea { get; set; }
     }
 }

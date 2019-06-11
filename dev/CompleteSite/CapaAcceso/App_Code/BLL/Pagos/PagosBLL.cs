@@ -17,6 +17,17 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
         {
 
         }
+		
+		private static PagoUsuario getPagosFromRow(PagosDS.PagoUsuarioRow row)
+        {
+            return new PagoUsuario()
+            {
+                correo = row.correo,
+                userRecargo = row.usuarioRecargo,
+                monto = row.monto
+            };
+        }
+		
         private static Pagos getPagoFromRow(PagosDS.PagosRow row)
         {
             return new Pagos()
@@ -41,6 +52,23 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
             foreach (var row in table)
             {
                 Pagos obj = getPagoFromRow(row);
+                list.Add(obj);
+            }
+            return list;
+        }
+		
+		public static List<PagoUsuario> getPagosMontoByUsuarioId(int usuarioId)
+        {
+            if (usuarioId <= 0)
+                throw new Exception("El usuarioId no puede ser <=0");
+
+            PagoUsuarioTableAdapter localAdapter = new PagoUsuarioTableAdapter();
+            PagosDS.PagoUsuarioDataTable table = localAdapter.getAllPagosMonto(usuarioId);
+
+            List<PagoUsuario> list = new List<PagoUsuario>();
+            foreach (var row in table)
+            {
+                PagoUsuario obj = getPagosFromRow(row);
                 list.Add(obj);
             }
             return list;

@@ -203,7 +203,7 @@
   <xs:element name="UsuarioDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UsuarioDS" msprop:Generator_UserDSName="UsuarioDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Usuario" msprop:Generator_TableClassName="UsuarioDataTable" msprop:Generator_TableVarName="tableUsuario" msprop:Generator_TablePropName="Usuario" msprop:Generator_RowDeletingName="UsuarioRowDeleting" msprop:Generator_RowChangingName="UsuarioRowChanging" msprop:Generator_RowEvHandlerName="UsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioRowDeleted" msprop:Generator_UserTableName="Usuario" msprop:Generator_RowChangedName="UsuarioRowChanged" msprop:Generator_RowEvArgName="UsuarioRowChangeEvent" msprop:Generator_RowClassName="UsuarioRow">
+        <xs:element name="Usuario" msprop:Generator_TableClassName="UsuarioDataTable" msprop:Generator_TableVarName="tableUsuario" msprop:Generator_RowChangedName="UsuarioRowChanged" msprop:Generator_TablePropName="Usuario" msprop:Generator_RowDeletingName="UsuarioRowDeleting" msprop:Generator_RowChangingName="UsuarioRowChanging" msprop:Generator_RowEvHandlerName="UsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuarioRowDeleted" msprop:Generator_RowClassName="UsuarioRow" msprop:Generator_UserTableName="Usuario" msprop:Generator_RowEvArgName="UsuarioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="usuarioId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnusuarioId" msprop:Generator_ColumnPropNameInRow="usuarioId" msprop:Generator_ColumnPropNameInTable="usuarioIdColumn" msprop:Generator_UserColumnName="usuarioId" type="xs:int" />
@@ -245,6 +245,9 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="rolId" msprop:Generator_ColumnVarNameInTable="columnrolId" msprop:Generator_ColumnPropNameInRow="rolId" msprop:Generator_ColumnPropNameInTable="rolIdColumn" msprop:Generator_UserColumnName="rolId" type="xs:int" minOccurs="0" />
+              <xs:element name="saldoActual" msprop:Generator_ColumnVarNameInTable="columnsaldoActual" msprop:Generator_ColumnPropNameInRow="saldoActual" msprop:Generator_ColumnPropNameInTable="saldoActualColumn" msprop:Generator_UserColumnName="saldoActual" type="xs:string" minOccurs="0" />
+              <xs:element name="esEstudiante" msprop:Generator_ColumnVarNameInTable="columnesEstudiante" msprop:Generator_ColumnPropNameInRow="esEstudiante" msprop:Generator_ColumnPropNameInTable="esEstudianteColumn" msprop:Generator_UserColumnName="esEstudiante" type="xs:string" minOccurs="0" />
+              <xs:element name="tipoUsuario" msprop:Generator_ColumnVarNameInTable="columntipoUsuario" msprop:Generator_ColumnPropNameInRow="tipoUsuario" msprop:Generator_ColumnPropNameInTable="tipoUsuarioColumn" msprop:Generator_UserColumnName="tipoUsuario" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detalle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/monto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monto:" />
+            <TextView
+                android:id="@+id/montodata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/correo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo:" />
+
+            <TextView
+                android:id="@+id/correodata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

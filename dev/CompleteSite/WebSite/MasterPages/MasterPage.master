@@ -35,21 +35,26 @@
                     <ul class="nav">
                         <li class="active ">
 
-                            <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaUsuarios.aspx">
+                            <asp:HyperLink ID="ListaUsuariosLinkButton" runat="server" NavigateUrl="~/Usuarios/ListaUsuarios.aspx">
                                 <i class="fas fa-user"></i> Usuarios</asp:HyperLink>
                             <br />
-                            <asp:HyperLink runat="server" NavigateUrl="~/Usuarios/ListaRoles.aspx">
+                            <asp:HyperLink ID="ListaRolesLinkButton" runat="server" NavigateUrl="~/Usuarios/ListaRoles.aspx">
                                 <i class="fa fa-th-list"></i>Roles</asp:HyperLink>
-
-                            <br />
-                            <asp:HyperLink runat="server" NavigateUrl="~/Ruta/ListaVehiculos.aspx">
-                                <i class="fa fa-bus"></i>Vehiculos</asp:HyperLink>
                             <%--<asp:LinkButton ID="RolesForm" runat="server"
                         OnClick="RolesForm_Click" style="color:white;"
                         CssClass="btn btn-link my-2 my-sm-0">
                                           <i class="fa fa-th-list"></i>
                                             Formulario
                                         </asp:LinkButton>--%>
+                        </li>
+                           <li class="active ">
+                            
+                            <asp:HyperLink runat="server" NavigateUrl="~/Lineas/ListaLineas.aspx" >
+                                <i class="fas fa-bus-alt"></i>Registrar Lineas</asp:HyperLink>
+                        </li>
+                        <li class="active">
+                            <asp:HyperLink runat="server" NavigateUrl="~/Ruta/ListaVehiculos.aspx">
+                                <i class="fa fa-bus"></i>Vehiculos</asp:HyperLink>
                         </li>
 
                     </ul>

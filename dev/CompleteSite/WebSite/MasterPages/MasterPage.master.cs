@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using App.Utilities;
+using CapaAcceso.App_Code.BLL.Seguridad;
 
 public partial class MasterPages_MasterPage : System.Web.UI.MasterPage
 {
+    int usuarioId = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         bool isValidVersion = false;
@@ -32,49 +34,117 @@ public partial class MasterPages_MasterPage : System.Web.UI.MasterPage
             Response.Redirect("~/Login.aspx");
             return;
         }
+        else
+        {
+            usuarioId = Convert.ToInt32(Session["UserId"]);
+            esconderBotones();
+        }
 
         if (!IsPostBack)
         {
+            if (!IsUserAuthorizedPage())
+            {
+                // Transfer the user to a page that tells him that he is not authorized to 
+                // see that page.
+                Response.Redirect("~/Utils/NotAuthorized.aspx");
+            }
 
 
-//            string scripts = "<script type='text/javascript' src='" +
-//                ResolveUrl("~/Assets/Scripts/jquery.min.js") +
-//                "'></script>";
+            //            string scripts = "<script type='text/javascript' src='" +
+            //                ResolveUrl("~/Assets/Scripts/jquery.min.js") +
+            //                "'></script>";
 
-//            scripts += "<script type='text/javascript' src='" +
-//                ResolveUrl("~/Assets/Scripts/popper.min.js") +
-//                "'></script>";
+            //            scripts += "<script type='text/javascript' src='" +
+            //                ResolveUrl("~/Assets/Scripts/popper.min.js") +
+            //                "'></script>";
 
-//            scripts += "<script type='text/javascript' src='" +
-//                ResolveUrl("~/Assets/Scripts/bootstrap.min.js") +
-//                "'></script>";
+            //            scripts += "<script type='text/javascript' src='" +
+            //                ResolveUrl("~/Assets/Scripts/bootstrap.min.js") +
+            //                "'></script>";
 
-//            scripts += "<script type='text/javascript' src='" +
-//ResolveUrl("~/Assets/Scripts/perfect-scrollbar.jquery.min.js") +
-//"'></script>";
+            //            scripts += "<script type='text/javascript' src='" +
+            //ResolveUrl("~/Assets/Scripts/perfect-scrollbar.jquery.min.js") +
+            //"'></script>";
 
 
-//            scripts += "<script type='text/javascript' src='" +
-//              ResolveUrl("~/Assets/Scripts/now-ui-dashboard.min.js") +
-//              "'></script>";
+            //            scripts += "<script type='text/javascript' src='" +
+            //              ResolveUrl("~/Assets/Scripts/now-ui-dashboard.min.js") +
+            //              "'></script>";
 
-//            scripts += "<script type='text/javascript' src='" +
-//              ResolveUrl("~/Assets/Scripts/demo.js") +
-//              "'></script>";
+            //            scripts += "<script type='text/javascript' src='" +
+            //              ResolveUrl("~/Assets/Scripts/demo.js") +
+            //              "'></script>";
 
-   
 
-//            ScriptsLiteral.Text = scripts;
+
+            //            ScriptsLiteral.Text = scripts;
         }
 
     }
-
+    public void esconderBotones()
+    {
+        if (!PermisoBLL.validarPermiso(usuarioId, "REGISTRO_ROLES"))
+            ListaRolesLinkButton.Visible = false;
+        if (!PermisoBLL.validarPermiso(usuarioId, "REGISTRO_USUARIOS"))
+            ListaUsuariosLinkButton.Visible = false;
+    }
     protected void Logout_Click(object sender, EventArgs e)
     {
         Session["UserId"] = null;
         Response.Redirect("~/Login.aspx");
     }
+    private bool IsUserAuthorizedPage()
+    {
+        string currentPage = Page.Request.AppRelativeCurrentExecutionFilePath;
 
+        string[] openPages = {
+             "~/Index.aspx",
+             "~/Usuarios/ChangePassword.aspx"
+        };
+
+        for (int i = 0; i < openPages.Length; i++)
+        {
+            if (currentPage.Equals(openPages[i]))
+                return true;
+        }
+
+        // SECURITY Roles
+        string[] securityPages = new string[] {
+             "~/Usuarios/CrearRol.aspx",
+             "~/Usuarios/DetalleRol.aspx",
+             "~/Usuarios/ListaRoles.aspx"
+        };
+
+        for (int i = 0; i < securityPages.Length; i++)
+        {
+            if (currentPage.Equals(securityPages[i]) &&
+                PermisoBLL.validarPermiso(usuarioId, "REGISTRO_ROLES"))
+                return true;
+        }
+
+
+        // SECURITY Usuarios
+        string[] userPages = new string[] {
+             "~/Usuarios/ListaUsuarios.aspx",
+             "~/Lineas/ListaLineas.aspx",
+             "~/Lineas/DetalleLinea.aspx",
+             "~/Lineas/RegistroRutas.aspx",
+             //rutas
+              "~/Ruta/CrearVehiculo.aspx",
+             "~/Ruta/DetalleVehiculo.aspx",
+             "~/Ruta/ListaVehiculos.aspx"
+        };
+
+        for (int i = 0; i < userPages.Length; i++)
+        {
+            if (currentPage.Equals(userPages[i]) &&
+                PermisoBLL.validarPermiso(usuarioId, "REGISTRO_USUARIOS"))
+                return true;
+        }
+        // Nothing else worked.  The user should not be allowed to access the page.
+        return false;
+
+    }
 
     protected void RolesForm_Click(object sender, EventArgs e)
     {

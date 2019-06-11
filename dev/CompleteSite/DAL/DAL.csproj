@@ -47,9 +47,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Rutas\CoordenadasDS.cs">
-      <DependentUpon>CoordenadasDS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Rutas\CoordenadasDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

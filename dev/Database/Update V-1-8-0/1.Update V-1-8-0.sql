@@ -4,17 +4,17 @@ GO
 ALTER TABLE [tbl_seg_permisos]
 add memotecnico varchar(20) null
 
-ALTER TABLE [tbl_seg_usuario]
+ALTER TABLE [tbl_seg_usuarios]
 add tempPassword varchar(10) null
 
-alter table [tbl_seg_usuario]
+alter table [tbl_seg_usuarios]
 add rolId int null
 
-ALTER TABLE [tbl_seg_usuario]
+ALTER TABLE [tbl_seg_usuarios]
 ADD FOREIGN KEY (rolId) REFERENCES tbl_seg_roles(roleId);
 
 
---drop table tbl_seg_usuarioRoles
+drop table tbl_seg_usuarioRoles
 
 INSERT INTO [dbo].[tbl_seg_roles]
            ([descripcion]

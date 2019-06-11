@@ -28,7 +28,7 @@ public class VehiculoBLL
             vehiculoId = row.vehiculoId,
             capacidad = row.capacidad,
             placa = row.placa,
-            desactivado =row.IsdesactivadoNull() ?false : row.desactivado
+            desactivado = row.IsdesactivadoNull() ? false : row.desactivado
         };
     }
     public static Vehiculo getVehiculoByPlaca(string placa)
@@ -83,7 +83,7 @@ public class VehiculoBLL
         VehiculoTableAdapter adapter = new VehiculoTableAdapter();
         try
         {
-            adapter.UpdateVehiculo(obj.capacidad, obj.placa,obj.vehiculoId);
+            adapter.UpdateVehiculo(obj.capacidad, obj.placa, obj.vehiculoId);
         }
         catch (Exception ex)
         {

@@ -15,6 +15,7 @@ namespace VentasNur.Model
         public string codigoRecuperacion { get; set; }
         public string tempPassword { get; set; }
         public int rolId { get; set; }
+        public int tipoUsuario { get; set; }
 
         public string rolDescripcion { get; set; }
 

@@ -30,7 +30,9 @@ public class UsuarioBLL
             codigoRecuperacion = row.IscodigoRecuperacionNull() ? "" : row.codigoRecuperacion,
             rolId = row.IsrolIdNull() ? 0 : row.rolId,
             rolDescripcion = row.IsrolNull() ? "" : row.rol,
-            tempPassword = row.IstempPasswordNull()? "" : row.tempPassword
+            tempPassword = row.IstempPasswordNull()? "" : row.tempPassword,
+            esEstudiante = row.IsesEstudianteNull() ? false : row.esEstudiante,
+            saldoActual = row.IssaldoActualNull() ? 0 : row.saldoActual
         };
     }
 
@@ -73,17 +75,25 @@ public class UsuarioBLL
         {
             throw new Exception("La consulta retornó un numero incorrecto de filas");
         }
-        if (table.Rows.Count == 0)
-            return null;
         UsuarioDS.UsuarioRow row = table[0];
-        return  GetUsuarioFromRow(row);
+        return new Usuario()
+        {
+            correo = row.correo,
+            usuarioId = row.usuarioId,
+            nombreCompleto = row.nombre,
+            saldoActual = row.saldoActual,
+            tipoUsuario = row.tipoUsuario
+        };
   
     }
+
     public static void deleteUsuario(int usuarioId)
     {
         UsuarioTableAdapter adapter = new UsuarioTableAdapter();
         adapter.deleteUsuario(usuarioId);
     }
+
+
     public static string  changePassword(int usuarioId,string oldPassword,string newPassword)
     {
         string error = "";

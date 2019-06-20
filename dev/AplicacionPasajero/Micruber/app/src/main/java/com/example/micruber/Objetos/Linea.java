@@ -28,4 +28,10 @@ public class Linea {
     public void setNumeroLinea(String numeroLinea) {
         this.numeroLinea = numeroLinea;
     }
+
+    @Override
+    public String toString() {
+        return
+                "Linea=" + numeroLinea ;
+    }
 }

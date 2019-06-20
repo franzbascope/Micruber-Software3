@@ -47,4 +47,6 @@ public class CoordenadasRuta {
     public void setLongitudFin(double longitudFin) {
         this.longitudFin = longitudFin;
     }
+
+
 }

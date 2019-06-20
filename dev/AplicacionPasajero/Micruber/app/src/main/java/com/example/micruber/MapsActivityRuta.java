@@ -27,6 +27,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.micruber.Objetos.Coordenadas;
 import com.example.micruber.Objetos.Linea;
+import com.example.micruber.utiles.Preferences;
 import com.example.micruber.utiles.Util;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -199,31 +200,26 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
 
                         if(!response.trim().isEmpty()){
                             JSONArray jsonArray = new JSONArray(response);
-                            Linea lin = new Linea();
-
+                            ArrayList<Linea> lineas = new ArrayList<>();
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
                                 try {
                                     JSONObject jsonObjectHijo = jsonArray.getJSONObject(i);
+                                    Linea lin = new Linea();
                                     lin.setLineaId(jsonObjectHijo.getInt("lineaId"));
                                     lin.setNumeroLinea(jsonObjectHijo.getString("numeroLinea"));
-                                    Intent intent2=new Intent(MapsActivityRuta.this,EscogerLinea.class);
-
-                                    Toast.makeText(MapsActivityRuta.this, lin.getLineaId()+"..."+lin.getNumeroLinea(), Toast.LENGTH_LONG).show();
-                                    startActivity(intent2);
-
-
+                                    lineas.add(lin);
                                 } catch (JSONException e) {
                                     Log.e("Parser JSON", e.toString());
                                 }
                             }
-
-
-
-                           // startActivity(intent2);
-
-
+                            // startActivity(intent2);
+                            Preferences.setLineasCercanas(MapsActivityRuta.this, lineas);
                             progreso.dismiss();
+                            Intent intent2=new Intent(MapsActivityRuta.this,EscogerLinea.class);
+                            //Toast.makeText(MapsActivityRuta.this, lin.getLineaId()+"..."+lin.getNumeroLinea(), Toast.LENGTH_LONG).show();
+                            startActivity(intent2);
+                            finish();
 
 
                         }else{

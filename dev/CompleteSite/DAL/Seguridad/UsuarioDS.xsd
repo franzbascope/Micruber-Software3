@@ -245,9 +245,9 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="rolId" msprop:Generator_ColumnVarNameInTable="columnrolId" msprop:Generator_ColumnPropNameInRow="rolId" msprop:Generator_ColumnPropNameInTable="rolIdColumn" msprop:Generator_UserColumnName="rolId" type="xs:int" minOccurs="0" />
-              <xs:element name="saldoActual" msprop:Generator_ColumnVarNameInTable="columnsaldoActual" msprop:Generator_ColumnPropNameInRow="saldoActual" msprop:Generator_ColumnPropNameInTable="saldoActualColumn" msprop:Generator_UserColumnName="saldoActual" type="xs:string" minOccurs="0" />
-              <xs:element name="esEstudiante" msprop:Generator_ColumnVarNameInTable="columnesEstudiante" msprop:Generator_ColumnPropNameInRow="esEstudiante" msprop:Generator_ColumnPropNameInTable="esEstudianteColumn" msprop:Generator_UserColumnName="esEstudiante" type="xs:string" minOccurs="0" />
-              <xs:element name="tipoUsuario" msprop:Generator_ColumnVarNameInTable="columntipoUsuario" msprop:Generator_ColumnPropNameInRow="tipoUsuario" msprop:Generator_ColumnPropNameInTable="tipoUsuarioColumn" msprop:Generator_UserColumnName="tipoUsuario" type="xs:string" minOccurs="0" />
+              <xs:element name="saldoActual" msprop:Generator_ColumnVarNameInTable="columnsaldoActual" msprop:Generator_ColumnPropNameInRow="saldoActual" msprop:Generator_ColumnPropNameInTable="saldoActualColumn" msprop:Generator_UserColumnName="saldoActual" type="xs:decimal" minOccurs="0" />
+              <xs:element name="esEstudiante" msprop:Generator_ColumnVarNameInTable="columnesEstudiante" msprop:Generator_ColumnPropNameInRow="esEstudiante" msprop:Generator_ColumnPropNameInTable="esEstudianteColumn" msprop:Generator_UserColumnName="esEstudiante" type="xs:boolean" minOccurs="0" />
+              <xs:element name="tipoUsuario" msprop:Generator_ColumnVarNameInTable="columntipoUsuario" msprop:Generator_ColumnPropNameInRow="tipoUsuario" msprop:Generator_ColumnPropNameInTable="tipoUsuarioColumn" msprop:Generator_UserColumnName="tipoUsuario" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Servicios.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -50,6 +48,10 @@ namespace Servicios.Controllers
             objLinea.lineaId = 1;
             objLinea.numeroLinea = "108";
             listaLineas.Add(objLinea);
+            Linea objLinea2 = new Linea();
+            objLinea2.lineaId = 2;
+            objLinea2.numeroLinea = "6";
+            listaLineas.Add(objLinea2);
             return Request.CreateResponse<List<Linea>>(HttpStatusCode.OK, listaLineas);
         }
 

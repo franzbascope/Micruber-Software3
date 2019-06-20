@@ -18,6 +18,8 @@ namespace VentasNur.Model
         public int tipoUsuario { get; set; }
 
         public string rolDescripcion { get; set; }
+        public bool esEstudiante { get; set; }
+        public decimal saldoActual { get; set; }
 
 
 

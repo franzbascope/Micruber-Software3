@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Servicios.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ namespace Servicios.Controllers
     [RoutePrefix("api")]
     public class VehiculoController : ApiController
     {
-   
+
         [HttpGet()]
         [Route("vehiculoByPlaca")]
         public HttpResponseMessage getVehiculoByPlaca(string placa)
@@ -33,7 +32,7 @@ namespace Servicios.Controllers
                     Console.WriteLine("error al obtener el vehiculo by placa" + placa);
                     return Request.CreateResponse(HttpStatusCode.NotFound, placa);
                 }
-               
+
             }
         }
     }

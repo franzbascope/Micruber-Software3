@@ -17,17 +17,6 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
         {
 
         }
-		
-		private static PagoUsuario getPagosFromRow(PagosDS.PagoUsuarioRow row)
-        {
-            return new PagoUsuario()
-            {
-                correo = row.correo,
-                userRecargo = row.usuarioRecargo,
-                monto = row.monto
-            };
-        }
-		
         private static Pagos getPagoFromRow(PagosDS.PagosRow row)
         {
             return new Pagos()
@@ -40,6 +29,17 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
                 esIngreso = row.esIngreso
             };
         }
+
+        private static PagoUsuario getPagosFromRow(PagosDS.PagoUsuarioRow row)
+        {
+            return new PagoUsuario()
+            {
+                correo = row.correo,
+                userRecargo = row.usuarioRecargo,
+                monto = row.monto
+            };
+        }
+
         public static List<Pagos> getPagosByUsuarioId(int usuarioId, DateTime fechaDesde, DateTime fechaHasta)
         {
             if (usuarioId <= 0)
@@ -56,8 +56,8 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
             }
             return list;
         }
-		
-		public static List<PagoUsuario> getPagosMontoByUsuarioId(int usuarioId)
+
+        public static List<PagoUsuario> getPagosMontoByUsuarioId(int usuarioId)
         {
             if (usuarioId <= 0)
                 throw new Exception("El usuarioId no puede ser <=0");
@@ -74,41 +74,23 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
             return list;
         }
 
-        public static void insertPago(int usuarioId, int vehiculoId, int lineaId)
+        public static int insertPago(String userorcorreo, int monto, int usuarioId)
         {
-            Usuario objUsuario;
             if (usuarioId <= 0)
                 throw new Exception("El usuarioId no puede ser <=0");
-            try {
-                 objUsuario = UsuarioBLL.getUsuarioById(usuarioId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("error al insertar pago" + ex);
-                return;
-            }
-            int conceptoId = string.IsNullOrEmpty(ConfigurationSettings.AppSettings["conceptoIdMayores"]) ?
-                    -1 : Convert.ToInt32(ConfigurationSettings.AppSettings["conceptoIdMayores"]);
-            conceptoId = 1;
-            if (objUsuario.esEstudiante)
-            {
-                conceptoId = string.IsNullOrEmpty(ConfigurationSettings.AppSettings["conceptoIdEstudiantes"]) ?
-                 -1 : Convert.ToInt32(ConfigurationSettings.AppSettings["conceptoIdEstudiantes"]);
-                conceptoId = 2;
-            }
+            if (String.IsNullOrEmpty(userorcorreo))
+                throw new Exception("La placa no puede ser vacia ni nula");
+            if (monto <= 0)
+                throw new Exception("El monto no puede ser <=0");
 
-            try
-            {
-                PagosTableAdapter localAdapter = new PagosTableAdapter();
-                localAdapter.insertPago(usuarioId, vehiculoId, conceptoId, lineaId);
+            int? id = null;
+            PagosTableAdapter localAdapter = new PagosTableAdapter();
+            localAdapter.insertpagoApp(userorcorreo, monto, usuarioId, ref id);
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("error al insertar pago" + ex);
-            }
+            if (id == null || id.Value <= 0)
+                throw new Exception("La llave primaria no se generó correctamente");
 
-
+            return id.Value;
         }
     }
 }

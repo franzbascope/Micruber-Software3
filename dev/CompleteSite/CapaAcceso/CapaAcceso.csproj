@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\BLL\Pagos\PagosBLL.cs" />
     <Compile Include="App_Code\BLL\Rutas\CoordenadaBLL.cs" />
     <Compile Include="App_Code\BLL\Rutas\LineaBLL.cs" />
     <Compile Include="App_Code\BLL\Rutas\VehiculoBLL.cs" />
@@ -48,6 +49,8 @@
     <Compile Include="App_Code\BLL\Seguridad\RolBLL.cs" />
     <Compile Include="App_Code\BLL\Seguridad\UsuarioBLL.cs" />
     <Compile Include="App_Code\BLL\Version\VersionBLL.cs" />
+    <Compile Include="App_Code\Model\Pagos\Pagos.cs" />
+    <Compile Include="App_Code\Model\Pagos\PagoUsuario.cs" />
     <Compile Include="App_Code\Model\Rutas\Coordenada.cs" />
     <Compile Include="App_Code\Model\Rutas\CoordenadaRuta.cs" />
     <Compile Include="App_Code\Model\Rutas\Linea.cs" />

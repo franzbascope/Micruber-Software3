@@ -87,6 +87,10 @@ public partial class MasterPages_MasterPage : System.Web.UI.MasterPage
             ListaRolesLinkButton.Visible = false;
         if (!PermisoBLL.validarPermiso(usuarioId, "REGISTRO_USUARIOS"))
             ListaUsuariosLinkButton.Visible = false;
+        if (!PermisoBLL.validarPermiso(usuarioId, "REGISTRO_VEHICULOS"))
+            ListaVehiculosLinkButton.Visible = false;
+        if (!PermisoBLL.validarPermiso(usuarioId, "REGISTRO_LINEAS"))
+            ListaLineasLinkButton.Visible = false;
     }
     protected void Logout_Click(object sender, EventArgs e)
     {
@@ -122,17 +126,39 @@ public partial class MasterPages_MasterPage : System.Web.UI.MasterPage
                 return true;
         }
 
+        //  Lineas
+        string[] lineaPages = new string[] {
+             "~/Lineas/ListaLineas.aspx",
+             "~/Lineas/DetalleLinea.aspx",
+             "~/Lineas/RegistroRutas.aspx",
+        };
+
+        for (int i = 0; i < lineaPages.Length; i++)
+        {
+            if (currentPage.Equals(lineaPages[i]) &&
+                PermisoBLL.validarPermiso(usuarioId, "REGISTRO_LINEAS"))
+                return true;
+        }
+
+        //  Vehiculos
+        string[] vehiculosPages = new string[] {
+               "~/Ruta/CrearVehiculo.aspx",
+             "~/Ruta/DetalleVehiculo.aspx",
+             "~/Ruta/ListaVehiculos.aspx"
+        };
+
+        for (int i = 0; i < vehiculosPages.Length; i++)
+        {
+            if (currentPage.Equals(vehiculosPages[i]) &&
+                PermisoBLL.validarPermiso(usuarioId, "REGISTRO_VEHICULOS"))
+                return true;
+        }
 
         // SECURITY Usuarios
         string[] userPages = new string[] {
              "~/Usuarios/ListaUsuarios.aspx",
-             "~/Lineas/ListaLineas.aspx",
-             "~/Lineas/DetalleLinea.aspx",
-             "~/Lineas/RegistroRutas.aspx",
-             //rutas
-              "~/Ruta/CrearVehiculo.aspx",
-             "~/Ruta/DetalleVehiculo.aspx",
-             "~/Ruta/ListaVehiculos.aspx"
+             "~/Usuarios/DetalleUsuario.aspx",
+
         };
 
         for (int i = 0; i < userPages.Length; i++)

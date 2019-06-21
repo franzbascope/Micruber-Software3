@@ -14,7 +14,7 @@ public partial class Usuarios_DetalleRol : System.Web.UI.Page
     {
 
         if (!IsPostBack)
-           ProcesarParametros();
+            ProcesarParametros();
         else
         {
             return;
@@ -22,8 +22,8 @@ public partial class Usuarios_DetalleRol : System.Web.UI.Page
 
         try
         {
-           // List<Permiso> list = PermisoBLL.getAllPermisos();
-            List<Permiso> list =PermisoBLL.getAllPermisosByUserId(RolId);
+            // List<Permiso> list = PermisoBLL.getAllPermisos();
+            List<Permiso> list = PermisoBLL.getAllPermisosByUserId(RolId);
             AsignarPermisosGridView.DataSource = list;
             AsignarPermisosGridView.DataBind();
         }
@@ -58,25 +58,26 @@ public partial class Usuarios_DetalleRol : System.Web.UI.Page
             try
             {
                 RolId = Convert.ToInt32(Request.QueryString["RoleId"]);
-                
-                    
+
+
             }
             catch (Exception ex)
             {
 
             }
         }
-       
-        
+
+
     }
 
     protected void SaveButton_Click(object sender, EventArgs e)
     {
-            foreach (GridViewRow row in AsignarPermisosGridView.Rows)
+        RolBLL.deletePermisosByRolId(RolId);
+        foreach (GridViewRow row in AsignarPermisosGridView.Rows)
+        {
+            CheckBox chkRow = (row.Cells[0].FindControl("chkRow") as CheckBox);
+            if (chkRow.Checked)
             {
-                    CheckBox chkRow = (row.Cells[0].FindControl("chkRow") as CheckBox);
-                    if (chkRow.Checked)
-                    {
                 try
                 {
                     RolBLL.insertRolesPermisos(Convert.ToInt32(row.Cells[1].Text), RolId);
@@ -93,7 +94,7 @@ public partial class Usuarios_DetalleRol : System.Web.UI.Page
                 //string country = (row.Cells[2].FindControl("lblCountry") as Label).Text;
                 //dt.Rows.Add(name, country);
             }
-            }
+        }
         Response.Redirect("ListaRoles.aspx");
 
 

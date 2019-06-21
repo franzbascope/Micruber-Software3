@@ -111,6 +111,11 @@ namespace CapaAcceso.App_Code.BLL.Seguridad
             RolesTableAdapter adapter = new RolesTableAdapter();
             adapter.DeleteRol(roleId);
         }
+        public static void deletePermisosByRolId(int roleId)
+        {
+            RolesTableAdapter adapter = new RolesTableAdapter();
+            adapter.deletePermisosByRolId(roleId);
+        }
 
     }
 }

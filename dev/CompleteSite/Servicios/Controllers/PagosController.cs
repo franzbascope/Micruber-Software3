@@ -3,6 +3,7 @@ using CapaAcceso.App_Code.Model.Pagos;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -47,6 +48,26 @@ namespace Servicios.Controllers
                 throw ex;
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost()]
+        [Route("obtenerPagos")]
+        public HttpResponseMessage obtenerPagos([FromBody]JToken body)
+        {
+            int usuarioId = body.Value<int>("usuarioId");
+            string fechaDesde = body.Value<string>("fechaDesde");
+            string fechaHasta = body.Value<string>("fechaHasta");
+            DateTime dateDesde = DateTime.ParseExact(fechaDesde, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateTime dateHasta = DateTime.ParseExact(fechaHasta, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            try
+            {
+                List<Pagos> listaPagos = PagosBLL.getPagosByUsuarioId(usuarioId, dateDesde, dateHasta);
+                return Request.CreateResponse<List<Pagos>>(HttpStatusCode.OK, listaPagos);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
     }

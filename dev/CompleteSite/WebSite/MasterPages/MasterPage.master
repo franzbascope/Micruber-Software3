@@ -49,11 +49,11 @@
                         </li>
                            <li class="active ">
                             
-                            <asp:HyperLink runat="server" NavigateUrl="~/Lineas/ListaLineas.aspx" >
+                            <asp:HyperLink ID="ListaLineasLinkButton" runat="server" NavigateUrl="~/Lineas/ListaLineas.aspx" >
                                 <i class="fas fa-bus-alt"></i>Registrar Lineas</asp:HyperLink>
                         </li>
                         <li class="active">
-                            <asp:HyperLink runat="server" NavigateUrl="~/Ruta/ListaVehiculos.aspx">
+                            <asp:HyperLink ID="ListaVehiculosLinkButton" runat="server" NavigateUrl="~/Ruta/ListaVehiculos.aspx">
                                 <i class="fa fa-bus"></i>Vehiculos</asp:HyperLink>
                         </li>
 

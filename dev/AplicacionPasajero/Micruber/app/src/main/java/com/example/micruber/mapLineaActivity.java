@@ -44,7 +44,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 
-public class mapLineaActivity extends AppCompatActivity {
+public class    mapLineaActivity extends AppCompatActivity {
 
     MapView mMapView;
     private GoogleMap googleMap;

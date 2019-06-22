@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:orientation="vertical"
+    tools:context=".activityListaPago">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:text="Lista de pagos"
+        android:layout_marginBottom="20dp"
+        android:textSize="30dp"/>
+
+    <ListView
+        android:id="@+id/lvData"
+        android:layout_width="331dp"
+        android:layout_height="430dp" />
+
+
+</LinearLayout>

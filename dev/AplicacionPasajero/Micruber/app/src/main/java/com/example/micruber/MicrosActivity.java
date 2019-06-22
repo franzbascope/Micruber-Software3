@@ -13,16 +13,29 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MicrosActivity extends AppCompatActivity {
+
+    Button btnMovi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_micros);
+        btnMovi=findViewById(R.id.btnMovimientos);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        btnMovi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(MicrosActivity.this, activityListaPago.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

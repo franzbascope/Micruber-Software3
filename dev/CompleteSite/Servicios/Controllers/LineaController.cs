@@ -43,15 +43,7 @@ namespace Servicios.Controllers
         [Route("ruta")]
         public HttpResponseMessage getLineasByCoordenadas([FromBody]CoordenadaRuta ruta)
         {
-            List<Linea> listaLineas = new List<Linea>();
-            Linea objLinea = new Linea();
-            objLinea.lineaId = 1;
-            objLinea.numeroLinea = "108";
-            listaLineas.Add(objLinea);
-            Linea objLinea2 = new Linea();
-            objLinea2.lineaId = 2;
-            objLinea2.numeroLinea = "6";
-            listaLineas.Add(objLinea2);
+            List<Linea> listaLineas = LineaBLL.getLineasCercanas((decimal)ruta.latitud, (decimal)ruta.latitudFin, (decimal)ruta.longitud, (decimal)ruta.longitudFin);
             return Request.CreateResponse<List<Linea>>(HttpStatusCode.OK, listaLineas);
         }
 

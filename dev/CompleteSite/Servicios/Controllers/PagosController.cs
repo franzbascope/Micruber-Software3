@@ -51,7 +51,7 @@ namespace Servicios.Controllers
         }
 
         [HttpPost()]
-        [Route("obtenerPagos")]
+        [Route("obtenerPagosPasajeros")]
         public HttpResponseMessage obtenerPagos([FromBody]JToken body)
         {
             int usuarioId = body.Value<int>("usuarioId");

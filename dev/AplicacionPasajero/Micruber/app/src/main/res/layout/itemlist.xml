@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/idFecha"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="233dp"
+        android:layout_marginLeft="233dp"
+        android:layout_marginTop="15dp"
+        android:text="FECHA" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="79dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView16"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-6dp"
+        android:layout_marginTop="16dp"
+        android:text="Fecha:" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/idFecha"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="51dp"
+        android:text="Linea:" />
+
+    <TextView
+        android:id="@+id/txtLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idFecha"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="243dp"
+        android:layout_marginLeft="243dp"
+        android:layout_marginTop="28dp"
+        android:text="LINEA" />
+
+</RelativeLayout>

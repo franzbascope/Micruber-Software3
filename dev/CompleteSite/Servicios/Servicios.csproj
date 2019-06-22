@@ -183,6 +183,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\PagosController.cs" />
+    <Compile Include="Controllers\RutasController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Controllers\LineaController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />

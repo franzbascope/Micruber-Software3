@@ -176,16 +176,15 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    public void goToMapa(View view){
+    /*public void goToMapa(View view){
         Intent intent = new Intent(LoginActivity.this, MapaActivity.class);
         startActivity(intent);
         finish();
-    }
+    }*/
 
-    public void iniciar_map(View view){
+    public void goToMapa(View view){
         Intent intent = new Intent(LoginActivity.this, mapLineaActivity.class);
         startActivity(intent);
         finish();
     }
 }
-

@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.micruber.utiles.Preferences;
 import com.example.micruber.utiles.Util;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -99,18 +100,19 @@ public class    mapLineaActivity extends AppCompatActivity {
     }
 
     public void drawRoute(String correo, final Bundle savedInstanceState, final Context contexto) {
-        String url = getString(R.string.url_master) + "/mapa/drawRoute";
+        String url = getString(R.string.url_master) + "/drawRoute";
 
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             //Pasando parametros
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("rutaId", 1);
+            jsonBody.put("rutaId", 3);
             ////////////
+            url += "?id=" + 3; //Preferences.getLinea(this);
 
             final String mRequestBody = jsonBody.toString();
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
@@ -132,7 +134,7 @@ public class    mapLineaActivity extends AppCompatActivity {
                                     CameraPosition cameraPosition = null;                   // Creates a CameraPosition from the builder
                                     try {
                                         cameraPosition = new CameraPosition.Builder()
-                                                .target(new LatLng(obj.getDouble("lat"), obj.getDouble("lng")))      // Sets the center of the map to Mountain View
+                                                .target(new LatLng(obj.getDouble("latitud"), obj.getDouble("longitud")))      // Sets the center of the map to Mountain View
                                                 .zoom(27)                   // Sets the zoom
                                                 .build();
                                     } catch (JSONException e) {
@@ -157,14 +159,14 @@ public class    mapLineaActivity extends AppCompatActivity {
                                                 //obj2 = arr.getJSONObject(i + 1);
                                                 location1 = new Location("a");
                                                 //location2 = new Location("b");
-                                                location1.setLatitude(obj.getDouble("lat"));
-                                                location1.setLongitude(obj.getDouble("lng"));
+                                                location1.setLatitude(obj.getDouble("latitud"));
+                                                location1.setLongitude(obj.getDouble("longitud"));
                                                 /*location2.setLatitude(obj2.getDouble("lat"));
                                                 location2.setLongitude(obj2.getDouble("lng"));*/
 
                                                 //dist += location1.distanceTo(location2);
                                                 if (i < 1) {
-                                                    latlng1 = new LatLng(obj.getDouble("lat"), obj.getDouble("lng"));
+                                                    latlng1 = new LatLng(obj.getDouble("latitud"), obj.getDouble("longitud"));
                                                     googleMap.addMarker(new MarkerOptions()
                                                             .position(latlng1)
                                                             .title("Micruber")
@@ -173,7 +175,7 @@ public class    mapLineaActivity extends AppCompatActivity {
                                                     points.add(latlng1);
 
                                                 } else {
-                                                    latlng1 = new LatLng(obj.getDouble("lat"), obj.getDouble("lng"));
+                                                    latlng1 = new LatLng(obj.getDouble("latitud"), obj.getDouble("longitud"));
                                                     points.add(latlng1);
                                                 }
 
@@ -209,14 +211,13 @@ public class    mapLineaActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    progreso.dismiss();
 
                     if (error instanceof NetworkError) {
                         Util.mostrarDialogoSinInternet(mapLineaActivity.this);
                     } else if (error instanceof TimeoutError) {
 
                     } else if (error instanceof ServerError) {
-                        Toast.makeText(mapLineaActivity.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mapLineaActivity.this, "ERROR CARGAR MAPA", Toast.LENGTH_SHORT).show();
                     }
 
                     Log.e("LOG_VOLLEY", error.toString());

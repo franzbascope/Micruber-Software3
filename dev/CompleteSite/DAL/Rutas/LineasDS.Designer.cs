@@ -287,6 +287,10 @@ namespace DAL.Rutas {
             
             private global::System.Data.DataColumn columnperteneceLinea;
             
+            private global::System.Data.DataColumn columndistanciaCaminarMetros;
+            
+            private global::System.Data.DataColumn columndistanciaRecorridoMetros;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public LineasDataTable() {
@@ -354,6 +358,22 @@ namespace DAL.Rutas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn distanciaCaminarMetrosColumn {
+                get {
+                    return this.columndistanciaCaminarMetros;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn distanciaRecorridoMetrosColumn {
+                get {
+                    return this.columndistanciaRecorridoMetros;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +409,15 @@ namespace DAL.Rutas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public LineasRow AddLineasRow(string numeroLinea, int rutaId, bool perteneceLinea) {
+            public LineasRow AddLineasRow(string numeroLinea, int rutaId, bool perteneceLinea, decimal distanciaCaminarMetros, decimal distanciaRecorridoMetros) {
                 LineasRow rowLineasRow = ((LineasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         numeroLinea,
                         rutaId,
-                        perteneceLinea};
+                        perteneceLinea,
+                        distanciaCaminarMetros,
+                        distanciaRecorridoMetros};
                 rowLineasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLineasRow);
                 return rowLineasRow;
@@ -429,6 +451,8 @@ namespace DAL.Rutas {
                 this.columnnumeroLinea = base.Columns["numeroLinea"];
                 this.columnrutaId = base.Columns["rutaId"];
                 this.columnperteneceLinea = base.Columns["perteneceLinea"];
+                this.columndistanciaCaminarMetros = base.Columns["distanciaCaminarMetros"];
+                this.columndistanciaRecorridoMetros = base.Columns["distanciaRecorridoMetros"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -442,6 +466,10 @@ namespace DAL.Rutas {
                 base.Columns.Add(this.columnrutaId);
                 this.columnperteneceLinea = new global::System.Data.DataColumn("perteneceLinea", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnperteneceLinea);
+                this.columndistanciaCaminarMetros = new global::System.Data.DataColumn("distanciaCaminarMetros", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndistanciaCaminarMetros);
+                this.columndistanciaRecorridoMetros = new global::System.Data.DataColumn("distanciaRecorridoMetros", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndistanciaRecorridoMetros);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnlineaId}, true));
                 this.columnlineaId.AutoIncrement = true;
@@ -652,6 +680,39 @@ namespace DAL.Rutas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal distanciaCaminarMetros {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableLineas.distanciaCaminarMetrosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'distanciaCaminarMetros\' de la tabla \'Lineas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLineas.distanciaCaminarMetrosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal distanciaRecorridoMetros {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableLineas.distanciaRecorridoMetrosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'distanciaRecorridoMetros\' de la tabla \'Lineas\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableLineas.distanciaRecorridoMetrosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnumeroLineaNull() {
                 return this.IsNull(this.tableLineas.numeroLineaColumn);
             }
@@ -684,6 +745,30 @@ namespace DAL.Rutas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetperteneceLineaNull() {
                 this[this.tableLineas.perteneceLineaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdistanciaCaminarMetrosNull() {
+                return this.IsNull(this.tableLineas.distanciaCaminarMetrosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdistanciaCaminarMetrosNull() {
+                this[this.tableLineas.distanciaCaminarMetrosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdistanciaRecorridoMetrosNull() {
+                return this.IsNull(this.tableLineas.distanciaRecorridoMetrosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdistanciaRecorridoMetrosNull() {
+                this[this.tableLineas.distanciaRecorridoMetrosColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -862,7 +947,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "dbo.usp_rutas_getAllLineas";
@@ -894,18 +979,27 @@ namespace DAL.Rutas.LineasDSTableAdapters {
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@intVehiculoId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "dbo.usp_rutas_insertLinea";
+            this._commandCollection[5].CommandText = "dbo.usp_rutas_getLineasCercanas";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numeroLinea", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.InputOutput, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@decLatitudInicio", global::System.Data.SqlDbType.Decimal, 13, global::System.Data.ParameterDirection.Input, 20, 10, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@decLongitudInicio", global::System.Data.SqlDbType.Decimal, 13, global::System.Data.ParameterDirection.Input, 20, 10, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@decLatitudFin", global::System.Data.SqlDbType.Decimal, 13, global::System.Data.ParameterDirection.Input, 20, 10, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@decLongitudFin", global::System.Data.SqlDbType.Decimal, 13, global::System.Data.ParameterDirection.Input, 20, 10, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "dbo.usp_rutas_updateLinea";
+            this._commandCollection[6].CommandText = "dbo.usp_rutas_insertLinea";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numeroLinea", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.InputOutput, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "dbo.usp_rutas_updateLinea";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numeroLinea", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lineaId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -973,6 +1067,41 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual LineasDS.LineasDataTable getLineasCercanas(global::System.Nullable<decimal> decLatitudInicio, global::System.Nullable<decimal> decLongitudInicio, global::System.Nullable<decimal> decLatitudFin, global::System.Nullable<decimal> decLongitudFin) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((decLatitudInicio.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((decimal)(decLatitudInicio.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((decLongitudInicio.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((decimal)(decLongitudInicio.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((decLatitudFin.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((decimal)(decLatitudFin.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((decLongitudFin.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((decimal)(decLongitudFin.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            LineasDS.LineasDataTable dataTable = new LineasDS.LineasDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int deleteLinea(global::System.Nullable<int> intLineaId) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((intLineaId.HasValue == true)) {
@@ -1002,7 +1131,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual object insertLinea(string numeroLinea, ref global::System.Nullable<int> lineaId) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((numeroLinea == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -1049,7 +1178,7 @@ namespace DAL.Rutas.LineasDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int updateLinea(string numeroLinea, global::System.Nullable<int> lineaId) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
             if ((numeroLinea == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }

@@ -27,7 +27,9 @@ public class LineaBLL
         {
             lineaId = row.lineaId,
             numeroLinea = row.numeroLinea,
-            perteneceLinea = row.IsperteneceLineaNull() ? false: row.perteneceLinea
+            perteneceLinea = row.IsperteneceLineaNull() ? false: row.perteneceLinea,
+            distanciaCaminarMetros = row.IsdistanciaCaminarMetrosNull() ? 0 : row.distanciaCaminarMetros,
+            distanciaRecorridoMetros = row.IsdistanciaRecorridoMetrosNull() ? 0 : row.distanciaRecorridoMetros
         };
     }
     public static List<Linea> getLineaByVehiculoId(int vehiculoId)
@@ -51,6 +53,20 @@ public class LineaBLL
     {
         LineasTableAdapter localAdapter = new LineasTableAdapter();
         LineasDS.LineasDataTable table = localAdapter.getAllLineas();
+
+        List<Linea> list = new List<Linea>();
+        foreach (var row in table)
+        {
+            Linea obj = getLineaFromRow(row);
+            list.Add(obj);
+        }
+        return list;
+    }
+
+    public static List<Linea> getLineasCercanas(decimal latitudInicio,decimal latitudFin,decimal longitudInicio,decimal longitudFin)
+    {
+        LineasTableAdapter localAdapter = new LineasTableAdapter();
+        LineasDS.LineasDataTable table = localAdapter.getLineasCercanas(latitudInicio,longitudInicio,latitudFin,longitudFin);
 
         List<Linea> list = new List<Linea>();
         foreach (var row in table)

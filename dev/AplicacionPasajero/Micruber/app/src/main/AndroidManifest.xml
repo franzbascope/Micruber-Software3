@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activityListaPago"></activity>
+        <activity android:name=".rangoPago"></activity>
+        <activity android:name=".activityListaPago"
+            android:label="Lista de pagos" />
         <activity android:name=".EscogerLinea" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

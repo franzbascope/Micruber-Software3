@@ -92,5 +92,42 @@ namespace CapaAcceso.App_Code.BLL.PagosBLL
 
             return id.Value;
         }
+        public static void insertPagoUsuario(int usuarioId, int vehiculoId, int lineaId)
+        {
+            Usuario objUsuario;
+            if (usuarioId <= 0)
+                throw new Exception("El usuarioId no puede ser <=0");
+            try
+            {
+                objUsuario = UsuarioBLL.getUsuarioById(usuarioId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error al insertar pago" + ex);
+                return;
+            }
+            int conceptoId = string.IsNullOrEmpty(ConfigurationSettings.AppSettings["conceptoIdMayores"]) ?
+                    -1 : Convert.ToInt32(ConfigurationSettings.AppSettings["conceptoIdMayores"]);
+            conceptoId = 2;
+            if (objUsuario.esEstudiante)
+            {
+                conceptoId = string.IsNullOrEmpty(ConfigurationSettings.AppSettings["conceptoIdEstudiantes"]) ?
+                 -1 : Convert.ToInt32(ConfigurationSettings.AppSettings["conceptoIdEstudiantes"]);
+                conceptoId = 1;
+            }
+
+            try
+            {
+                PagosTableAdapter localAdapter = new PagosTableAdapter();
+                localAdapter.insertPago(usuarioId, vehiculoId, conceptoId, lineaId);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error al insertar pago" + ex);
+            }
+
+
+        }
     }
 }

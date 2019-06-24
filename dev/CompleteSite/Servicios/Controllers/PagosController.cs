@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using VentasNur.Model;
 
 namespace Servicios.Controllers
 {
@@ -68,6 +69,25 @@ namespace Servicios.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
+        }
+        [HttpPost()]
+        [Route("pagosUsuario")]
+        public HttpResponseMessage PostPagosUsuarios([FromBody]Pagos pago)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    PagosBLL.insertPagoUsuario(pago.usuarioId, pago.vehiculoId, pago.lineaId);
+                    Usuario objUsuario = UsuarioBLL.getUsuarioById(pago.usuarioId);
+                    return Request.CreateResponse<Usuario>(HttpStatusCode.OK, objUsuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
     }

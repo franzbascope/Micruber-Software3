@@ -74,6 +74,19 @@ namespace Servicios.Controllers
             }
         }
 
+        [HttpGet()]
+        [Route("usuarios")]
+        public HttpResponseMessage getUsuarioByCodigoNFC(string codigoNFC)
+        {
+            if (String.IsNullOrEmpty(codigoNFC))
+                return Request.CreateResponse(HttpStatusCode.NotFound, codigoNFC);
+            else
+            {
+                Usuario user = UsuarioBLL.getUsuarioByCodigoNFC(codigoNFC);
+                return Request.CreateResponse<Usuario>(HttpStatusCode.OK, user);
+            }
+        }
+
         [HttpPost()]
         [Route("usuarios")]
         public IHttpActionResult PostUsuario([FromBody]Usuario usuario)

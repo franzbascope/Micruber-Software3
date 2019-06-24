@@ -65,6 +65,20 @@ public class UsuarioBLL
         return list[0];
     }
 
+    public static Usuario getUsuarioByCodigoNFC(string codigoNFC)
+    {
+        UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+        UsuarioDS.UsuarioDataTable table = adapter.getUsuarioByCodigoNFC(codigoNFC);
+
+        List<Usuario> list = new List<Usuario>();
+        foreach (var row in table)
+        {
+            Usuario obj = GetUsuarioFromRow(row);
+            list.Add(obj);
+        }
+        return list[0];
+    }
+
 
     public static Usuario autenticarUsuario(string username, string password)
     {

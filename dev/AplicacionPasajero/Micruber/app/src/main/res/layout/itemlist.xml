@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/idFecha"
-        android:layout_width="74dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -38,14 +38,14 @@
 
     <TextView
         android:id="@+id/txtLinea"
-        android:layout_width="wrap_content"
+        android:layout_width="85dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/idFecha"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="243dp"
-        android:layout_marginLeft="243dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginLeft="237dp"
+        android:layout_marginTop="30dp"
         android:text="LINEA" />
 
 </RelativeLayout>

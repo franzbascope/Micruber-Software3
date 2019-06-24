@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Pago {
     private int pagoId;
-    private Date fechaPago;
+    private String fechaPago;
     private int conceptoId;
     private String conceptoDescripcion;
     private String numeroLinea;
@@ -12,12 +12,12 @@ public class Pago {
     private int usuarioId;
     private int vehiculoId;
     private int lineaId;
-    private Date fechaPagoForDisplay;
+    private String fechaPagoForDisplay;
 
     public Pago() {
     }
 
-    public Pago(int pagoId, Date fechaPago, int conceptoId, String conceptoDescripcion, String numeroLinea, boolean esIngreso, int usuarioId, int vehiculoId, int lineaId, Date fechaPagoForDisplay) {
+    public Pago(int pagoId, String fechaPago, int conceptoId, String conceptoDescripcion, String numeroLinea, boolean esIngreso, int usuarioId, int vehiculoId, int lineaId, String fechaPagoForDisplay) {
         this.pagoId = pagoId;
         this.fechaPago = fechaPago;
         this.conceptoId = conceptoId;
@@ -38,17 +38,21 @@ public class Pago {
         this.pagoId = pagoId;
     }
 
-    public Date getFechaPago() {
+    public String getFechaPago() {
         return fechaPago;
     }
 
-    public void setFechaPago(Date fechaPago) {
+    public void setFechaPago(String fechaPago) {
         this.fechaPago = fechaPago;
     }
 
     public int getConceptoId() {
         return conceptoId;
     }
+/*
+    public  String fechaForDisplay (Date d){
+
+    }*/
 
     public void setConceptoId(int conceptoId) {
         this.conceptoId = conceptoId;
@@ -102,11 +106,11 @@ public class Pago {
         this.lineaId = lineaId;
     }
 
-    public Date getFechaPagoForDisplay() {
+    public String getFechaPagoForDisplay() {
         return fechaPagoForDisplay;
     }
 
-    public void setFechaPagoForDisplay(Date fechaPagoForDisplay) {
+    public void setFechaPagoForDisplay(String fechaPagoForDisplay) {
         this.fechaPagoForDisplay = fechaPagoForDisplay;
     }
 }

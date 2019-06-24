@@ -18,24 +18,15 @@ import android.widget.Toast;
 
 public class MicrosActivity extends AppCompatActivity {
 
-    Button btnMovi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_micros);
-        btnMovi=findViewById(R.id.btnMovimientos);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        btnMovi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent intent=new Intent(MicrosActivity.this, activityListaPago.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 
@@ -59,6 +50,10 @@ public class MicrosActivity extends AppCompatActivity {
             case R.id.action_verRuta:
                 Intent intentRuta = new Intent(MicrosActivity.this, MapsActivityRuta.class);
                 startActivity(intentRuta);
+                break;
+            case R.id.action_verPago:
+                Intent intentPago = new Intent(MicrosActivity.this, activityListaPago.class);
+                startActivity(intentPago);
                 break;
 
             default:

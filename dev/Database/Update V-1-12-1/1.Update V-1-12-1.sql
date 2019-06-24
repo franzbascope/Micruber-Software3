@@ -147,3 +147,17 @@ BEGIN
 
 END
 GO
+
+DELETE FROM [dbo].[tbl_Version]
+GO
+
+INSERT INTO [dbo].[tbl_Version]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,12
+           ,1)
+GO
+

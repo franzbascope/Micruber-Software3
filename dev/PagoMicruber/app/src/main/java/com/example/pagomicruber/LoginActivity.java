@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         }else{
-                            Toast.makeText(LoginActivity.this, "Credenciales incorrectos", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "Tipo de usuario no es de recargo", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (JSONException e) {

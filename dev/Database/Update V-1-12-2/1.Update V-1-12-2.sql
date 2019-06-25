@@ -1,5 +1,9 @@
 USE [micruberDB]
 GO
+
+alter table tbl_seg_usuario
+add  [codigoNFC] varchar(50)
+go
 /****** Object:  StoredProcedure [dbo].[usp_seg_getUsuarioByCodigoNFC]    Script Date: 24/06/2019 04:34:20 p. m. ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_seg_getUsuarioByCodigoNFC]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[usp_seg_getUsuarioByCodigoNFC]

@@ -3,6 +3,7 @@ package com.example.pagomicruber;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -90,7 +91,6 @@ public class Recargo extends AppCompatActivity {
                         }
 
                         progreso.dismiss();
-
                         finish();
 
 

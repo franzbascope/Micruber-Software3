@@ -53,9 +53,11 @@ public class ListPagos extends AppCompatActivity {
 
         lvItems = (ListView) findViewById(R.id.lvItems);
         //Lista de pagos voley
-        adapPago = new PagoAdapter(listaPagos(Preferences.getUsuario(this)), this);
 
-        lvItems.setAdapter(adapPago);
+        listarPagos();
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -69,20 +71,18 @@ public class ListPagos extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        //adapPago.swapItems(listaPagos(Preferences.getUsuario(this)));
-
+    protected void onRestart() {
+        super.onRestart();
+        listarPagos();
     }
-
-
 
     public void goPago() {
         Intent intent = new Intent(ListPagos.this, Recargo.class);
         startActivity(intent);
     }
 
-    public ArrayList<PagoView> listaPagos(Usuario usuario) {
+    public void listarPagos() {
+        Usuario usuario = Preferences.getUsuario(this);
         final ArrayList<PagoView> listaPago = new ArrayList<>();
         String url = getString(R.string.url_master) + "/obtenerPagos";
         try {
@@ -115,6 +115,10 @@ public class ListPagos extends AppCompatActivity {
                             }
 
                             progreso.dismiss();
+
+                            adapPago = new PagoAdapter(listaPago, ListPagos.this);
+
+                            lvItems.setAdapter(adapPago);
 
 
                         } else {
@@ -159,7 +163,6 @@ public class ListPagos extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return listaPago;
     }
 
 }

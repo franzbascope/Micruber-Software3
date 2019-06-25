@@ -53,6 +53,7 @@ public class PagoAdapter extends BaseAdapter {
     }
 
     public void swapItems(ArrayList<PagoView> items) {
+        this.listPagos.clear();
         this.listPagos = items;
         notifyDataSetChanged();
     }

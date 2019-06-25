@@ -56,8 +56,6 @@ public class ListPagos extends AppCompatActivity {
 
         listarPagos();
 
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

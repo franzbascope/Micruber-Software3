@@ -28,10 +28,12 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
-public class Recargo extends AppCompatActivity {
+public class Recargo extends AppCompatActivity implements Listener {
 
     private TextInputEditText et_correo, monto;
     private ProgressDialog progreso;
+    private boolean isDialogDisplayed = false;
+    private boolean isWrite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,5 +136,16 @@ public class Recargo extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onDialogDisplayed() {
+        isDialogDisplayed = true;
+    }
+
+    @Override
+    public void onDialogDismissed() {
+        isDialogDisplayed = false;
+        isWrite = false;
     }
 }

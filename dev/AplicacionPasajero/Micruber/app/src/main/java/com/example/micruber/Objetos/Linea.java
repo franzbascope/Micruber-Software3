@@ -4,6 +4,10 @@ public class Linea {
 
     private int lineaId;
     private String numeroLinea;
+    private double distanciaCaminarMetros;
+    private double distanciaRecorridoMetros;
+    private int tiempoCaminata;
+    private int tiempoRecorrido;
 
     public Linea() {
     }
@@ -27,6 +31,38 @@ public class Linea {
 
     public void setNumeroLinea(String numeroLinea) {
         this.numeroLinea = numeroLinea;
+    }
+
+    public double getDistanciaCaminarMetros() {
+        return distanciaCaminarMetros;
+    }
+
+    public void setDistanciaCaminarMetros(double distanciaCaminarMetros) {
+        this.distanciaCaminarMetros = distanciaCaminarMetros;
+    }
+
+    public double getDistanciaRecorridoMetros() {
+        return distanciaRecorridoMetros;
+    }
+
+    public void setDistanciaRecorridoMetros(double distanciaRecorridoMetros) {
+        this.distanciaRecorridoMetros = distanciaRecorridoMetros;
+    }
+
+    public int getTiempoCaminata() {
+        return tiempoCaminata;
+    }
+
+    public void setTiempoCaminata(int tiempoCaminata) {
+        this.tiempoCaminata = tiempoCaminata;
+    }
+
+    public int getTiempoRecorrido() {
+        return tiempoRecorrido;
+    }
+
+    public void setTiempoRecorrido(int tiempoRecorrido) {
+        this.tiempoRecorrido = tiempoRecorrido;
     }
 
     @Override

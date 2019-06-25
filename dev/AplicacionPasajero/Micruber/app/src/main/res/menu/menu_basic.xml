@@ -8,11 +8,14 @@
         android:title="Cambiar contraseña"
         app:showAsAction="never" />
 
+    <!--
     <item
         android:id="@+id/action_verRuta"
         android:orderInCategory="100"
         android:title="Ver ruta"
         app:showAsAction="never" />
+
+        -->
     <item
         android:id="@+id/action_verPago"
         android:orderInCategory="100"

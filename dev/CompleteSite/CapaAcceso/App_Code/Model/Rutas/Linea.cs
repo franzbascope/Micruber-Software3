@@ -21,7 +21,7 @@ namespace VentasNur.Model
         {
             get
             {
-                return Convert.ToInt32( (double)distanciaCaminarMetros / (double) velocidadCaminar);
+                return Convert.ToInt32( (double)distanciaCaminarMetros / (double) velocidadCaminar / 60);
             }
         }
 
@@ -29,7 +29,7 @@ namespace VentasNur.Model
         {
             get
             {
-                return Convert.ToInt32((double)distanciaRecorridoMetros / (double)velocidadCaminar);
+                return Convert.ToInt32((double)distanciaRecorridoMetros / (double) velocidadTransporte / 60);
             }
         }
     }

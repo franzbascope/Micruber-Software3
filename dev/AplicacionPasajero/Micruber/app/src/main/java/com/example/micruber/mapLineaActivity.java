@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.micruber.Objetos.Coordenadas;
 import com.example.micruber.utiles.Preferences;
 import com.example.micruber.utiles.Util;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,28 +36,44 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 
-public class    mapLineaActivity extends AppCompatActivity {
+public class mapLineaActivity extends AppCompatActivity{
 
     MapView mMapView;
+    private PolylineOptions opts;
     private GoogleMap googleMap;
     private int id_carrera;
     private JSONArray carrera;
     private ProgressDialog progreso;
 
+
+    private DatabaseReference mDatabase;
+    private LatLng ubicacionMicro;
+    //TODO obtener la llave con el web service de Beto
+    private String key = "-LiBzlK5fU2CmWn8Rubo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_linea);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("coordenadas");
 
         /*JSONObject trama = new JSONObject();
         try {
@@ -108,7 +125,7 @@ public class    mapLineaActivity extends AppCompatActivity {
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("rutaId", 3);
             ////////////
-            url += "?id=" + 3; //Preferences.getLinea(this);
+            url += "?id=" + Preferences.getLinea(this).getLineaId(); //Preferences.getLinea(this);
 
             final String mRequestBody = jsonBody.toString();
 
@@ -135,7 +152,7 @@ public class    mapLineaActivity extends AppCompatActivity {
                                     try {
                                         cameraPosition = new CameraPosition.Builder()
                                                 .target(new LatLng(obj.getDouble("latitud"), obj.getDouble("longitud")))      // Sets the center of the map to Mountain View
-                                                .zoom(27)                   // Sets the zoom
+                                                .zoom(17)                   // Sets the zoom
                                                 .build();
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -182,13 +199,15 @@ public class    mapLineaActivity extends AppCompatActivity {
                                             }
 
                                             if (points.size() > 0) {
-                                                PolylineOptions opts = new PolylineOptions().addAll(points).color(Color.BLUE).width(8);
+                                                opts = new PolylineOptions().addAll(points).color(Color.BLUE).width(8);
                                                 mMap.addPolyline(opts);
                                             }
                                             LatLngBounds.Builder builder = new LatLngBounds.Builder();
                                             builder.include(points.get(0));
                                             builder.include(points.get(points.size() - 1));
                                             LatLngBounds bounds = builder.build();
+
+                                            seguimiento();
 
 
                                         } catch (JSONException e) {
@@ -242,6 +261,38 @@ public class    mapLineaActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void seguimiento(){
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                googleMap.clear();
+                googleMap.addPolyline(opts);
+                Coordenadas coordenadas = dataSnapshot.child(key).getValue(Coordenadas.class);
+                if(coordenadas != null){
+                    ubicacionMicro = new LatLng(coordenadas.getLatitud(), coordenadas.getLongitud());
+                    //Toast.makeText(MapaActivity.this, String.valueOf(ubicacionMicro.latitude), Toast.LENGTH_SHORT).show();
+                    //mMap.addMarker(new MarkerOptions().position(ubicacionMicro).title("Linea 10"));
+                    //PointOfInterest pointOfInterest = new PointOfInterest(ubicacionMicro, "linea10", "Linea 10");
+                    MarkerOptions marker = new MarkerOptions().position(ubicacionMicro);
+                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                    googleMap.addMarker(marker);
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionMicro));
+                    googleMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+                }else{
+                    googleMap.clear();
+                    googleMap.addPolyline(opts);
+                    Toast.makeText(mapLineaActivity.this, "Su micro ha terminado el servicio", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        mDatabase.addValueEventListener(postListener);
     }
 
 }

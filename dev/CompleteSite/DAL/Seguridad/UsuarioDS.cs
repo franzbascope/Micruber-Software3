@@ -6,3 +6,12 @@
     {
     }
 }
+
+namespace DAL.Seguridad.UsuarioDSTableAdapters
+{
+
+
+    public partial class cantidadGenteEnUnMesTableAdapter
+    {
+    }
+}

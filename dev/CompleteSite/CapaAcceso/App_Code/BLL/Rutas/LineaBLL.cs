@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Net;
 using DAL.Rutas;
 using DAL.Rutas.LineasDSTableAdapters;
+using CapaAcceso.App_Code.BLL.Seguridad;
 
 /// <summary>
 /// Descripción breve de UsuarioBLL
@@ -62,7 +63,22 @@ public class LineaBLL
         }
         return list;
     }
+    public static List<Reporte> GetNroLineaUltimoMes()
+    {
+        DAL.Rutas.LineasDSTableAdapters.cantidadGenteEnUnMesTableAdapter adapter = new DAL.Rutas.LineasDSTableAdapters.cantidadGenteEnUnMesTableAdapter();
+        LineasDS.cantidadGenteEnUnMesDataTable table = adapter.GetCantidadPersonasMes();
 
+        List<Reporte> list = new List<Reporte>();
+        foreach(var row in table)
+        {
+            list.Add(new Reporte()
+            {
+                numeroLinea = row.numeroLinea,
+                nroVeces = row.nroVeces
+            });
+        }
+        return list;
+    }
     public static List<Linea> getLineasCercanas(decimal latitudInicio,decimal latitudFin,decimal longitudInicio,decimal longitudFin)
     {
         LineasTableAdapter localAdapter = new LineasTableAdapter();

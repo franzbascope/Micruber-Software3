@@ -36,10 +36,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
@@ -47,6 +49,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -152,7 +155,7 @@ public class mapLineaActivity extends AppCompatActivity{
                                     try {
                                         cameraPosition = new CameraPosition.Builder()
                                                 .target(new LatLng(obj.getDouble("latitud"), obj.getDouble("longitud")))      // Sets the center of the map to Mountain View
-                                                .zoom(17)                   // Sets the zoom
+                                                .zoom(14)                   // Sets the zoom
                                                 .build();
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -269,22 +272,55 @@ public class mapLineaActivity extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 googleMap.clear();
                 googleMap.addPolyline(opts);
-                Coordenadas coordenadas = dataSnapshot.child(key).getValue(Coordenadas.class);
-                if(coordenadas != null){
-                    ubicacionMicro = new LatLng(coordenadas.getLatitud(), coordenadas.getLongitud());
-                    //Toast.makeText(MapaActivity.this, String.valueOf(ubicacionMicro.latitude), Toast.LENGTH_SHORT).show();
-                    //mMap.addMarker(new MarkerOptions().position(ubicacionMicro).title("Linea 10"));
-                    //PointOfInterest pointOfInterest = new PointOfInterest(ubicacionMicro, "linea10", "Linea 10");
-                    MarkerOptions marker = new MarkerOptions().position(ubicacionMicro);
-                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
-                    googleMap.addMarker(marker);
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionMicro));
-                    googleMap.animateCamera(CameraUpdateFactory.zoomTo(16));
-                }else{
-                    googleMap.clear();
-                    googleMap.addPolyline(opts);
-                    Toast.makeText(mapLineaActivity.this, "Su micro ha terminado el servicio", Toast.LENGTH_SHORT).show();
-                }
+                int lineaId = Preferences.getLinea(mapLineaActivity.this).getLineaId();
+                Query query = mDatabase.orderByChild("lineaId").equalTo(lineaId);
+                final List<Coordenadas> coordenadas = new ArrayList<>();
+                query.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        coordenadas.add(dataSnapshot.getValue(Coordenadas.class));
+                        if(coordenadas.size() > 0){
+                            for (int i = 0; i < coordenadas.size(); i++) {
+                                ubicacionMicro = new LatLng(coordenadas.get(i).getLatitud(), coordenadas.get(i).getLongitud());
+                                //Toast.makeText(MapaActivity.this, String.valueOf(ubicacionMicro.latitude), Toast.LENGTH_SHORT).show();
+                                //mMap.addMarker(new MarkerOptions().position(ubicacionMicro).title("Linea 10"));
+                                //PointOfInterest pointOfInterest = new PointOfInterest(ubicacionMicro, "linea10", "Linea 10");
+                                MarkerOptions marker = new MarkerOptions().position(ubicacionMicro);
+                                marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_bus));
+                                googleMap.addMarker(marker);
+                                //googleMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacionMicro));
+                                //googleMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+                            }
+                        }else{
+                            googleMap.clear();
+                            googleMap.addPolyline(opts);
+                            Toast.makeText(mapLineaActivity.this, "Su micro ha terminado el servicio", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                //Coordenadas coordenadas = dataSnapshot.child(key).getValue(Coordenadas.class);
+
             }
 
             @Override

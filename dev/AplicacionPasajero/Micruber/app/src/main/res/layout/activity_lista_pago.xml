@@ -21,8 +21,8 @@
 
     <ListView
         android:id="@+id/lvData"
-        android:layout_width="331dp"
-        android:layout_height="430dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabRango"

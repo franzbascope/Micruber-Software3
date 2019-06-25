@@ -80,7 +80,8 @@ public class activityListaPago extends AppCompatActivity {
         Calendar cal=Calendar.getInstance();
         cal.add(Calendar.DATE,-1);
 
-        LocalDate localDate = LocalDate.now();
+        Date dateactual = new Date();
+        String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(dateactual);
 
         //Pago p=new Pago(1,localDate.toString(),2,"pasaje mayor","10",false,0,0,0,date.toString());
         //listDatos.add(p);
@@ -88,11 +89,11 @@ public class activityListaPago extends AppCompatActivity {
         Intent intent=getIntent();
         String fechaInicio=intent.getStringExtra("fechaInicio");
         if(fechaInicio==null ){
-            llenarList(usr.getUsuarioId(),getYesterdayDateString(),localDate.toString());
+            llenarList(usr.getUsuarioId(),getYesterdayDateString(),modifiedDate.toString());
 
         }
         else{
-            llenarList(usr.getUsuarioId(),fechaInicio,localDate.toString());
+            llenarList(usr.getUsuarioId(),fechaInicio,modifiedDate.toString());
         }
 
 

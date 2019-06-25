@@ -143,7 +143,7 @@ public class MapsActivityRuta extends AppCompatActivity implements OnMapReadyCal
                     CameraPosition cameraPosition = null;
                     cameraPosition = new CameraPosition.Builder()
                             .target(miPosicion)      // Sets the center of the map to Mountain View
-                            .zoom(17)                   // Sets the zoom
+                            .zoom(14)                   // Sets the zoom
                             .build();
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 

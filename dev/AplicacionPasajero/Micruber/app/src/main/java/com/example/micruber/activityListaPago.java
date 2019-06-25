@@ -84,20 +84,14 @@ public class activityListaPago extends AppCompatActivity {
         Intent intent=getIntent();
         String fechaInicio=intent.getStringExtra("fechaInicio");
         if(fechaInicio==null ){
-<<<<<<< Updated upstream
             llenarList(usr.getUsuarioId(),getYesterdayDateString(),modifiedDate.toString());
 
         }
         else{
             llenarList(usr.getUsuarioId(),fechaInicio,modifiedDate.toString());
-=======
-            llenarList(usr.getUsuarioId(),getYesterdayDateString(),modifiedDate);
 
         }
-        else{
-            llenarList(usr.getUsuarioId(),fechaInicio,modifiedDate);
->>>>>>> Stashed changes
-        }
+
 
 
 

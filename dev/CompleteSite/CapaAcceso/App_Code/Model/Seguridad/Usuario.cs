@@ -20,8 +20,8 @@ namespace VentasNur.Model
         public string rolDescripcion { get; set; }
         public bool esEstudiante { get; set; }
         public decimal saldoActual { get; set; }
-        
-         
+
+        public String codigoNFC { get; set; }
 
 
 

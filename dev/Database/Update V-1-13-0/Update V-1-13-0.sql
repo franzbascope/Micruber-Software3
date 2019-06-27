@@ -134,3 +134,13 @@ BEGIN
 	where pag.usuarioId = @intUsuarioId
 
 END
+
+INSERT INTO [dbo].[tbl_Version]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,13
+           ,0)
+GO

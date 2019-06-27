@@ -337,7 +337,26 @@ public class UsuarioBLL
 
         return id.Value;
     }
-    
+
+    public static void linkNFC(String correo,String nfc)
+    {
+        if (string.IsNullOrEmpty(correo))
+            throw new ArgumentException("El correo no puede ser nulo o vacio");
+
+        if (string.IsNullOrEmpty(nfc))
+            throw new ArgumentException("Codigo NFC no puede ser nulo o vacio");
+        try
+        {
+            UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+            adapter.updateNFC(correo, nfc);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error al LINKEAR NFC" + ex);
+            return;
+        }
+        
+    }
 
 
 

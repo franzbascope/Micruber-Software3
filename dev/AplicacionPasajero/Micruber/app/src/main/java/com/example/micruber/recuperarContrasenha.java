@@ -84,7 +84,7 @@ public class recuperarContrasenha extends AppCompatActivity {
 
     }
     public void enviarCorreo(String Correo) {
-        String url = getString(R.string.url_validar_nueva_Contrasenha);
+        String url = getString(R.string.url_master) + "/usuarios/validateNewPassword";
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 

@@ -46,6 +46,7 @@
     <Compile Include="App_Code\BLL\Rutas\LineaBLL.cs" />
     <Compile Include="App_Code\BLL\Rutas\VehiculoBLL.cs" />
     <Compile Include="App_Code\BLL\Seguridad\PermisoBLL.cs" />
+    <Compile Include="App_Code\Model\Seguridad\Reporte.cs" />
     <Compile Include="App_Code\BLL\Seguridad\RolBLL.cs" />
     <Compile Include="App_Code\BLL\Seguridad\UsuarioBLL.cs" />
     <Compile Include="App_Code\BLL\Version\VersionBLL.cs" />

@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.micruber.Objetos.Linea;
+import com.example.micruber.adapter.AdaptadorLineas;
 import com.example.micruber.utiles.Preferences;
 
 import org.json.JSONArray;
@@ -27,21 +28,29 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class EscogerLinea extends AppCompatActivity {
 
     private Spinner lineaSpinner;
     private ProgressDialog progreso;
-    private ArrayList<Linea> listaLineas;
+    private RecyclerView lineasRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escoger_linea);
-        lineaSpinner = (Spinner) findViewById(R.id.spinnerLineas);
-        listaLineas = new ArrayList<>();
+
+        lineasRecyclerView = findViewById(R.id.lineasRecyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        lineasRecyclerView.setLayoutManager(layoutManager);
+
+
+        //lineaSpinner = (Spinner) findViewById(R.id.spinnerLineas);
         cargarLineas();
     }
 
@@ -55,14 +64,25 @@ public class EscogerLinea extends AppCompatActivity {
 
     public void cargarLineaSpinner()
     {
-        ArrayAdapter<Linea> adapter =
+        /*ArrayAdapter<Linea> adapter =
                 new ArrayAdapter<Linea>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, listaLineas);
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
-        lineaSpinner.setAdapter(adapter);
+        lineaSpinner.setAdapter(adapter);*/
     }
 
     public void cargarLineas() {
-        listaLineas = Preferences.getLineasCercanas(EscogerLinea.this);
-        cargarLineaSpinner();
+
+        List<Linea> listaLineas = Preferences.getLineasCercanas(EscogerLinea.this);
+        AdaptadorLineas adaptador = new AdaptadorLineas(this, listaLineas);
+        lineasRecyclerView.setAdapter(adaptador);
+        adaptador.setOnItemClickListener(new AdaptadorLineas.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, Linea obj) {
+                Preferences.setLinea(EscogerLinea.this, obj);
+                Intent intent = new Intent(EscogerLinea.this, mapLineaActivity.class);
+                startActivity(intent);
+            }
+        });
+        //cargarLineaSpinner();
     }
 }

@@ -39,7 +39,7 @@ namespace Servicios.Controllers
 
             }
         }
-        [HttpGet()]
+        [HttpPost()]
         [Route("ruta")]
         public HttpResponseMessage getLineasByCoordenadas([FromBody]CoordenadaRuta ruta)
         {

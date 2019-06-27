@@ -39,7 +39,7 @@
                                 <i class="fas fa-user"></i> Usuarios</asp:HyperLink>
                             <br />
                             <asp:HyperLink ID="ListaRolesLinkButton" runat="server" NavigateUrl="~/Usuarios/ListaRoles.aspx">
-                                <i class="fa fa-th-list"></i>Roles</asp:HyperLink>
+                                <i class="fa fa-users"></i>Roles</asp:HyperLink>
                             <%--<asp:LinkButton ID="RolesForm" runat="server"
                         OnClick="RolesForm_Click" style="color:white;"
                         CssClass="btn btn-link my-2 my-sm-0">
@@ -47,9 +47,10 @@
                                             Formulario
                                         </asp:LinkButton>--%>
                         </li>
-                           <li class="active ">
-                            
-                            <asp:HyperLink ID="ListaLineasLinkButton" runat="server" NavigateUrl="~/Lineas/ListaLineas.aspx" >
+                       
+                        <li class="active ">
+
+                            <asp:HyperLink ID="ListaLineasLinkButton" runat="server" NavigateUrl="~/Lineas/ListaLineas.aspx">
                                 <i class="fas fa-bus-alt"></i>Registrar Lineas</asp:HyperLink>
                         </li>
                         <li class="active">

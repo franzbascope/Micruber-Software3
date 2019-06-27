@@ -36,7 +36,7 @@
 
         <activity
             android:name=".MapsActivityRuta"
-            android:label="@string/title_activity_maps_ruta" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".mapLineaActivity"
             android:label="@string/title_map_linea_activity" />

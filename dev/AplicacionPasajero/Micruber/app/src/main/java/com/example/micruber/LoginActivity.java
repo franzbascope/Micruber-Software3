@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goToMicros(){
-        Intent intent = new Intent(LoginActivity.this, MicrosActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MapsActivityRuta.class);
         startActivity(intent);
         finish();
     }

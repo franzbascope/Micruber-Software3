@@ -82,6 +82,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RolesDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Seguridad\UsuarioDS.cs">
+      <DependentUpon>UsuarioDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Seguridad\UsuarioDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -47,10 +47,10 @@ public class MicrosActivity extends AppCompatActivity {
             case R.id.action_logout:
                 cerrarSesion();
                 break;
-            case R.id.action_verRuta:
+            /*case R.id.action_verRuta:
                 Intent intentRuta = new Intent(MicrosActivity.this, MapsActivityRuta.class);
                 startActivity(intentRuta);
-                break;
+                break;*/
             case R.id.action_verPago:
                 Intent intentPago = new Intent(MicrosActivity.this, activityListaPago.class);
                 startActivity(intentPago);

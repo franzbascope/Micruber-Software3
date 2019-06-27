@@ -27,7 +27,10 @@
                 url: "RegistroRutas.aspx/deleteCoordenadas",
                 data: lineaId,
                 dataType: "json",
-                async: false,                success: function (msg) {                    message = msg.d;                }
+                async: false,
+                success: function (msg) {
+                    message = msg.d;
+                }
             });
 
             for (var i = 0; i < markers.length; i++) {
@@ -42,7 +45,10 @@
                     url: "RegistroRutas.aspx/InsertarCoordenadas",
                     data: param,
                     dataType: "json",
-                    async: false,                    success: function (msg) {                        message = msg.d;                    }
+                    async: false,
+                    success: function (msg) {
+                        message = msg.d;
+                    }
                 });
             }
             window.location = "ListaLineas.aspx";
@@ -56,8 +62,15 @@
                 url: "RegistroRutas.aspx/mostrarCoordenadas",
                 data: param,
                 dataType: "json",
-                async: false,                success: function (coordenadas) {                    //console.log(coordenadas.d.length);                    if (coordenadas.d.length <= 0) {                        initialize();
-                    } else {                        agregarMarcadores(coordenadas.d);                    }                }
+                async: false,
+                success: function (coordenadas) {
+                    //console.log(coordenadas.d.length);
+                    if (coordenadas.d.length <= 0) {
+                        initialize();
+                    } else {
+                        agregarMarcadores(coordenadas.d);
+                    }
+                }
             });
         }
 

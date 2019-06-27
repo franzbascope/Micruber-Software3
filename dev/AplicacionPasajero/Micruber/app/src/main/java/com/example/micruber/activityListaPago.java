@@ -1,9 +1,7 @@
 package com.example.micruber;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.util.LocaleData;
@@ -58,8 +56,7 @@ public class activityListaPago extends AppCompatActivity {
     FloatingActionButton fab;
 
 
-    @TargetApi(Build.VERSION_CODES.O)
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,20 +77,21 @@ public class activityListaPago extends AppCompatActivity {
         Calendar cal=Calendar.getInstance();
         cal.add(Calendar.DATE,-1);
 
-        LocalDate localDate = LocalDate.now();
+        Date dateactual = new Date();
+        String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(dateactual);
 
-        //Pago p=new Pago(1,localDate.toString(),2,"pasaje mayor","10",false,0,0,0,date.toString());
-        //listDatos.add(p);
         Usuario usr = Preferences.getUsuario(this);
         Intent intent=getIntent();
         String fechaInicio=intent.getStringExtra("fechaInicio");
         if(fechaInicio==null ){
-            llenarList(usr.getUsuarioId(),getYesterdayDateString(),localDate.toString());
+            llenarList(usr.getUsuarioId(),getYesterdayDateString(),modifiedDate.toString());
 
         }
         else{
-            llenarList(usr.getUsuarioId(),fechaInicio,localDate.toString());
+            llenarList(usr.getUsuarioId(),fechaInicio,modifiedDate.toString());
+
         }
+
 
 
 

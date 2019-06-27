@@ -7,9 +7,12 @@
     }
 }
 
-namespace DAL.Rutas.LineasDSTableAdapters {
-    
-    
+namespace DAL.Rutas.LineasDSTableAdapters
+{
+    partial class cantidadGenteEnUnMesTableAdapter
+    {
+    }
+
     public partial class LineasTableAdapter {
     }
 }

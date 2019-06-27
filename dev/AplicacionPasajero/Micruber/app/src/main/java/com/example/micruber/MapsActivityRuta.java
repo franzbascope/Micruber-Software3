@@ -7,10 +7,14 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -36,6 +40,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -51,7 +56,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivityRuta extends AppCompatActivity implements OnMapReadyCallback {
     private ProgressDialog progreso;
 
     private GoogleMap mMap, mapCU;
@@ -70,6 +75,9 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_ruta);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -130,7 +138,14 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
                     latitude = location.getLatitude();
                     miPosicion = new LatLng(latitude, longitude);
                     mMap.addMarker(new MarkerOptions().position(miPosicion).title("Yo"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(miPosicion));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(miPosicion));
+
+                    CameraPosition cameraPosition = null;
+                    cameraPosition = new CameraPosition.Builder()
+                            .target(miPosicion)      // Sets the center of the map to Mountain View
+                            .zoom(14)                   // Sets the zoom
+                            .build();
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
                 }
@@ -192,7 +207,7 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
 
             final String mRequestBody = jsonBody.toString();
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
@@ -208,6 +223,11 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
                                     Linea lin = new Linea();
                                     lin.setLineaId(jsonObjectHijo.getInt("lineaId"));
                                     lin.setNumeroLinea(jsonObjectHijo.getString("numeroLinea"));
+                                    lin.setDistanciaCaminarMetros(jsonObjectHijo.getDouble("distanciaCaminarMetros"));
+                                    lin.setDistanciaRecorridoMetros(jsonObjectHijo.getDouble("distanciaRecorridoMetros"));
+                                    lin.setTiempoCaminata(jsonObjectHijo.getInt("tiempoCaminata"));
+                                    lin.setTiempoRecorrido(jsonObjectHijo.getInt("tiempoRecorrido"));
+
                                     lineas.add(lin);
                                 } catch (JSONException e) {
                                     Log.e("Parser JSON", e.toString());
@@ -219,8 +239,7 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
                             Intent intent2=new Intent(MapsActivityRuta.this,EscogerLinea.class);
                             //Toast.makeText(MapsActivityRuta.this, lin.getLineaId()+"..."+lin.getNumeroLinea(), Toast.LENGTH_LONG).show();
                             startActivity(intent2);
-                            finish();
-
+                            //finish();
 
                         }else{
                             Toast.makeText(MapsActivityRuta.this, "Algo paso", Toast.LENGTH_LONG).show();
@@ -265,141 +284,44 @@ public class MapsActivityRuta extends FragmentActivity implements OnMapReadyCall
             e.printStackTrace();
         }
     }
-   /* public void getLinea() {
-        String url = getString(R.string.url_master) + "/ruta";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        List<Coordenadas> coordenadasCargar=new ArrayList<>();
 
-        cordOrigen=new Coordenadas(latitude,longitude);
-        cordDestino=new Coordenadas(latiAmandar,longiAmandar);
-        coordenadasMandar.add(cordOrigen);
-        coordenadasMandar.add(cordDestino);
-
-        JSONObject obj=new JSONObject();
-
-
-
-        for(int i=0;i<coordenadasMandar.size();i++){
-            try {
-
-
-                obj.put("latitud",coordenadasMandar.get(i).getLatitud());
-                obj.put("longitud",coordenadasMandar.get(i).getLongitud());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        progreso = new ProgressDialog(this);
-        progreso.setIndeterminate(true);
-        progreso.setTitle("Consiguiendo micro...");
-        progreso.setCancelable(false);
-        progreso.show();
-
-
-        final String mRequestBody = obj.toString();
-
-        StringRequest jobReq = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray arregloRespuesta = new JSONArray(response);
-                            Linea lin = new Linea();
-                            for (int i = 0; i < arregloRespuesta.length(); i++) {
-                                try {
-                                    JSONObject jsonObjectHijo = arregloRespuesta.getJSONObject(i);
-                                    lin.setLineaId(jsonObjectHijo.getInt("lineaId"));
-                                    lin.setNumeroLinea(jsonObjectHijo.getString("numeroLinea"));
-
-                                } catch (JSONException e) {
-                                    Log.e("Parser JSON", e.toString());
-                                }
-
-                                Toast.makeText(MapsActivityRuta.this, lin.getLineaId() + "  " + lin.getNumeroLinea(), Toast.LENGTH_LONG).show();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progreso.dismiss();
-
-                        if (error instanceof NetworkError) {
-                            Util.mostrarDialogoSinInternet(MapsActivityRuta.this);
-                        } else if (error instanceof TimeoutError) {
-
-                        } else if (error instanceof ServerError) {
-                            Toast.makeText(MapsActivityRuta.this, "Algo salio mal", Toast.LENGTH_SHORT).show();
-                        }
-                        Log.e("LOG_VOLLEY", error.toString());
-                    }
-                })
-                ;
-/*
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                        JSONArray arregloRespuesta = new JSONArray(response);
-                        Linea lin = new Linea();
-                        for (int i = 0; i < arregloRespuesta.length(); i++) {
-                            try {
-                                JSONObject jsonObjectHijo = arregloRespuesta.getJSONObject(i);
-                                lin.setLineaId(jsonObjectHijo.getInt("lineaId"));
-                                lin.setNumeroLinea(jsonObjectHijo.getString("numeroLinea"));
-
-                            } catch (JSONException e) {
-                                Log.e("Parser JSON", e.toString());
-                            }
-
-                            Toast.makeText(MapsActivityRuta.this, lin.getLineaId() + "  " + lin.getNumeroLinea(), Toast.LENGTH_LONG).show();
-                        }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
-        }
-                , new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progreso.dismiss();
-
-                if (error instanceof NetworkError) {
-                    Util.mostrarDialogoSinInternet(MapsActivityRuta.this);
-                } else if (error instanceof TimeoutError) {
-
-                } else if (error instanceof ServerError) {
-                    Toast.makeText(MapsActivityRuta.this, "Algo salio mal", Toast.LENGTH_SHORT).show();
-                }
-                Log.e("LOG_VOLLEY", error.toString());
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
-                    return null;
-                }
-            }
-        };
-        requestQueue.add(jobReq);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_basic, menu);
+        return true;
     }
 
-*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cambiar_clave:
+                Intent intent = new Intent(MapsActivityRuta.this, cambiarClave.class);
+                startActivity(intent);
+                break;
+
+            case R.id.action_logout:
+                cerrarSesion();
+                break;
+            /*case R.id.action_verRuta:
+                Intent intentRuta = new Intent(MapsActivityRuta.this, MapsActivityRuta.class);
+                startActivity(intentRuta);
+                break;*/
+            case R.id.action_verPago:
+                Intent intentPago = new Intent(MapsActivityRuta.this, activityListaPago.class);
+                startActivity(intentPago);
+                break;
+
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void cerrarSesion() {
+        Preferences.deleteUsuario(this);
+        Intent intent = new Intent(MapsActivityRuta.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

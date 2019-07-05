@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaAcceso.App_Code.Model.Pagos;
 using DAL.Pagos.PagosDSTableAdapters;
-using VentasNur.Model;
 using System.Configuration;
+using CapaAcceso.App_Code.Model.Pagos;
+using VentasNur.Model;
 
 namespace CapaAcceso.App_Code.BLL.PagosBLL
 {

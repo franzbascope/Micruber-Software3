@@ -7,6 +7,7 @@ using DAL.Seguridad;
 using DAL.Seguridad.UsuarioDSTableAdapters;
 using System.Net.Mail;
 using System.Net;
+using CapaAcceso.App_Code.BLL.Seguridad;
 
 /// <summary>
 /// Descripción breve de UsuarioBLL
@@ -32,7 +33,8 @@ public class UsuarioBLL
             rolDescripcion = row.IsrolNull() ? "" : row.rol,
             tempPassword = row.IstempPasswordNull()? "" : row.tempPassword,
             esEstudiante = row.IsesEstudianteNull() ? false : row.esEstudiante,
-            saldoActual = row.IssaldoActualNull() ? 0 : row.saldoActual
+            saldoActual = row.IssaldoActualNull() ? 0 : row.saldoActual,
+            
         };
     }
 
@@ -49,6 +51,8 @@ public class UsuarioBLL
         }
         return list;
     }
+
+
 
 
     public static Usuario getUsuarioById(int usuarioId)
@@ -333,5 +337,28 @@ public class UsuarioBLL
 
         return id.Value;
     }
+
+    public static void linkNFC(String correo,String nfc)
+    {
+        if (string.IsNullOrEmpty(correo))
+            throw new ArgumentException("El correo no puede ser nulo o vacio");
+
+        if (string.IsNullOrEmpty(nfc))
+            throw new ArgumentException("Codigo NFC no puede ser nulo o vacio");
+        try
+        {
+            UsuarioTableAdapter adapter = new UsuarioTableAdapter();
+            adapter.updateNFC(correo, nfc);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error al LINKEAR NFC" + ex);
+            return;
+        }
+        
+    }
+
+
+
 
 }

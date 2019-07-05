@@ -56,7 +56,7 @@ public class Recargo extends AppCompatActivity implements Listener {
         }
 
 
-        if (montos < 0) {
+        if (montos <= 0) {
             Toast.makeText(Recargo.this, "Debe ingresar un monto mayor a 0", Toast.LENGTH_LONG).show();
             return;
         }

@@ -55,3 +55,16 @@ UPDATE [dbo].[tbl_seg_usuario]
       [tipoUsuario] = 4
  WHERE usuarioId = 1
 GO
+
+DELETE FROM [dbo].[tbl_Version]
+GO
+
+INSERT INTO [dbo].[tbl_Version]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,11
+           ,0)
+GO

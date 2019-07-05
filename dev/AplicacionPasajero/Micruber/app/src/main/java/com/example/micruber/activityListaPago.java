@@ -1,9 +1,7 @@
 package com.example.micruber;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.util.LocaleData;
@@ -58,8 +56,7 @@ public class activityListaPago extends AppCompatActivity {
     FloatingActionButton fab;
 
 
-    @TargetApi(Build.VERSION_CODES.O)
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,8 +80,6 @@ public class activityListaPago extends AppCompatActivity {
         Date dateactual = new Date();
         String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(dateactual);
 
-        //Pago p=new Pago(1,localDate.toString(),2,"pasaje mayor","10",false,0,0,0,date.toString());
-        //listDatos.add(p);
         Usuario usr = Preferences.getUsuario(this);
         Intent intent=getIntent();
         String fechaInicio=intent.getStringExtra("fechaInicio");
@@ -94,7 +89,9 @@ public class activityListaPago extends AppCompatActivity {
         }
         else{
             llenarList(usr.getUsuarioId(),fechaInicio,modifiedDate.toString());
+
         }
+
 
 
 

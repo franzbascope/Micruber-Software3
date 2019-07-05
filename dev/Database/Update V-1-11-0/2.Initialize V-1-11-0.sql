@@ -94,3 +94,16 @@ BEGIN
 	where pag.usuarioId = @intUsuarioId
 
 END
+go
+DELETE FROM [dbo].[tbl_Version]
+GO
+
+INSERT INTO [dbo].[tbl_Version]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,11
+           ,1)
+GO

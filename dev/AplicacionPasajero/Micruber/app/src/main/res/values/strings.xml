@@ -9,14 +9,13 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="title_activity_micros">Menu principal</string>
 
     <!-- Url de los servicios -->
     <string name="url_master">http://192.168.43.29/micruber/api</string>
     <!-- <string name="url_validar_nueva_Contrasenha">http://192.168.1.9/micruber/api/usuarios/validateNewPassword</string> -->
+
 
     <string name="title_activity_micruber">MicruberActivity</string>
     <string name="title_home">Home</string>

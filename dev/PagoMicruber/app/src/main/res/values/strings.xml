@@ -17,6 +17,7 @@
     <!-- Url de los servicios -->
     <string name="url_master">http://192.168.1.3/micruber/api</string>
     <string name="url_validar_nueva_Contrasenha">http://192.168.1.3/micruber/api/usuarios/validateNewPassword</string>
+
     <string name="title_activity_micruber">MicruberActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

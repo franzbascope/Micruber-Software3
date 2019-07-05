@@ -32,7 +32,7 @@ namespace CapaAcceso.App_Code.BLL.Seguridad
         public static List<Rol> getAllRoles()
         {
             RolesTableAdapter adapter = new RolesTableAdapter();
-            RolesDS.RolesDataTable table = adapter.GetRoles();
+            RolesDS.RolesDataTable table = adapter.getAllRoles();
 
             List<Rol> list = new List<Rol>();
             foreach (var row in table)

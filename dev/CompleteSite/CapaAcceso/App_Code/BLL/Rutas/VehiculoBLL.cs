@@ -114,18 +114,18 @@ public class VehiculoBLL
         adapter.DeleteVehiculo(vehiculoId);
     }
 
-    public static int insertLineaVehiculo(int lineaId, int rutaId)
+    public static int insertLineaVehiculo(int lineaId, int vehiculoId)
     {
         if (lineaId <= 0)
             throw new ArgumentException("La lineaId no puede ser <=0");
 
-        if (rutaId <= 0)
+        if (vehiculoId <= 0)
             throw new ArgumentException("la rutaId no puede ser nulo o vacio");
 
 
         int? id = null;
         VehiculoTableAdapter adapter = new VehiculoTableAdapter();
-        adapter.InsertLineaVehiculo(lineaId, rutaId, ref id);
+        adapter.InsertLineaVehiculo(lineaId, vehiculoId, ref id);
 
         if (id == null || id.Value <= 0)
             throw new Exception("No se ingreso correctamente");

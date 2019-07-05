@@ -76,7 +76,7 @@ public class IngresarPlacaActivity extends AppCompatActivity {
                             JSONObject respuesta = new JSONObject(response);
                             Vehiculo objVehiculo = new Vehiculo();
                             objVehiculo.setCapacidad((Integer) respuesta.get("capacidad"));
-                            objVehiculo.setVehiculoId((Integer) respuesta.get("vechiduloId"));
+                            objVehiculo.setVehiculoId((Integer) respuesta.get("vehiculoId"));
                             objVehiculo.setPlaca(respuesta.getString("placa"));
                             Preferences.setVehiculo(IngresarPlacaActivity.this, objVehiculo);
                             progreso.dismiss();

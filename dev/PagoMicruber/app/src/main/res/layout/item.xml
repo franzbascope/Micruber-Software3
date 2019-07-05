@@ -6,47 +6,52 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Detalle" />
+        android:orientation="vertical"
+        android:paddingLeft="14sp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="14sp">
 
             <TextView
                 android:id="@+id/monto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Monto:" />
+                android:text="$"
+                android:textColor="@color/colorPrimary2"
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/montodata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Monto" />
+                android:paddingLeft="4sp"
+                android:text="Monto"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="14sp">
 
             <TextView
                 android:id="@+id/correo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Correo:" />
+                android:text="Correo:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/correodata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Correo" />
+                android:text="Correo"
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>

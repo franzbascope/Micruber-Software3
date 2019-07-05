@@ -74,6 +74,30 @@ namespace Servicios.Controllers
             }
         }
 
+        [HttpPost()]
+        [Route("usuarios/linkNFC")]
+        public IHttpActionResult linkNFC([FromBody]Usuario user)
+        {
+            string json = JsonConvert.SerializeObject(user);
+            if (String.IsNullOrEmpty(user.correo))
+                return BadRequest();
+            if (String.IsNullOrEmpty(user.codigoNFC))
+                return BadRequest();
+            try
+            {
+                UsuarioBLL.linkNFC(user.correo, user.codigoNFC);
+                return Ok(1);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+                throw ex;
+                
+            }
+            
+
+        }
+
         [HttpGet()]
         [Route("usuarios")]
         public HttpResponseMessage getUsuarioByCodigoNFC(string codigoNFC)

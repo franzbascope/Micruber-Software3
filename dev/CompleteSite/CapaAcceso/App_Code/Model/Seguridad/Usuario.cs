@@ -21,6 +21,8 @@ namespace VentasNur.Model
         public bool esEstudiante { get; set; }
         public decimal saldoActual { get; set; }
 
+        public String codigoNFC { get; set; }
+
 
 
     }

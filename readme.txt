@@ -1,7 +1,7 @@
 Instrucciones para correr el programa
 -Requisitos
 *Tener windows 7 o mas
-*Tener instalado Adnroid studio en su ultima version.
+*Tener instalado Android studio en su ultima version.
 *Tener instalado visual studio 2015 o superior
 -Configurar ambiente
 1.Activar IIS si es que no se tiene.
@@ -26,4 +26,4 @@ y cambiar el valor url_master por: http://{su IP}/micruber/api
 en la direccion
 'E:\universidad\software3\Micruber-Software3\dev\CompleteSite\CompleteSite.sln'
 9.en el visual dar a la opcion correr
-10.Disfruta la app, crea usuarios, inicia sesion y recupera contraseña
+10.Disfruta la app, crea usuarios, inicia sesion y recupera contraseÃ±a

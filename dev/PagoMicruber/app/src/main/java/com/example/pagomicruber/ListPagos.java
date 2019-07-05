@@ -28,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -76,6 +78,11 @@ public class ListPagos extends AppCompatActivity {
 
     public void goPago() {
         Intent intent = new Intent(ListPagos.this, Recargo.class);
+        startActivity(intent);
+    }
+
+    public void goNFC() {
+        Intent intent = new Intent(ListPagos.this, RegistrarTarjeta.class);
         startActivity(intent);
     }
 
@@ -161,6 +168,26 @@ public class ListPagos extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_basic, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_registrar_tarjeta:
+                goNFC();
+                break;
+
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

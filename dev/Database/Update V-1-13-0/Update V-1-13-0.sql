@@ -144,3 +144,16 @@ INSERT INTO [dbo].[tbl_Version]
            ,13
            ,0)
 GO
+
+DELETE FROM [dbo].[tbl_Version]
+GO
+
+INSERT INTO [dbo].[tbl_Version]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,13
+           ,0)
+GO

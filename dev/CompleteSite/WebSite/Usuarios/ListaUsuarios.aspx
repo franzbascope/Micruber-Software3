@@ -39,7 +39,6 @@
                     </asp:TemplateField>
                     <asp:BoundField HeaderText="Nombre Completo" DataField="nombreCompleto" />
                     <asp:BoundField HeaderText="Correo" DataField="correo" />
-                    <asp:BoundField HeaderText="Rol" DataField="rolDescripcion" />
                 </Columns>
             </asp:GridView>
             </div>

@@ -37,6 +37,11 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
 
     private void ProcesarParametros()
     {
+        List<Rol> listaRoles = RolBLL.getAllRoles();
+        RolDropDownLsit.DataTextField = "descripcion";
+        RolDropDownLsit.DataValueField = "roleId";
+        RolDropDownLsit.DataSource = listaRoles;
+        RolDropDownLsit.DataBind();
         if (Request.QueryString["UsuarioId"] != null && !string.IsNullOrEmpty(Request.QueryString["UsuarioId"]))
         {
             try
@@ -55,11 +60,7 @@ public partial class Usuarios_DetalleUsuario : System.Web.UI.Page
         }
         else
             LabelTitle.Text = "Nuevo";
-        List<Rol> listaRoles = RolBLL.getAllRoles();
-        RolDropDownLsit.DataTextField = "descripcion";
-        RolDropDownLsit.DataValueField = "roleId";
-        RolDropDownLsit.DataSource = listaRoles;
-        RolDropDownLsit.DataBind();
+      
     }
     private void CargarDatos(int usuarioId)
     {

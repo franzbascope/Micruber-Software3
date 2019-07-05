@@ -1,4 +1,18 @@
-package com.example.pagomicruber;
+package com.example.micruber;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -11,29 +25,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.pagomicruber.R;
-
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.example.pagomicruber.adapter.PagoAdapter;
-import com.example.pagomicruber.model.PagoView;
-import com.example.pagomicruber.utiles.Preferences;
-import com.example.pagomicruber.utiles.Util;
+import com.example.micruber.Objetos.Tarjeta;
+import com.example.micruber.Objetos.Usuario;
+import com.example.micruber.adapter.TarjetaAdapter;
+import com.example.micruber.utiles.Preferences;
+import com.example.micruber.utiles.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,20 +39,25 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class ListPagos extends AppCompatActivity {
+public class ListTarjetas extends AppCompatActivity {
 
     private ListView lvItems;
-    private PagoAdapter adapPago;
+    private TarjetaAdapter adapTarjet;
     private ProgressDialog progreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_pagos);
+        setContentView(R.layout.activity_list_tarjeta);
 
         lvItems = (ListView) findViewById(R.id.lvItems);
         //Lista de pagos voley
-
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mostrarDialog();
+            }
+        });
         listarPagos();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -77,18 +79,13 @@ public class ListPagos extends AppCompatActivity {
     }
 
     public void goPago() {
-        Intent intent = new Intent(ListPagos.this, Recargo.class);
-        startActivity(intent);
-    }
-
-    public void goNFC() {
-        Intent intent = new Intent(ListPagos.this, RegistrarTarjeta.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(ListTarjetas.this, Recargo.class);
+        startActivity(intent);*/
     }
 
     public void listarPagos() {
         Usuario usuario = Preferences.getUsuario(this);
-        final ArrayList<PagoView> listaPago = new ArrayList<>();
+        final ArrayList<Tarjeta> listaPago = new ArrayList<>();
         String url = getString(R.string.url_master) + "/obtenerPagos";
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -116,18 +113,18 @@ public class ListPagos extends AppCompatActivity {
                             JSONArray jsonarray = new JSONArray(response);
                             for (int i = 0; i < jsonarray.length(); i++) {
                                 JSONObject jsonobject = jsonarray.getJSONObject(i);
-                                listaPago.add(new PagoView(jsonobject.getInt("monto"), jsonobject.getString("correo")));
+                                listaPago.add(new Tarjeta(jsonobject.getString("descripcion"),jsonobject.getBoolean("estado")));
                             }
 
                             progreso.dismiss();
 
-                            adapPago = new PagoAdapter(listaPago, ListPagos.this);
+                            adapTarjet = new TarjetaAdapter(listaPago, ListTarjetas.this);
 
-                            lvItems.setAdapter(adapPago);
+                            lvItems.setAdapter(adapTarjet);
 
 
                         } else {
-                            Toast.makeText(ListPagos.this, "Credenciales incorrectos", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ListTarjetas.this, "Credenciales incorrectos", Toast.LENGTH_LONG).show();
                         }
 
                     } catch (JSONException e) {
@@ -140,11 +137,11 @@ public class ListPagos extends AppCompatActivity {
                     progreso.dismiss();
 
                     if (error instanceof NetworkError) {
-                        Util.mostrarDialogoSinInternet(ListPagos.this);
+                        Util.mostrarDialogoSinInternet(ListTarjetas.this);
                     } else if (error instanceof TimeoutError) {
 
                     } else if (error instanceof ServerError) {
-                        Toast.makeText(ListPagos.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListTarjetas.this, "Crendenciales incorrectos", Toast.LENGTH_SHORT).show();
                     }
                     Log.e("LOG_VOLLEY", error.toString());
                 }
@@ -170,24 +167,19 @@ public class ListPagos extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_basic, menu);
-        return true;
-    }
+    private void mostrarDialog(){
+        new AlertDialog.Builder(this).setTitle("Alerta tarjeta")
+                .setMessage("Habilitar/Deshabilitar?").setPositiveButton("Habilitar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_registrar_tarjeta:
-                goNFC();
-                break;
+            }
+        }).setNegativeButton("Deshabilitar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-            default:
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
+            }
+        }).show();
     }
 
 }

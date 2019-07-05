@@ -16,7 +16,13 @@
     <div class="card">
         <div id="cantidad_gente_mes" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
     </div>
+    <div class="card">
+        <div id="ganancias_ultimo_mes" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    </div>
     <asp:HiddenField ID="lineaRep" ClientIDMode="Static" runat="server" Value="" />
+    <asp:HiddenField ID="fechaMes" ClientIDMode="Static" runat="server" Value="" />
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -79,6 +85,70 @@
             });
 
         })()
+    </script>
+    <script>
+
+     
+            var todo = JSON.parse(document.getElementById("fechaMes").value)
+
+            var fecha = Array();
+            var dia = Array();
+            var mes = Array();
+            var anho = Array();
+
+            var plata = Array();
+            var dataArrayFinal = Array();
+            for (i = 0; i < todo.length; i++) {
+                debugger
+
+                fecha[i] = todo[i].fecha;
+                plata[i] = todo[i].ingreso;
+                var getdia = fecha[i];
+
+                dia[i] = parseInt(getdia.substring(0, 2));
+                mes[i] = getdia.substring(3, 5);
+                anho[i] = getdia.substring(6, 10);
+
+
+            }
+
+            for (j = 0; j < fecha.length; j++) {
+                var temp = new Array(fecha[j], plata[j]);
+                debugger
+                dataArrayFinal[j] = temp;
+            }
+            Highcharts.chart('ganancias_ultimo_mes', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Ganancias totales'
+                },
+                subtitle: {
+                    text: 'Source: WorldClimate.com'
+                },
+                xAxis: {
+                    categories: fecha
+                },
+                yAxis: {
+                    title: {
+                        text: ""
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Plata',
+                    data: plata
+                    }]
+                });
+
     </script>
 </asp:Content>
 

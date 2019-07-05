@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
     android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
     tools:context=".activityListaPago">
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="201dp"
-        android:layout_height="wrap_content"
-        android:text="Lista de pagos"
-        android:layout_marginBottom="20dp"
-        android:textSize="30dp"/>
 
     <ListView
         android:id="@+id/lvData"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+    </ListView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabRango"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="69dp"
+        android:layout_height="71dp"
+        android:layout_gravity="bottom|end"
         android:clickable="true"
+        android:src="@android:drawable/ic_menu_month"
+        android:tint="@color/colorPrimary2"
         app:backgroundTint="#000000"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:maxImageSize="28dp" />
 
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

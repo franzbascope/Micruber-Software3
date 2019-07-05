@@ -69,12 +69,29 @@ public class LineaBLL
         LineasDS.cantidadGenteEnUnMesDataTable table = adapter.GetCantidadPersonasMes();
 
         List<Reporte> list = new List<Reporte>();
-        foreach(var row in table)
+        foreach (var row in table)
         {
             list.Add(new Reporte()
             {
                 numeroLinea = row.numeroLinea,
                 nroVeces = row.nroVeces
+            });
+        }
+        return list;
+    }
+    public static List<ReportePagoMes> GnrarGananciasMes()
+    {
+        DAL.Rutas.LineasDSTableAdapters.cantidadGananciasEnUnMesTableAdapter adapter = new DAL.Rutas.LineasDSTableAdapters.cantidadGananciasEnUnMesTableAdapter();
+        LineasDS.cantidadGananciasEnUnMesDataTable table = adapter.gananciasEnUnMes();
+
+        List<ReportePagoMes> list = new List<ReportePagoMes>();
+        foreach (var row in table)
+        {
+            list.Add(new ReportePagoMes()
+            {
+                
+                fecha = row.fecha.ToString("dd MM yyyy"),
+                ingreso = row.ingresos
             });
         }
         return list;

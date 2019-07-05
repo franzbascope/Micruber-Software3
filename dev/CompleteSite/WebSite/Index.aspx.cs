@@ -19,7 +19,13 @@ public partial class Index : System.Web.UI.Page
             List<Reporte> rep = LineaBLL.GetNroLineaUltimoMes();
             var jsonSerialiser = new JavaScriptSerializer();
             var json = jsonSerialiser.Serialize(rep);
-            lineaRep.Value = json; 
+            lineaRep.Value = json;
+
+            List<ReportePagoMes> rep2 = LineaBLL.GnrarGananciasMes();
+            
+            var jsonSerialiser2 = new JavaScriptSerializer();
+            var json2 = jsonSerialiser.Serialize(rep2);
+            fechaMes.Value = json2;
 
 
         }catch(Exception ex)

@@ -2,6 +2,7 @@ package com.example.micruber;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.util.LocaleData;
@@ -9,6 +10,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -54,6 +57,8 @@ public class activityListaPago extends AppCompatActivity {
     ListView listView;
     ProgressDialog progreso;
     FloatingActionButton fab;
+    private int dia, mes, ano;
+    String s="";
 
 
 
@@ -63,27 +68,43 @@ public class activityListaPago extends AppCompatActivity {
         setContentView(R.layout.activity_lista_pago);
         fab=findViewById(R.id.fabRango);
         listView=findViewById(R.id.lvData);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(activityListaPago.this,rangoPago.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
-
+        final Usuario usr = Preferences.getUsuario(this);
+        final String fechaInicio=s;
         Date date =Calendar.getInstance().getTime();
         Calendar cal=Calendar.getInstance();
         cal.add(Calendar.DATE,-1);
 
         Date dateactual = new Date();
-        String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(dateactual);
+        final String modifiedDate= new SimpleDateFormat("yyyy-MM-dd").format(dateactual);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                dia = c.get(Calendar.DAY_OF_MONTH);
+                mes = c.get(Calendar.MONTH);
+                ano = c.get(Calendar.YEAR);
 
-        Usuario usr = Preferences.getUsuario(this);
-        Intent intent=getIntent();
-        String fechaInicio=intent.getStringExtra("fechaInicio");
-        if(fechaInicio==null ){
+                DatePickerDialog datePickerDialog = new DatePickerDialog(activityListaPago.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        s=year+"-"+addzero(month)+"-"+addzero(dayOfMonth);
+                        llenarList(usr.getUsuarioId(),s,modifiedDate.toString());
+
+
+                    }
+                }
+                        , ano, mes, dia);
+                datePickerDialog.show();
+
+
+            }
+        });
+
+
+
+
+        if(fechaInicio.equals("")){
             llenarList(usr.getUsuarioId(),getYesterdayDateString(),modifiedDate.toString());
 
         }
@@ -135,6 +156,12 @@ public class activityListaPago extends AppCompatActivity {
                     try {
                         //Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
                         if(!response.trim().isEmpty()){
+                            if(response.equals("[]")){
+                                Toast.makeText(activityListaPago.this, "Ud no cuenta con un pago en las ultimas 24 horas", Toast.LENGTH_LONG).show();
+                                progreso.dismiss();
+
+                                return;
+                            }
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayList<Pago> listDatos = new ArrayList<>();
 
@@ -170,10 +197,10 @@ public class activityListaPago extends AppCompatActivity {
                                 }
                             listView.setAdapter(new ListPagosAdapter(activityListaPago.this,listDatos));
 
+                        } else {
+
+                            Toast.makeText(activityListaPago.this, "Algo malio sal ", Toast.LENGTH_LONG).show();
                         }
-                                else {
-                                    Toast.makeText(activityListaPago.this, "Algo malio sal ", Toast.LENGTH_LONG).show();
-                                }
 
 
                         } catch (JSONException e) {
@@ -221,4 +248,15 @@ public class activityListaPago extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    public String addzero(int numero) {
+        String resultado;
+        if (numero < 10) {
+            resultado = "0" + String.valueOf(numero);
+        } else {
+            resultado = String.valueOf(numero);
+        }
+        return resultado;
+
+    }
+
 }

@@ -8,6 +8,12 @@
         android:title="Cambiar contraseña"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_administrar_tarjeta"
+        android:orderInCategory="99"
+        android:title="Administrar tarjeta"
+        app:showAsAction="never" />
+
     <!--
     <item
         android:id="@+id/action_verRuta"

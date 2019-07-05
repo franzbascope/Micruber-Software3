@@ -302,10 +302,11 @@ public class MapsActivityRuta extends AppCompatActivity implements OnMapReadyCal
             case R.id.action_logout:
                 cerrarSesion();
                 break;
-            /*case R.id.action_verRuta:
-                Intent intentRuta = new Intent(MapsActivityRuta.this, MapsActivityRuta.class);
-                startActivity(intentRuta);
-                break;*/
+            case R.id.action_administrar_tarjeta:
+                Toast.makeText(this,"Administre sua tarjeta",Toast.LENGTH_SHORT).show();
+                /*Intent intentRuta = new Intent(MapsActivityRuta.this, MapsActivityRuta.class);
+                startActivity(intentRuta);*/
+                break;
             case R.id.action_verPago:
                 Intent intentPago = new Intent(MapsActivityRuta.this, activityListaPago.class);
                 startActivity(intentPago);

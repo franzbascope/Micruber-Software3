@@ -234,7 +234,7 @@ public class UsuarioBLL
 
             MailMessage mail = new MailMessage();
             SmtpClient smtpCli = new SmtpClient();
-            mail.From = new MailAddress("jose.cadima@aetest.net");
+            mail.From = new MailAddress("franz.test@aetest.net");
             mail.To.Add(new MailAddress(user.correo));
 
             string message =
@@ -250,7 +250,7 @@ public class UsuarioBLL
             mail.Subject = "Activacion de Cuenta";
             smtpCli.Host = "mail.aetest.net";
             smtpCli.Port = 587; //Lo use gmail por defecto
-            smtpCli.Credentials = new NetworkCredential("jose.cadima@aetest.net", "ysNwm0axilRj");
+            smtpCli.Credentials = new NetworkCredential("franz.test@aetest.net", "ysNwm0axilRj");
             smtpCli.EnableSsl = true;
             smtpCli.Send(mail);
         }
